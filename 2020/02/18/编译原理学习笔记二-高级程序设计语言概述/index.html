@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>welcome to qk6665&#39;blog</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+<header class="header">
+    <div class="blog-title">
+        <a href="/" class="logo">welcome to qk6665&#39;blog</a>
+    </div>
+    <nav class="navbar">
+        <ul class="menu">
+            
+                <li class="menu-item">
+                    <a href="/" class="menu-item-link">首页</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a href="/archives" class="menu-item-link">目录</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a href="https://github.com/qk6665" target="_blank" rel="noopener" class="menu-item-link">GitHub</a>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<main class="main">
+    <article class="post">
+    <div class="post-title">
+        <h2 class="title">编译原理学习笔记二-高级程序设计语言概述</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2020-02-18</span>
+    </div>
+    <div class="post-content">
+        <h1 id="第一章-引论"><a href="#第一章-引论" class="headerlink" title="第一章 引论"></a>第一章 引论</h1><h4 id="1-高级程序设计语言的优点"><a href="#1-高级程序设计语言的优点" class="headerlink" title="1 高级程序设计语言的优点"></a>1 高级程序设计语言的优点</h4><p>相对机器语言或汇编语言，高级程序设计语言更接近于数学语言和工程语言，更直观、自然和易于理解，更容易验证其正确性、改错，编写程序的效率更高，更容易移植</p>
+<h4 id="2-程序语言的定义"><a href="#2-程序语言的定义" class="headerlink" title="2 程序语言的定义"></a>2 程序语言的定义</h4><p>语法、语义、语用</p>
+<h4 id="3-语法"><a href="#3-语法" class="headerlink" title="3 语法"></a>3 语法</h4><p>程序本质上是一定字符集上的字符串。语法：一组规则，用它可以形成和产生一个合式(well-formed)的程序。</p>
+<p>词法规则：单词符号的形成规则，单词符号是语言中具有独立意义的最基本结构，一般包括常数、标识符、基本字、算符、界符等，描述工具为有限自动机</p>
+<p>语法规则：语法单位的形成规则，语法单位通常包括表达式、语句、分程序、过程、函数、程序等，描述工具为上下文无关文法</p>
+<p>语法规则和词法规则定义了程序的形式结构，定义语法单位的意义属于语义问题</p>
+<h4 id="4-语义"><a href="#4-语义" class="headerlink" title="4 语义"></a>4 语义</h4><p>语义指一组规则，用它可以定义一个程序的意义，描述方法有自然语言描述和形式描述。</p>
+<p>自然语言描述有二义性、隐藏错误和不完整性，形式描述有操作语义、指称语义、代数语义</p>
+<h4 id="5-高级语言的分类"><a href="#5-高级语言的分类" class="headerlink" title="5 高级语言的分类"></a>5 高级语言的分类</h4><p>强制式语言(Imperative Languge)/过程式语言：命令驱动，面向语句。FORTRAN、C、Pascal，Ada</p>
+<p>应用式语言(Applicative Language)：注重程序所表示的功能，而不是一个语句接一个语句地执行。LISP、ML</p>
+<p>基于规则的语言( Rule-based Language)：检查一定的条件，当它满足值，则执行适当的动作、Prolog</p>
+<p>面向对象语言(Object-Oriented Language)：封装、继承和多态性。Smalltalk，C++，Java </p>
+<h4 id="6-数据类型与操作"><a href="#6-数据类型与操作" class="headerlink" title="6 数据类型与操作"></a>6 数据类型与操作</h4><p>数据类型通常包括三要素：<br>用于区别这种类型数据对象的<strong>属性</strong>；<br>这种类型的数据对象可以具有的<strong>值</strong>；<br>可以作用于这种类型的数据对象的<strong>操作</strong>。</p>
+<h4 id="7-初等数据类型"><a href="#7-初等数据类型" class="headerlink" title="7 初等数据类型"></a>7 初等数据类型</h4><p>数值类型：整型、实型、复数、双精度。运算有+，-，*，/等<br>逻辑类型：true、false。布尔运算有∨，∧，┑等<br>字符类型：符号处理<br>指针类型</p>
+<h4 id="8-名字"><a href="#8-名字" class="headerlink" title="8 名字"></a>8 名字</h4><p>名字的意义和属性：值：单元中的内容；属性：类型和作用域<br>名字的说明方式：由说明语句来明确规定的，如int score；隐含说明，如FORTRAN中以I,J,K,…N为首的名字代表整型，否则为实型；动态确定，走到哪里，是什么，算什么，如Python。</p>
+<h4 id="9-标识符与名字"><a href="#9-标识符与名字" class="headerlink" title="9 标识符与名字"></a>9 标识符与名字</h4><p>标识符是以字母开头的，由字母数字组成的字符串。</p>
+<p>标识符与名字两者有本质区别，标识符是语法概念，名字有确切的意义和属性。</p>
+<h4 id="10-数据结构"><a href="#10-数据结构" class="headerlink" title="10 数据结构"></a>10 数据结构</h4><p>数组，字符串、表格、栈</p>
+<h4 id="11-抽象数据类型"><a href="#11-抽象数据类型" class="headerlink" title="11 抽象数据类型"></a>11 抽象数据类型</h4><p>抽象数据类型(Abstract Data Type)：一组独立于任何特定实现而精确指定的数据值和相关操作。<br>抽象数据类型由数据集合、及其相关的操作组成，这些操作有明确的定义，而且定义不依赖于具体的实现。</p>
+<p>一个抽象数据类型包括数据对象集合、作用于这些数据对象的抽象运算的集合、这种类型对象的封装</p>
+<h4 id="12-表达式"><a href="#12-表达式" class="headerlink" title="12 表达式"></a>12 表达式</h4><p>表达式由运算量（也称操作数，即数据引用或函数调用）和算符（运算符，操作符）组成</p>
+<p>形式：中缀、前缀、后缀：X*Y、-A、P↑</p>
+<p>表达式形成规则：变量（包括下标变量）、常数是表达式；若E1、E2为表达式，是一个二元算符，则E1E2是表达式；若E是表达式，为一元算符，则E（或E）是表达式；若E是表达式，则（E）是表达式。</p>
+<h4 id="13-名字的左值和右值"><a href="#13-名字的左值和右值" class="headerlink" title="13 名字的左值和右值"></a>13 名字的左值和右值</h4><p>赋值语句<br>A := B</p>
+<p>名字的左值：该名字代表的存储单元的地址</p>
+<p>名字的右值：该名字代表的存贮单元的内容</p>
+<h4 id="14-语句的分类"><a href="#14-语句的分类" class="headerlink" title="14 语句的分类"></a>14 语句的分类</h4><p>按功能：执行语句，描述程序的动作；说明语句，定义各种不同数据类型的变量或运算，定义名字的性质</p>
+<p>按形式：简单句，不包含其他语句成分的基本句；复合句，句中有句的语句</p>
+
+    </div>
+</article>
+
+</main>
+</body>
+</html>
