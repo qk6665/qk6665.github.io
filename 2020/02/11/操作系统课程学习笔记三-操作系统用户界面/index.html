@@ -1,50 +1,238 @@
-
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>welcome to qk6665&#39;blog</title>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="第三章 操作系统用户界面3.1 BIOS中断是INT XXh的形式，例如INT 13H是磁盘读写服务。那么INT 21H与这些BIOS中断的机制是不是一样的呢？机制一样，但实现方法有区别。二者都是中断，过程表现为识别中断源、保护断点和现场、装入中断服务程序的入口地址、进入中断服务程序、结束中断程序后恢复现场和断点、中断返回。但BIOS中断由硬件电路实现，INT 21H由软件程序指令实现。 3.2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统课程学习笔记三-操作系统用户界面">
+<meta property="og:url" content="http://yoursite.com/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2/index.html">
+<meta property="og:site_name" content="welcome to qk6665&#39;blog">
+<meta property="og:description" content="第三章 操作系统用户界面3.1 BIOS中断是INT XXh的形式，例如INT 13H是磁盘读写服务。那么INT 21H与这些BIOS中断的机制是不是一样的呢？机制一样，但实现方法有区别。二者都是中断，过程表现为识别中断源、保护断点和现场、装入中断服务程序的入口地址、进入中断服务程序、结束中断程序后恢复现场和断点、中断返回。但BIOS中断由硬件电路实现，INT 21H由软件程序指令实现。 3.2">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-11T10:25:48.000Z">
+<meta property="article:modified_time" content="2020-02-21T02:26:53.179Z">
+<meta property="article:author" content="qk6665">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>操作系统课程学习笔记三-操作系统用户界面 | welcome to qk6665'blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">welcome to qk6665'blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>日程表</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
     
-<link rel="stylesheet" href="/css/style.css">
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
-<meta name="generator" content="Hexo 4.2.0"></head>
 
-<body>
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-<header class="header">
-    <div class="blog-title">
-        <a href="/" class="logo">welcome to qk6665&#39;blog</a>
-    </div>
-    <nav class="navbar">
-        <ul class="menu">
+          <div class="content">
             
-                <li class="menu-item">
-                    <a href="/" class="menu-item-link">首页</a>
-                </li>
-            
-                <li class="menu-item">
-                    <a href="/archives" class="menu-item-link">目录</a>
-                </li>
-            
-                <li class="menu-item">
-                    <a href="https://github.com/qk6665" target="_blank" rel="noopener" class="menu-item-link">GitHub</a>
-                </li>
-            
-        </ul>
-    </nav>
-</header>
 
-<main class="main">
-    <article class="post">
-    <div class="post-title">
-        <h2 class="title">操作系统课程学习笔记三-操作系统用户界面</h2>
-    </div>
-    <div class="post-meta">
-        <span class="post-time">2020-02-11</span>
-    </div>
-    <div class="post-content">
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qk6665">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welcome to qk6665'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统课程学习笔记三-操作系统用户界面
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-11 18:25:48" itemprop="dateCreated datePublished" datetime="2020-02-11T18:25:48+08:00">2020-02-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-21 10:26:53" itemprop="dateModified" datetime="2020-02-21T10:26:53+08:00">2020-02-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
         <h1 id="第三章-操作系统用户界面"><a href="#第三章-操作系统用户界面" class="headerlink" title="第三章 操作系统用户界面"></a>第三章 操作系统用户界面</h1><h4 id="3-1-BIOS中断是INT-XXh的形式，例如INT-13H是磁盘读写服务。那么INT-21H与这些BIOS中断的机制是不是一样的呢？"><a href="#3-1-BIOS中断是INT-XXh的形式，例如INT-13H是磁盘读写服务。那么INT-21H与这些BIOS中断的机制是不是一样的呢？" class="headerlink" title="3.1 BIOS中断是INT XXh的形式，例如INT 13H是磁盘读写服务。那么INT 21H与这些BIOS中断的机制是不是一样的呢？"></a>3.1 BIOS中断是INT XXh的形式，例如INT 13H是磁盘读写服务。那么INT 21H与这些BIOS中断的机制是不是一样的呢？</h4><p>机制一样，但实现方法有区别。二者都是中断，过程表现为识别中断源、保护断点和现场、装入中断服务程序的入口地址、进入中断服务程序、结束中断程序后恢复现场和断点、中断返回。但BIOS中断由硬件电路实现，INT 21H由软件程序指令实现。</p>
 <h4 id="3-2-操作系统的初始引导过程涉及哪些程序模块，各自存放的介质是什么，存放的形式是什么？"><a href="#3-2-操作系统的初始引导过程涉及哪些程序模块，各自存放的介质是什么，存放的形式是什么？" class="headerlink" title="3.2 操作系统的初始引导过程涉及哪些程序模块，各自存放的介质是什么，存放的形式是什么？"></a>3.2 操作系统的初始引导过程涉及哪些程序模块，各自存放的介质是什么，存放的形式是什么？</h4><p>操作系统初始引导是指通过引导程序把操作系统核心装入内存并使之接管计算机系统的过程。首先BIOS读取MRB引导程序到内存运行，MRB的引导程序根据BIOS提供的参数读取硬盘指定位置的文件到内存，该文件加载指定操作系统的内核并初始化基本参数，操作系统内核逐步加载剩余操作系统程序，最后完全控制计算机。</p>
 <h4 id="3-3-比较DOS、Windows7与Linux早期版本都有哪些典型的操作界面？操作界面对普通用户（办公或娱乐）选择操作系统有何影响？"><a href="#3-3-比较DOS、Windows7与Linux早期版本都有哪些典型的操作界面？操作界面对普通用户（办公或娱乐）选择操作系统有何影响？" class="headerlink" title="3.3 比较DOS、Windows7与Linux早期版本都有哪些典型的操作界面？操作界面对普通用户（办公或娱乐）选择操作系统有何影响？"></a>3.3 比较DOS、Windows7与Linux早期版本都有哪些典型的操作界面？操作界面对普通用户（办公或娱乐）选择操作系统有何影响？</h4><p>主要有GUI界面（win7）和命令行（DOS、Linux）两种。GUI界面更易被初学者或普通用户接受，操作简单并且可以浏览使用各种图形数据，命令行界面的操作需要学会使用指令，入门成本高，且难以处理复杂图像应用。</p>
@@ -119,8 +307,187 @@
 <p>这条指令是一个管道指令，首先打开指定网络文件，获取tarball_url对应的值，去掉首末端双引号得到一个网址，下载对应文件并解压到指定目录，去掉第一层目录。</p>
 
     </div>
-</article>
 
-</main>
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" rel="prev" title="操作系统课程学习笔记一-操作系统概述">
+      <i class="fa fa-chevron-left"></i> 操作系统课程学习笔记一-操作系统概述
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/12/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="next" title="算法课程笔记-排序算法">
+      算法课程笔记-排序算法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-操作系统用户界面"><span class="nav-number">1.</span> <span class="nav-text">第三章 操作系统用户界面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-BIOS中断是INT-XXh的形式，例如INT-13H是磁盘读写服务。那么INT-21H与这些BIOS中断的机制是不是一样的呢？"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">3.1 BIOS中断是INT XXh的形式，例如INT 13H是磁盘读写服务。那么INT 21H与这些BIOS中断的机制是不是一样的呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-操作系统的初始引导过程涉及哪些程序模块，各自存放的介质是什么，存放的形式是什么？"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">3.2 操作系统的初始引导过程涉及哪些程序模块，各自存放的介质是什么，存放的形式是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-比较DOS、Windows7与Linux早期版本都有哪些典型的操作界面？操作界面对普通用户（办公或娱乐）选择操作系统有何影响？"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3.3 比较DOS、Windows7与Linux早期版本都有哪些典型的操作界面？操作界面对普通用户（办公或娱乐）选择操作系统有何影响？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-Linux的Shell能否看成操作系统的内核功能？如何理解Shell与内核之间的交互？"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">3.4 Linux的Shell能否看成操作系统的内核功能？如何理解Shell与内核之间的交互？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-printf，open都是Linux中典型的隐式系统调用。当我们在“为Linux内核增加新的系统调用实验”中增加一个新的系统调用后，我们在应用程序中是如何调用的它们的？为何我们不能像printf，open等函数一样简单地调用？"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">3.5 printf，open都是Linux中典型的隐式系统调用。当我们在“为Linux内核增加新的系统调用实验”中增加一个新的系统调用后，我们在应用程序中是如何调用的它们的？为何我们不能像printf，open等函数一样简单地调用？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单元作业"><span class="nav-number">1.0.1.</span> <span class="nav-text">单元作业</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-系统BIOS的功能有哪些？"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">1 系统BIOS的功能有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-计算机加电后执行的第一条指令存放在哪里，有什么特点？"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">2 计算机加电后执行的第一条指令存放在哪里，有什么特点？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-何为操作系统的生成？简述Linux内核的生成过程。"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">3 何为操作系统的生成？简述Linux内核的生成过程。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-何为用户界面？有哪些类别？各有什么特点？"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">4 何为用户界面？有哪些类别？各有什么特点？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-何为shell？有哪4类典型的shell？"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">5 何为shell？有哪4类典型的shell？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-何为输出重定向？举一个Linux或Windows中的重定向的应用命令或例子。"><span class="nav-number">1.0.1.6.</span> <span class="nav-text">6 何为输出重定向？举一个Linux或Windows中的重定向的应用命令或例子。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-试述运行shell脚本程序的三种方式？"><span class="nav-number">1.0.1.7.</span> <span class="nav-text">7 试述运行shell脚本程序的三种方式？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-系统调用与普通用户态函数比较，有何异同点？"><span class="nav-number">1.0.1.8.</span> <span class="nav-text">8 系统调用与普通用户态函数比较，有何异同点？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-何为隐式系统调用？"><span class="nav-number">1.0.1.9.</span> <span class="nav-text">9 何为隐式系统调用？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-试述Linux系统调用-INT-80H-的工作原理？"><span class="nav-number">1.0.1.10.</span> <span class="nav-text">10 试述Linux系统调用(INT 80H)的工作原理？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-试述为Linux增加新的系统调用的过程？"><span class="nav-number">1.0.1.11.</span> <span class="nav-text">11 试述为Linux增加新的系统调用的过程？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-回顾汇编语言中关于寄存器结构和定义部分的知识，理解各个寄存器的基本作用和用法。"><span class="nav-number">1.0.1.12.</span> <span class="nav-text">12 回顾汇编语言中关于寄存器结构和定义部分的知识，理解各个寄存器的基本作用和用法。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-尝试去理解用-menucofig命令去配置Linux内核时，配置界面上每个条目的含义和作用？"><span class="nav-number">1.0.1.13.</span> <span class="nav-text">13 尝试去理解用 menucofig命令去配置Linux内核时，配置界面上每个条目的含义和作用？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-在Linux上练习使用管道命令。"><span class="nav-number">1.0.1.14.</span> <span class="nav-text">14 在Linux上练习使用管道命令。</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">qk6665</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qk6665</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
 </body>
 </html>
