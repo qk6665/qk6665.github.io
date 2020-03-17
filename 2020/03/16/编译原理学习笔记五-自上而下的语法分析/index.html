@@ -1,56 +1,228 @@
-
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>welcome to qk6665&#39;blog</title>
+    <meta charset="utf-8">
     
-<link rel="stylesheet" href="/css/style.css">
-
+    
+    <title>编译原理学习笔记五-自上而下的语法分析 | welcome to qk6665&#39;blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body>
 
-<header class="header">
-    <div class="blog-title">
-        <a href="/" class="logo">welcome to qk6665&#39;blog</a>
-    </div>
-    <nav class="navbar">
-        <ul class="menu">
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qk6665</h5>
+          <a href="mailto:277133779@qq.com" title="277133779@qq.com" class="mail">
             
-                <li class="menu-item">
-                    <a href="/" class="menu-item-link">首页</a>
-                </li>
+              <span>2</span>
             
-                <li class="menu-item">
-                    <a href="/archives" class="menu-item-link">目录</a>
-                </li>
+              <span>7</span>
             
-                <li class="menu-item">
-                    <a href="https://github.com/qk6665" target="_blank" rel="noopener" class="menu-item-link">GitHub</a>
-                </li>
+              <span>7</span>
+            
+              <span>1</span>
+            
+              <span>3</span>
+            
+              <span>3</span>
+            
+              <span>7</span>
+            
+              <span>7</span>
+            
+              <span>9</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/codefine" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
             
         </ul>
-    </nav>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>编译原理学习笔记五-自上而下的语法分析</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">编译原理学习笔记五-自上而下的语法分析</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-03-16T13:59:56.000Z" itemprop="datePublished" class="page-time">
+  2020-03-16
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
 </header>
 
-<main class="main">
-    <article class="post">
-    <div class="post-title">
-        <h2 class="title">编译原理学习笔记五-自上而下的语法分析</h2>
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
     </div>
-    <div class="post-meta">
-        <span class="post-time">2020-03-16</span>
-    </div>
-    <div class="post-content">
-        <h1 id="第五章-自上而下的语法分析"><a href="#第五章-自上而下的语法分析" class="headerlink" title="第五章 自上而下的语法分析"></a>第五章 自上而下的语法分析</h1><h4 id="自上而下"><a href="#自上而下" class="headerlink" title="自上而下"></a>自上而下</h4><p>从文法的开始符号出发，反复使用各种产生式，寻找”匹配”的推导；<br>推导：根据文法的产生式规则，把串中出现的产生式的左部符号替换成右部；<br>针对输入串，试图用一切可能的办法，从文法开始符号(根结点)出发，自上而下地为输入串建立一棵语法树；<br>递归下降分析法、预测分析程序。</p>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-编译原理学习笔记五-自上而下的语法分析"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">编译原理学习笔记五-自上而下的语法分析</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-03-16 21:59:56" datetime="2020-03-16T13:59:56.000Z"  itemprop="datePublished">2020-03-16</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="第五章-自上而下的语法分析"><a href="#第五章-自上而下的语法分析" class="headerlink" title="第五章 自上而下的语法分析"></a>第五章 自上而下的语法分析</h1><h4 id="自上而下"><a href="#自上而下" class="headerlink" title="自上而下"></a>自上而下</h4><p>从文法的开始符号出发，反复使用各种产生式，寻找”匹配”的推导；<br>推导：根据文法的产生式规则，把串中出现的产生式的左部符号替换成右部；<br>针对输入串，试图用一切可能的办法，从文法开始符号(根结点)出发，自上而下地为输入串建立一棵语法树；<br>递归下降分析法、预测分析程序。</p>
 <h3 id="第一部分：LL-1-文法"><a href="#第一部分：LL-1-文法" class="headerlink" title="第一部分：LL(1)文法"></a>第一部分：LL(1)文法</h3><h4 id="1-多个产生式候选带来的问题"><a href="#1-多个产生式候选带来的问题" class="headerlink" title="1 多个产生式候选带来的问题"></a>1 多个产生式候选带来的问题</h4><p>回溯问题：分析过程中，当一个非终结符用某一个候选匹配成功时，这种匹配可能是暂时的，出错时，不得不“回溯”；<br>文法左递归问题：左递归的文法可能由于语法错误导致陷入死循环。</p>
-<h4 id="2-直接左递归的消除"><a href="#2-直接左递归的消除" class="headerlink" title="2 直接左递归的消除"></a>2 直接左递归的消除</h4><p><img src="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/1.png" alt="直接左递归的消除"></p>
+<h4 id="2-直接左递归的消除"><a href="#2-直接左递归的消除" class="headerlink" title="2 直接左递归的消除"></a>2 直接左递归的消除</h4><figure class="image-box">
+                <a rel=编译原理学习笔记五-自上而下的语法分析 href="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/1.png" title="直接左递归的消除" data-fancybox="images"><img src="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/1.png" alt="直接左递归的消除" title class></a>
+                <p>直接左递归的消除</p>
+            </figure>
+
 <p><strong>公式</strong>：<br>P→Pα1 | Pα2 |……| Pαm |β1 |β2 |……|βn<br>推导为：<br>P→β1P’|β2P’|…|βnP’<br>P’→α1P’|α2P’|…|αmP’|ε  </p>
 <p><strong>例子</strong>：<br>给定文法G(E):<br>E→E＋T | T<br>T→T<em>F | F<br>F→(E) | i<br>推导为：<br>G(E):<br>E→TE’<br>E’→+TE’ | ε<br>T→FT’<br>T’→</em>FT’ | ε<br>F→(E) | i    </p>
-<h4 id="3-间接左递归的消除"><a href="#3-间接左递归的消除" class="headerlink" title="3 间接左递归的消除"></a>3 间接左递归的消除</h4><p><img src="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/2.png" alt="间接左递归的消除"></p>
+<h4 id="3-间接左递归的消除"><a href="#3-间接左递归的消除" class="headerlink" title="3 间接左递归的消除"></a>3 间接左递归的消除</h4><figure class="image-box">
+                <a rel=编译原理学习笔记五-自上而下的语法分析 href="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/2.png" title="间接左递归的消除" data-fancybox="images"><img src="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/2.png" alt="间接左递归的消除" title class></a>
+                <p>间接左递归的消除</p>
+            </figure>
+
 <h4 id="4-消除回溯"><a href="#4-消除回溯" class="headerlink" title="4 消除回溯"></a>4 消除回溯</h4><p>为了消除回溯必须保证对文法的任何非终结符，当要它去匹配输入串时，能够根据它所面临的输入符号准确地指派它的一个候选去执行任务，并且此候选的工作结果应是确信无疑的。</p>
 <h4 id="5-𝐹𝐼𝑅𝑆𝑇集合"><a href="#5-𝐹𝐼𝑅𝑆𝑇集合" class="headerlink" title="5 𝐹𝐼𝑅𝑆𝑇集合"></a>5 𝐹𝐼𝑅𝑆𝑇集合</h4><p>令G是一个不含左递归的文法，对G的所有非终结符的每个候选𝛼定义它的终结首符集FIRST(𝛼)为：<br>𝐹𝐼𝑅𝑆𝑇(𝛼)={𝑎│𝛼∗⇒ 𝑎…, 𝑎∈𝑉𝑇}<br>特别是，若𝛼∗⇒ 𝜀，则规定𝜀∈𝐹𝐼𝑅𝑆𝑇(𝛼)。</p>
 <h4 id="6-𝐹𝑂𝐿𝐿𝑂𝑊集合"><a href="#6-𝐹𝑂𝐿𝐿𝑂𝑊集合" class="headerlink" title="6 𝐹𝑂𝐿𝐿𝑂𝑊集合"></a>6 𝐹𝑂𝐿𝐿𝑂𝑊集合</h4><p>假定S是文法G的开始符号，对于G的任何非终结符A，我们定义A的FOLLOW集合：<br>𝐹𝑂𝐿𝐿𝑂𝑊(𝐴)={𝑎│𝑆∗⇒…𝐴𝑎…, 𝑎∈𝑉𝑇 }<br>特别是，若𝑆∗⇒…𝐴，则规定#∈𝐹𝑂𝐿𝐿𝑂𝑊(𝐴)</p>
@@ -75,7 +247,11 @@
 <p>例如实数可定义为：<br>   Decimal→[Sign]Integer.{digit}[Exponent]<br>   Exponent→E[Sign]Integer<br>   Integer→digit{digit}<br>   Sign→ + | -</p>
 <p>用扩充的巴科斯范式来描述语法，直观易懂，便于表示左递归消去和因子提取。</p>
 <h3 id="第二部分：预测分析程序"><a href="#第二部分：预测分析程序" class="headerlink" title="第二部分：预测分析程序"></a>第二部分：预测分析程序</h3><h4 id="10-预测分析程序构成"><a href="#10-预测分析程序构成" class="headerlink" title="10 预测分析程序构成"></a>10 预测分析程序构成</h4><p>总控程序，根据现行栈顶符号和当前输入符号，执行动作；<br>分析表 M[A，a]矩阵，A ∈ V<sub>N</sub> ，a ∈ V<sub>T</sub> 是终结符或‘＃’；<br>分析栈 STACK  用于存放文法符号。</p>
-<p><img src="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/3.png" alt="预测分析程序构成"></p>
+<figure class="image-box">
+                <a rel=编译原理学习笔记五-自上而下的语法分析 href="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/3.png" title="预测分析程序构成" data-fancybox="images"><img src="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/3.png" alt="预测分析程序构成" title class></a>
+                <p>预测分析程序构成</p>
+            </figure>
+
 <h4 id="11-预测分析过程"><a href="#11-预测分析过程" class="headerlink" title="11 预测分析过程"></a>11 预测分析过程</h4><p>总控程序根据当前栈顶符号X和输入符号a，执行下列三动作之一：  </p>
 <ol>
 <li>若X＝a＝‘＃’，则宣布分析成功，停止分析。  </li>
@@ -84,7 +260,11 @@
 </ol>
 <h4 id="12-总控程序实现"><a href="#12-总控程序实现" class="headerlink" title="12 总控程序实现"></a>12 总控程序实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">BEGIN</span><br><span class="line">  首先把‘＃’然后把文法开始符号推进STACK栈；</span><br><span class="line">  把第一个输入符号读进a；</span><br><span class="line">  FLAG:&#x3D;TRUE;</span><br><span class="line">  WHILE  FLAG  DO</span><br><span class="line">  BEGIN</span><br><span class="line">    把STACK栈顶符号上托出去并放在X中；</span><br><span class="line">    IF X属于VT THEN</span><br><span class="line">      IF X&#x3D; a  THEN 把下一输入符号读进a</span><br><span class="line">        ELSE   ERROR</span><br><span class="line">      ELSE IF X&#x3D;‘#’ THEN</span><br><span class="line">        IF X&#x3D;a THEN FLAG:&#x3D;FALSE </span><br><span class="line">          ELSE ERROR</span><br><span class="line">      ELSE IF M[X,a]&#x3D;&#123;X→X1X2…Xk&#125;THEN</span><br><span class="line">      把Xk,Xk-1,…,X1一一推进STACK栈</span><br><span class="line">      &#x2F;* 若X1X2…Xk&#x3D;𝜀，不推什么进栈 *&#x2F;</span><br><span class="line">      ELSE ERROR</span><br><span class="line">    END OF WHILE;</span><br><span class="line">  STOP &#x2F;*分析成功，过程完毕*&#x2F;</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
 
-<h4 id="13-预测分析示例"><a href="#13-预测分析示例" class="headerlink" title="13 预测分析示例"></a>13 预测分析示例</h4><p><img src="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/4.png" alt="预测分析示例"></p>
+<h4 id="13-预测分析示例"><a href="#13-预测分析示例" class="headerlink" title="13 预测分析示例"></a>13 预测分析示例</h4><figure class="image-box">
+                <a rel=编译原理学习笔记五-自上而下的语法分析 href="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/4.png" title="预测分析示例" data-fancybox="images"><img src="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/4.png" alt="预测分析示例" title class></a>
+                <p>预测分析示例</p>
+            </figure>
+
 <h4 id="13-分析表M-A，a-的构造算法"><a href="#13-分析表M-A，a-的构造算法" class="headerlink" title="13 分析表M[A，a]的构造算法"></a>13 分析表M[A，a]的构造算法</h4><p>构造G的分析表M[A，a]， 确定每个产生式A→α在表中的位置  </p>
 <ol>
 <li>对文法G的每个产生式A→α执行第2步和第3步；  </li>
@@ -94,9 +274,296 @@
 </ol>
 <h4 id="14-LL-1-文法与二义性"><a href="#14-LL-1-文法与二义性" class="headerlink" title="14 LL(1)文法与二义性"></a>14 LL(1)文法与二义性</h4><p>如果G是左递归或二义的，那么，M至少含有一个多重定义入口。因此，消除左递归和提取左因子将有助于获得无多重定义的分析表M。<br>可以证明，一个文法G的预测分析表M不含多重定义入口，当且仅当该文法为LL(1)的。<br>LL(1)文法不是二义的。</p>
 
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-03-17T04:03:34.915Z" itemprop="dateUpdated">2020-03-17 12:03:34</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/" target="_blank" rel="external">http://yoursite.com/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/</a>
+        
     </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="qk6665">
+            qk6665
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/&title=《编译原理学习笔记五-自上而下的语法分析》 — welcome to qk6665'blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/&title=《编译原理学习笔记五-自上而下的语法分析》 — welcome to qk6665'blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/03/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E6%AD%BB%E9%94%81/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">操作系统课程学习笔记五-死锁</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">算法课程笔记-图论</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第五章-自上而下的语法分析"><span class="post-toc-number">1.</span> <span class="post-toc-text">第五章 自上而下的语法分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自上而下"><span class="post-toc-number">1.0.0.1.</span> <span class="post-toc-text">自上而下</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一部分：LL-1-文法"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">第一部分：LL(1)文法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-多个产生式候选带来的问题"><span class="post-toc-number">1.0.1.1.</span> <span class="post-toc-text">1 多个产生式候选带来的问题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-直接左递归的消除"><span class="post-toc-number">1.0.1.2.</span> <span class="post-toc-text">2 直接左递归的消除</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-间接左递归的消除"><span class="post-toc-number">1.0.1.3.</span> <span class="post-toc-text">3 间接左递归的消除</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-消除回溯"><span class="post-toc-number">1.0.1.4.</span> <span class="post-toc-text">4 消除回溯</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-𝐹𝐼𝑅𝑆𝑇集合"><span class="post-toc-number">1.0.1.5.</span> <span class="post-toc-text">5 𝐹𝐼𝑅𝑆𝑇集合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-𝐹𝑂𝐿𝐿𝑂𝑊集合"><span class="post-toc-number">1.0.1.6.</span> <span class="post-toc-text">6 𝐹𝑂𝐿𝐿𝑂𝑊集合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-LL-1-文法"><span class="post-toc-number">1.0.1.7.</span> <span class="post-toc-text">7 LL(1)文法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二部分：递归下降分析程序"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">第二部分：递归下降分析程序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-递归下降分析器"><span class="post-toc-number">1.0.2.1.</span> <span class="post-toc-text">8 递归下降分析器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-扩充的巴科斯范式"><span class="post-toc-number">1.0.2.2.</span> <span class="post-toc-text">9 扩充的巴科斯范式</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二部分：预测分析程序"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">第二部分：预测分析程序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-预测分析程序构成"><span class="post-toc-number">1.0.3.1.</span> <span class="post-toc-text">10 预测分析程序构成</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11-预测分析过程"><span class="post-toc-number">1.0.3.2.</span> <span class="post-toc-text">11 预测分析过程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#12-总控程序实现"><span class="post-toc-number">1.0.3.3.</span> <span class="post-toc-text">12 总控程序实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13-预测分析示例"><span class="post-toc-number">1.0.3.4.</span> <span class="post-toc-text">13 预测分析示例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13-分析表M-A，a-的构造算法"><span class="post-toc-number">1.0.3.5.</span> <span class="post-toc-text">13 分析表M[A，a]的构造算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#14-LL-1-文法与二义性"><span class="post-toc-number">1.0.3.6.</span> <span class="post-toc-text">14 LL(1)文法与二义性</span></a></li></ol></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
 </article>
 
-</main>
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                qk6665 &copy; 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/&title=《编译原理学习笔记五-自上而下的语法分析》 — welcome to qk6665'blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/&title=《编译原理学习笔记五-自上而下的语法分析》 — welcome to qk6665'blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,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" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
 </body>
 </html>

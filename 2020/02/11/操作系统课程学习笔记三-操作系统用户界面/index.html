@@ -1,51 +1,215 @@
-
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>welcome to qk6665&#39;blog</title>
+    <meta charset="utf-8">
     
-<link rel="stylesheet" href="/css/style.css">
-
+    
+    <title>操作系统课程学习笔记三-操作系统用户界面 | welcome to qk6665&#39;blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body>
 
-<header class="header">
-    <div class="blog-title">
-        <a href="/" class="logo">welcome to qk6665&#39;blog</a>
-    </div>
-    <nav class="navbar">
-        <ul class="menu">
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qk6665</h5>
+          <a href="mailto:277133779@qq.com" title="277133779@qq.com" class="mail">
             
-                <li class="menu-item">
-                    <a href="/" class="menu-item-link">首页</a>
-                </li>
+              <span>2</span>
             
-                <li class="menu-item">
-                    <a href="/archives" class="menu-item-link">目录</a>
-                </li>
+              <span>7</span>
             
-                <li class="menu-item">
-                    <a href="https://github.com/qk6665" target="_blank" rel="noopener" class="menu-item-link">GitHub</a>
-                </li>
+              <span>7</span>
+            
+              <span>1</span>
+            
+              <span>3</span>
+            
+              <span>3</span>
+            
+              <span>7</span>
+            
+              <span>7</span>
+            
+              <span>9</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/codefine" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
             
         </ul>
-    </nav>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>操作系统课程学习笔记三-操作系统用户界面</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">操作系统课程学习笔记三-操作系统用户界面</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-02-11T10:25:48.000Z" itemprop="datePublished" class="page-time">
+  2020-02-11
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
 </header>
 
-<main class="main">
-    <article class="post">
-    <div class="post-title">
-        <h2 class="title">操作系统课程学习笔记三-操作系统用户界面</h2>
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
     </div>
-    <div class="post-meta">
-        <span class="post-time">2020-02-11</span>
-    </div>
-    <div class="post-content">
-        <h1 id="第三章-操作系统用户界面"><a href="#第三章-操作系统用户界面" class="headerlink" title="第三章 操作系统用户界面"></a>第三章 操作系统用户界面</h1><h4 id="3-1-BIOS中断是INT-XXh的形式，例如INT-13H是磁盘读写服务。那么INT-21H与这些BIOS中断的机制是不是一样的呢？"><a href="#3-1-BIOS中断是INT-XXh的形式，例如INT-13H是磁盘读写服务。那么INT-21H与这些BIOS中断的机制是不是一样的呢？" class="headerlink" title="3.1 BIOS中断是INT XXh的形式，例如INT 13H是磁盘读写服务。那么INT 21H与这些BIOS中断的机制是不是一样的呢？"></a>3.1 BIOS中断是INT XXh的形式，例如INT 13H是磁盘读写服务。那么INT 21H与这些BIOS中断的机制是不是一样的呢？</h4><p>机制一样，但实现方法有区别。二者都是中断，过程表现为识别中断源、保护断点和现场、装入中断服务程序的入口地址、进入中断服务程序、结束中断程序后恢复现场和断点、中断返回。但BIOS中断由硬件电路实现，INT 21H由软件程序指令实现。</p>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-操作系统课程学习笔记三-操作系统用户界面"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">操作系统课程学习笔记三-操作系统用户界面</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-02-11 18:25:48" datetime="2020-02-11T10:25:48.000Z"  itemprop="datePublished">2020-02-11</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="第三章-操作系统用户界面"><a href="#第三章-操作系统用户界面" class="headerlink" title="第三章 操作系统用户界面"></a>第三章 操作系统用户界面</h1><h4 id="3-1-BIOS中断是INT-XXh的形式，例如INT-13H是磁盘读写服务。那么INT-21H与这些BIOS中断的机制是不是一样的呢？"><a href="#3-1-BIOS中断是INT-XXh的形式，例如INT-13H是磁盘读写服务。那么INT-21H与这些BIOS中断的机制是不是一样的呢？" class="headerlink" title="3.1 BIOS中断是INT XXh的形式，例如INT 13H是磁盘读写服务。那么INT 21H与这些BIOS中断的机制是不是一样的呢？"></a>3.1 BIOS中断是INT XXh的形式，例如INT 13H是磁盘读写服务。那么INT 21H与这些BIOS中断的机制是不是一样的呢？</h4><p>机制一样，但实现方法有区别。二者都是中断，过程表现为识别中断源、保护断点和现场、装入中断服务程序的入口地址、进入中断服务程序、结束中断程序后恢复现场和断点、中断返回。但BIOS中断由硬件电路实现，INT 21H由软件程序指令实现。</p>
 <h4 id="3-2-操作系统的初始引导过程涉及哪些程序模块，各自存放的介质是什么，存放的形式是什么？"><a href="#3-2-操作系统的初始引导过程涉及哪些程序模块，各自存放的介质是什么，存放的形式是什么？" class="headerlink" title="3.2 操作系统的初始引导过程涉及哪些程序模块，各自存放的介质是什么，存放的形式是什么？"></a>3.2 操作系统的初始引导过程涉及哪些程序模块，各自存放的介质是什么，存放的形式是什么？</h4><p>操作系统初始引导是指通过引导程序把操作系统核心装入内存并使之接管计算机系统的过程。首先BIOS读取MRB引导程序到内存运行，MRB的引导程序根据BIOS提供的参数读取硬盘指定位置的文件到内存，该文件加载指定操作系统的内核并初始化基本参数，操作系统内核逐步加载剩余操作系统程序，最后完全控制计算机。</p>
 <h4 id="3-3-比较DOS、Windows7与Linux早期版本都有哪些典型的操作界面？操作界面对普通用户（办公或娱乐）选择操作系统有何影响？"><a href="#3-3-比较DOS、Windows7与Linux早期版本都有哪些典型的操作界面？操作界面对普通用户（办公或娱乐）选择操作系统有何影响？" class="headerlink" title="3.3 比较DOS、Windows7与Linux早期版本都有哪些典型的操作界面？操作界面对普通用户（办公或娱乐）选择操作系统有何影响？"></a>3.3 比较DOS、Windows7与Linux早期版本都有哪些典型的操作界面？操作界面对普通用户（办公或娱乐）选择操作系统有何影响？</h4><p>主要有GUI界面（win7）和命令行（DOS、Linux）两种。GUI界面更易被初学者或普通用户接受，操作简单并且可以浏览使用各种图形数据，命令行界面的操作需要学会使用指令，入门成本高，且难以处理复杂图像应用。</p>
 <h4 id="3-4-Linux的Shell能否看成操作系统的内核功能？如何理解Shell与内核之间的交互？"><a href="#3-4-Linux的Shell能否看成操作系统的内核功能？如何理解Shell与内核之间的交互？" class="headerlink" title="3.4 Linux的Shell能否看成操作系统的内核功能？如何理解Shell与内核之间的交互？"></a>3.4 Linux的Shell能否看成操作系统的内核功能？如何理解Shell与内核之间的交互？</h4><p>不能。Shell可以看作是用户和操作系统信息交互的中间桥梁。用户用过Shell将命令下达给操作系统，操作系统通过Shell将需要展示给用户的信息返回，Shell本身不执行命令，仅仅是组织和管理命令。</p>
@@ -118,9 +282,296 @@
 <h4 id="14-在Linux上练习使用管道命令。"><a href="#14-在Linux上练习使用管道命令。" class="headerlink" title="14 在Linux上练习使用管道命令。"></a>14 在Linux上练习使用管道命令。</h4><p><code>curl -s https://api.github.com/repos/iissnan/hexo-theme-next/releases/latest | grep tarball_url | cut -d &#39;&quot;&#39; -f 4 | wget -i - -O- | tar -zx -C themes/next --strip-components=1</code></p>
 <p>这条指令是一个管道指令，首先打开指定网络文件，获取tarball_url对应的值，去掉首末端双引号得到一个网址，下载对应文件并解压到指定目录，去掉第一层目录。</p>
 
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-03-17T03:50:20.911Z" itemprop="dateUpdated">2020-03-17 11:50:20</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2/" target="_blank" rel="external">http://yoursite.com/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2/</a>
+        
     </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="qk6665">
+            qk6665
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2/&title=《操作系统课程学习笔记三-操作系统用户界面》 — welcome to qk6665'blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2/&title=《操作系统课程学习笔记三-操作系统用户界面》 — welcome to qk6665'blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/02/12/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">算法课程笔记-排序算法</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">操作系统课程学习笔记一-操作系统概述</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第三章-操作系统用户界面"><span class="post-toc-number">1.</span> <span class="post-toc-text">第三章 操作系统用户界面</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-1-BIOS中断是INT-XXh的形式，例如INT-13H是磁盘读写服务。那么INT-21H与这些BIOS中断的机制是不是一样的呢？"><span class="post-toc-number">1.0.0.1.</span> <span class="post-toc-text">3.1 BIOS中断是INT XXh的形式，例如INT 13H是磁盘读写服务。那么INT 21H与这些BIOS中断的机制是不是一样的呢？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-2-操作系统的初始引导过程涉及哪些程序模块，各自存放的介质是什么，存放的形式是什么？"><span class="post-toc-number">1.0.0.2.</span> <span class="post-toc-text">3.2 操作系统的初始引导过程涉及哪些程序模块，各自存放的介质是什么，存放的形式是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-3-比较DOS、Windows7与Linux早期版本都有哪些典型的操作界面？操作界面对普通用户（办公或娱乐）选择操作系统有何影响？"><span class="post-toc-number">1.0.0.3.</span> <span class="post-toc-text">3.3 比较DOS、Windows7与Linux早期版本都有哪些典型的操作界面？操作界面对普通用户（办公或娱乐）选择操作系统有何影响？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-4-Linux的Shell能否看成操作系统的内核功能？如何理解Shell与内核之间的交互？"><span class="post-toc-number">1.0.0.4.</span> <span class="post-toc-text">3.4 Linux的Shell能否看成操作系统的内核功能？如何理解Shell与内核之间的交互？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-5-printf，open都是Linux中典型的隐式系统调用。当我们在“为Linux内核增加新的系统调用实验”中增加一个新的系统调用后，我们在应用程序中是如何调用的它们的？为何我们不能像printf，open等函数一样简单地调用？"><span class="post-toc-number">1.0.0.5.</span> <span class="post-toc-text">3.5 printf，open都是Linux中典型的隐式系统调用。当我们在“为Linux内核增加新的系统调用实验”中增加一个新的系统调用后，我们在应用程序中是如何调用的它们的？为何我们不能像printf，open等函数一样简单地调用？</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单元作业"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">单元作业</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-系统BIOS的功能有哪些？"><span class="post-toc-number">1.0.1.1.</span> <span class="post-toc-text">1 系统BIOS的功能有哪些？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-计算机加电后执行的第一条指令存放在哪里，有什么特点？"><span class="post-toc-number">1.0.1.2.</span> <span class="post-toc-text">2 计算机加电后执行的第一条指令存放在哪里，有什么特点？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-何为操作系统的生成？简述Linux内核的生成过程。"><span class="post-toc-number">1.0.1.3.</span> <span class="post-toc-text">3 何为操作系统的生成？简述Linux内核的生成过程。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-何为用户界面？有哪些类别？各有什么特点？"><span class="post-toc-number">1.0.1.4.</span> <span class="post-toc-text">4 何为用户界面？有哪些类别？各有什么特点？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-何为shell？有哪4类典型的shell？"><span class="post-toc-number">1.0.1.5.</span> <span class="post-toc-text">5 何为shell？有哪4类典型的shell？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-何为输出重定向？举一个Linux或Windows中的重定向的应用命令或例子。"><span class="post-toc-number">1.0.1.6.</span> <span class="post-toc-text">6 何为输出重定向？举一个Linux或Windows中的重定向的应用命令或例子。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-试述运行shell脚本程序的三种方式？"><span class="post-toc-number">1.0.1.7.</span> <span class="post-toc-text">7 试述运行shell脚本程序的三种方式？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-系统调用与普通用户态函数比较，有何异同点？"><span class="post-toc-number">1.0.1.8.</span> <span class="post-toc-text">8 系统调用与普通用户态函数比较，有何异同点？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-何为隐式系统调用？"><span class="post-toc-number">1.0.1.9.</span> <span class="post-toc-text">9 何为隐式系统调用？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-试述Linux系统调用-INT-80H-的工作原理？"><span class="post-toc-number">1.0.1.10.</span> <span class="post-toc-text">10 试述Linux系统调用(INT 80H)的工作原理？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11-试述为Linux增加新的系统调用的过程？"><span class="post-toc-number">1.0.1.11.</span> <span class="post-toc-text">11 试述为Linux增加新的系统调用的过程？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#12-回顾汇编语言中关于寄存器结构和定义部分的知识，理解各个寄存器的基本作用和用法。"><span class="post-toc-number">1.0.1.12.</span> <span class="post-toc-text">12 回顾汇编语言中关于寄存器结构和定义部分的知识，理解各个寄存器的基本作用和用法。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13-尝试去理解用-menucofig命令去配置Linux内核时，配置界面上每个条目的含义和作用？"><span class="post-toc-number">1.0.1.13.</span> <span class="post-toc-text">13 尝试去理解用 menucofig命令去配置Linux内核时，配置界面上每个条目的含义和作用？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#14-在Linux上练习使用管道命令。"><span class="post-toc-number">1.0.1.14.</span> <span class="post-toc-text">14 在Linux上练习使用管道命令。</span></a></li></ol></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
 </article>
 
-</main>
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                qk6665 &copy; 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2/&title=《操作系统课程学习笔记三-操作系统用户界面》 — welcome to qk6665'blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2/&title=《操作系统课程学习笔记三-操作系统用户界面》 — welcome to qk6665'blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVYAAAFWCAAAAAAXxOpfAAAF9klEQVR42u3ay3LbQAwEQP//TzvXpBwpMwAVc+XmSSXxsezVATXAx0d8fP52/P7N13Pyb77e89Fzk/Uk5+frzFe4OrBixYoVK9YbsH4+PfJlPboqx01eL9mG5899vsLk1+dWWLFixYoV64mseVEye8n8Pvn922Io4ijLyoffY8WKFStWrG/K+vyqDcHsNZLibBMnYcWKFStWrFjbMmjWgJlB5AFQHp1gxYoVK1asP421ffxVYxCzlswsiGlHSf5TLwsrVqxYsWL9VtZNKfPTPl98YMWKFStWrN/K+lkeSQmS3zlZ9GxEox2wuFgJK1asWLFiPYS1jVr28Uq+6E0lkwQomwgpelOsWLFixYr1KNZ2oflVOe4s2tg8qx0NSTYYK1asWLFiPZE1L27aQY280MnHL5KSro17cu7oe6xYsWLFivX2rHnoMGtaJMFHUqy0m5dvTP50rFixYsWK9f1Yc4gkjJgVUnmrZhN/JNfmbZt6jAMrVqxYsWI9irXFvTbyyBe9CXRm4dFwZAQrVqxYsWK9Meu++MhfLz9n2EEKSsC2udKuBytWrFixYj2FdT8qkbzA64KYPI5pY51ZE2j4P8KKFStWrFi/iTU/8uihHb+YBRl1hhSvYf9eWLFixYoV6ymsVxVAefGRECQtn83wR9tGSjYeK1asWLFiPZG1LSOSdkVbymyGJGYtnzxemQ1zYMWKFStWrKew/k+4NtaZBTezM/PzEwGsWLFixYr1LNarSpx2cCGnz8uydjSkvX/0GStWrFixYj2EdZYS5IuuGxXxRs4KoNn3m+IMK1asWLFivTNr0q5IQpDN0EP+MvsQJ1/hZiADK1asWLFiPYU1H4x4jpI3YGYDE7NhjlkxN5xh+XoOVqxYsWLFenvWNgrJmzFt+dK+2Oz+bXnXtoKKPg9WrFixYsV6A9bXxRDJK7VjE20EsxkraYstrFixYsWK9UTWWTCxiSQ2iLOBiefF0KYV9PC9sGLFihUr1rdg3bcu8uGJvLmyOf91kQpWrFixYsV6ImteZLQl0Wxgol3Pq8dEZuvBihUrVqxYT2TNi5U2dpmNdLQRyVU9qKsKTaxYsWLFivUs1o/FsS+29k8vQpBFpFJPsmDFihUrVqw3Zk0ihnwocwYxa8nkBdBmkHT2LKxYsWLFivWdWDfFVttuef7c2QYnQxjXtoKwYsWKFSvWs1iT1kvyeTZgMWui5EOWm9hl2JTCihUrVqxYD2GdlSBtkJF/zsu7WRPlFeOel1V2WLFixYoV6zexzkYl8pbMbIAyb/9sVvWKYU2sWLFixYr1XNa2zNqMbrShSRuvzLaqjWaKYgsrVqxYsWK9MWs+NpEvOmlgXNVEaaOc/E3b98WKFStWrFjPYs0Li30gMjsnH4m4KiSa/ckezrZgxYoVK1ash7B+lkce0GxGOmbtmc35ybDFPwSwYsWKFSvWQ1g3pVVeNiVNkTbKaYuezRbmLSisWLFixYr1FNbZxZtWzWzPE+72cxvQ5H87rFixYsWK9VzW2YBFizVD3Byz+wyfjhUrVqxYsR7C2jYS9iMR145x7Fs17UraM7FixYoVK9Y7syatlFkwsR+eSDZvBp23f2ZPwYoVK1asWE9kbdstmxAn4W7HN/MybrOd0a9YsWLFihXrIax5aZWPU2zCkbw4m505GxWdhThYsWLFihXrKaxtjJJXEe0GzL5pW0Gzds6ql4UVK1asWLHekjVvMLRk7dDDrIDLWyl5ZDOLlv64FitWrFixYn0j1jYoaYczWvS8hZNv2Kw5tCqwsGLFihUr1huwbsYp8mJlVkLl3LNt3pSDyWqxYsWKFSvWU1jbqCWPJ/Lg5hXjF22zZPYW9QQKVqxYsWLFekvW2WjFpjSZFTGvDnH2gyNYsWLFihXrT2BNypr9IMW+qdP+OWbtn7/4YMWKFStWrG/NOltQEnxsSqU898gDoGEhiBUrVqxYsR7F2jZd2kbI6wqj2bVtSVcPf2DFihUrVqyHsCbH5qb5iMOMPtnmWdMo+Uu10RJWrFixYsV6G9ZfT0TzIevGvicAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
 </body>
 </html>

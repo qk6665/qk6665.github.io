@@ -1,51 +1,215 @@
-
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>welcome to qk6665&#39;blog</title>
+    <meta charset="utf-8">
     
-<link rel="stylesheet" href="/css/style.css">
-
+    
+    <title>操作系统课程学习笔记四-进程管理 | welcome to qk6665&#39;blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body>
 
-<header class="header">
-    <div class="blog-title">
-        <a href="/" class="logo">welcome to qk6665&#39;blog</a>
-    </div>
-    <nav class="navbar">
-        <ul class="menu">
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qk6665</h5>
+          <a href="mailto:277133779@qq.com" title="277133779@qq.com" class="mail">
             
-                <li class="menu-item">
-                    <a href="/" class="menu-item-link">首页</a>
-                </li>
+              <span>2</span>
             
-                <li class="menu-item">
-                    <a href="/archives" class="menu-item-link">目录</a>
-                </li>
+              <span>7</span>
             
-                <li class="menu-item">
-                    <a href="https://github.com/qk6665" target="_blank" rel="noopener" class="menu-item-link">GitHub</a>
-                </li>
+              <span>7</span>
+            
+              <span>1</span>
+            
+              <span>3</span>
+            
+              <span>3</span>
+            
+              <span>7</span>
+            
+              <span>7</span>
+            
+              <span>9</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/codefine" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
             
         </ul>
-    </nav>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>操作系统课程学习笔记四-进程管理</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">操作系统课程学习笔记四-进程管理</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-02-21T02:25:26.000Z" itemprop="datePublished" class="page-time">
+  2020-02-21
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
 </header>
 
-<main class="main">
-    <article class="post">
-    <div class="post-title">
-        <h2 class="title">操作系统课程学习笔记四-进程管理</h2>
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
     </div>
-    <div class="post-meta">
-        <span class="post-time">2020-02-21</span>
-    </div>
-    <div class="post-content">
-        <h1 id="第四章-进程管理"><a href="#第四章-进程管理" class="headerlink" title="第四章 进程管理"></a>第四章 进程管理</h1><h4 id="4-1-进程具有异步性，是进程的优点还是缺点呢？"><a href="#4-1-进程具有异步性，是进程的优点还是缺点呢？" class="headerlink" title="4.1 进程具有异步性，是进程的优点还是缺点呢？"></a>4.1 进程具有异步性，是进程的优点还是缺点呢？</h4><p>是优点。异步可以提高系统运行效率，例如当某进程在加载资源时，可以异步执行，将系统资源让给其他进程。同时，异步运行也不影响进程的同步性，当需要同步执行某些进程时，可以使用进程的消息管理机制控制进程的运行。</p>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-操作系统课程学习笔记四-进程管理"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">操作系统课程学习笔记四-进程管理</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-02-21 10:25:26" datetime="2020-02-21T02:25:26.000Z"  itemprop="datePublished">2020-02-21</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="第四章-进程管理"><a href="#第四章-进程管理" class="headerlink" title="第四章 进程管理"></a>第四章 进程管理</h1><h4 id="4-1-进程具有异步性，是进程的优点还是缺点呢？"><a href="#4-1-进程具有异步性，是进程的优点还是缺点呢？" class="headerlink" title="4.1 进程具有异步性，是进程的优点还是缺点呢？"></a>4.1 进程具有异步性，是进程的优点还是缺点呢？</h4><p>是优点。异步可以提高系统运行效率，例如当某进程在加载资源时，可以异步执行，将系统资源让给其他进程。同时，异步运行也不影响进程的同步性，当需要同步执行某些进程时，可以使用进程的消息管理机制控制进程的运行。</p>
 <h4 id="4-2-为何没有“阻塞到运行”或“就绪到阻塞”这样的状态迁移？"><a href="#4-2-为何没有“阻塞到运行”或“就绪到阻塞”这样的状态迁移？" class="headerlink" title="4.2 为何没有“阻塞到运行”或“就绪到阻塞”这样的状态迁移？"></a>4.2 为何没有“阻塞到运行”或“就绪到阻塞”这样的状态迁移？</h4><p>个人的理解是，就绪态的操作相当于一个队列等待。想要运行，在一定的优先级条件下首先要进入队列排队，而排队中的进程直到进入运行状态才能进行进入阻塞态等操作。</p>
 <p>如果有“阻塞到运行”或“就绪到阻塞”的操作，实质上就打破了常规的流程，需要专门写一段代码处理这两种情况，降低系统稳定性。</p>
 <h4 id="4-3-进程控制块中“内部进程通信信息”这一类成员变量的作用是什么？"><a href="#4-3-进程控制块中“内部进程通信信息”这一类成员变量的作用是什么？" class="headerlink" title="4.3 进程控制块中“内部进程通信信息”这一类成员变量的作用是什么？"></a>4.3 进程控制块中“内部进程通信信息”这一类成员变量的作用是什么？</h4><p>不同进程间的交互，数据通信，互斥与同步。</p>
@@ -142,9 +306,296 @@
 <p>prio 优先级</p>
 <p>mm 地址空间</p>
 
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-03-17T03:53:00.636Z" itemprop="dateUpdated">2020-03-17 11:53:00</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2020/02/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" target="_blank" rel="external">http://yoursite.com/2020/02/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/</a>
+        
     </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="qk6665">
+            qk6665
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title=《操作系统课程学习笔记四-进程管理》 — welcome to qk6665'blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title=《操作系统课程学习笔记四-进程管理》 — welcome to qk6665'blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/02/27/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%E6%8F%8F%E8%BF%B0/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">编译原理学习笔记三-高级程序设计语言的语法描述</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/02/18/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">编译原理学习笔记二-高级程序设计语言概述</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第四章-进程管理"><span class="post-toc-number">1.</span> <span class="post-toc-text">第四章 进程管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-1-进程具有异步性，是进程的优点还是缺点呢？"><span class="post-toc-number">1.0.0.1.</span> <span class="post-toc-text">4.1 进程具有异步性，是进程的优点还是缺点呢？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-2-为何没有“阻塞到运行”或“就绪到阻塞”这样的状态迁移？"><span class="post-toc-number">1.0.0.2.</span> <span class="post-toc-text">4.2 为何没有“阻塞到运行”或“就绪到阻塞”这样的状态迁移？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-3-进程控制块中“内部进程通信信息”这一类成员变量的作用是什么？"><span class="post-toc-number">1.0.0.3.</span> <span class="post-toc-text">4.3 进程控制块中“内部进程通信信息”这一类成员变量的作用是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-4-列举你知道的WINDOWS中，在程序启动exe程序创建相应进程的方法？"><span class="post-toc-number">1.0.0.4.</span> <span class="post-toc-text">4.4 列举你知道的WINDOWS中，在程序启动exe程序创建相应进程的方法？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-5-如何理解fork（）函数的返回值有2个取值？"><span class="post-toc-number">1.0.0.5.</span> <span class="post-toc-text">4.5 如何理解fork（）函数的返回值有2个取值？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-6-画圆和画方两个过程是完全同步的吗？"><span class="post-toc-number">1.0.0.6.</span> <span class="post-toc-text">4.6 画圆和画方两个过程是完全同步的吗？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-7-你有没有可用“线程编程技术”去改造和完善的编程项目？"><span class="post-toc-number">1.0.0.7.</span> <span class="post-toc-text">4.7 你有没有可用“线程编程技术”去改造和完善的编程项目？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-8-临界区的设置大些好还是小些好？各有什么缺点？"><span class="post-toc-number">1.0.0.8.</span> <span class="post-toc-text">4.8 临界区的设置大些好还是小些好？各有什么缺点？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-9-Lock-S-，unLock-S-两个函数能否用于控制多线程之间的临界区访问"><span class="post-toc-number">1.0.0.9.</span> <span class="post-toc-text">4.9 Lock(S)，unLock(S)两个函数能否用于控制多线程之间的临界区访问?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-10-举出生活中类似“司机和售票员”的同步例子，并分析其中的关键操作。"><span class="post-toc-number">1.0.0.10.</span> <span class="post-toc-text">4.10 举出生活中类似“司机和售票员”的同步例子，并分析其中的关键操作。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-11-V操作定义中的q队列里面的进程都是阻塞进程。请问这些进程是从何而来的？或者说这些进程是怎么变成阻塞状态进入q队列的？"><span class="post-toc-number">1.0.0.11.</span> <span class="post-toc-text">4.11 V操作定义中的q队列里面的进程都是阻塞进程。请问这些进程是从何而来的？或者说这些进程是怎么变成阻塞状态进入q队列的？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-12-3个进程Pa-Pb-Pc-。临界资源数量为1，CSa-b-c是临界区”中，三个进程并发过程中，是不是一定会发生阻塞或唤醒操作？如果mutex初值设置为0或2会有什么结果？在实际应用中，应该怎么合理的设置互斥量的初值？"><span class="post-toc-number">1.0.0.12.</span> <span class="post-toc-text">4.12 3个进程Pa,Pb,Pc 。临界资源数量为1，CSa,b,c是临界区”中，三个进程并发过程中，是不是一定会发生阻塞或唤醒操作？如果mutex初值设置为0或2会有什么结果？在实际应用中，应该怎么合理的设置互斥量的初值？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-13-在4-5-4节“实现进程同步的例子：司机vs售票员”中，如果把两个信号量S1-S2的初值都设置为1，司机和售票员还能否正确同步？如果不能，请给出反例证明。在实际应用中，应该怎么合理的设置信号量的初值？"><span class="post-toc-number">1.0.0.13.</span> <span class="post-toc-text">4.13 在4.5.4节“实现进程同步的例子：司机vs售票员”中，如果把两个信号量S1,S2的初值都设置为1，司机和售票员还能否正确同步？如果不能，请给出反例证明。在实际应用中，应该怎么合理的设置信号量的初值？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-14-编者和读者”同步问题在严格意义上讲是一个同步问题还是一个互斥问题？如果把题目的同步要求做一个加强：如果有读者和编者同时在等一个编者“写完”，则当前的“写”操作完后，等待的编者能优先进入。新的情形应当如何完成P-V同步操作？"><span class="post-toc-number">1.0.0.14.</span> <span class="post-toc-text">4.14 编者和读者”同步问题在严格意义上讲是一个同步问题还是一个互斥问题？如果把题目的同步要求做一个加强：如果有读者和编者同时在等一个编者“写完”，则当前的“写”操作完后，等待的编者能优先进入。新的情形应当如何完成P-V同步操作？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-15-在控制台上直接启动的一个应用程序，其末尾的exit-函数返回参数由谁处理或接收？"><span class="post-toc-number">1.0.0.15.</span> <span class="post-toc-text">4.15 在控制台上直接启动的一个应用程序，其末尾的exit( )函数返回参数由谁处理或接收？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-16-举出生活中类似“司机和售票员”的同步例子，并分析其中的关键操作。"><span class="post-toc-number">1.0.0.16.</span> <span class="post-toc-text">4.16 举出生活中类似“司机和售票员”的同步例子，并分析其中的关键操作。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-17-Linux信号机制与中断机制有什么异同？"><span class="post-toc-number">1.0.0.17.</span> <span class="post-toc-text">4.17 Linux信号机制与中断机制有什么异同？</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单元作业"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">单元作业</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-进程有哪4个特征？"><span class="post-toc-number">1.0.1.1.</span> <span class="post-toc-text">1 进程有哪4个特征？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-进程有哪3个基本状态，它们之间如何迁移？"><span class="post-toc-number">1.0.1.2.</span> <span class="post-toc-text">2 进程有哪3个基本状态，它们之间如何迁移？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-什么是进程控制，有哪4个典型的进程控制行为？"><span class="post-toc-number">1.0.1.3.</span> <span class="post-toc-text">3 什么是进程控制，有哪4个典型的进程控制行为？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-什么是原语，有何特点？"><span class="post-toc-number">1.0.1.4.</span> <span class="post-toc-text">4 什么是原语，有何特点？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-试述fork-函数的作用和特点？"><span class="post-toc-number">1.0.1.5.</span> <span class="post-toc-text">5 试述fork()函数的作用和特点？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-试述线程的概念（Thread）或特点？"><span class="post-toc-number">1.0.1.6.</span> <span class="post-toc-text">6 试述线程的概念（Thread）或特点？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-试述线程有哪些典型应用场合？"><span class="post-toc-number">1.0.1.7.</span> <span class="post-toc-text">7 试述线程有哪些典型应用场合？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-何为临界资源，何为临界区？"><span class="post-toc-number">1.0.1.8.</span> <span class="post-toc-text">8 何为临界资源，何为临界区？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-试述设计临界资源或临界区访问机制的四个原则是什么？"><span class="post-toc-number">1.0.1.9.</span> <span class="post-toc-text">9 试述设计临界资源或临界区访问机制的四个原则是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-临界区访问机制为什么要实现让权等待原则？锁机制为什么没有满足该原则？"><span class="post-toc-number">1.0.1.10.</span> <span class="post-toc-text">10 临界区访问机制为什么要实现让权等待原则？锁机制为什么没有满足该原则？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11-什么是进程的互斥，什么是进程的同步？各举一个例子说明。"><span class="post-toc-number">1.0.1.11.</span> <span class="post-toc-text">11 什么是进程的互斥，什么是进程的同步？各举一个例子说明。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#12-P-V操作的作用是什么？P操作和V操作各自的原理是什么？"><span class="post-toc-number">1.0.1.12.</span> <span class="post-toc-text">12 P-V操作的作用是什么？P操作和V操作各自的原理是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13-试述P-V操作解决互斥问题的思路是什么？"><span class="post-toc-number">1.0.1.13.</span> <span class="post-toc-text">13 试述P-V操作解决互斥问题的思路是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#14-试述P-V操作解决同步问题的思路是什么？"><span class="post-toc-number">1.0.1.14.</span> <span class="post-toc-text">14 试述P-V操作解决同步问题的思路是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#15-试分析“司机vs售票员”同步问题中，哪些操作是关键操作，哪些不是？为什么？"><span class="post-toc-number">1.0.1.15.</span> <span class="post-toc-text">15 试分析“司机vs售票员”同步问题中，哪些操作是关键操作，哪些不是？为什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#16-试分析“生产者与消费者”问题中，P-V操作是如何阻止生产者生产速度过快的，又是如何阻止消费者消费速度过快的？又是如何及时唤醒生产者去尽快生产的，又是如何及时唤醒消费者去尽快消费的？"><span class="post-toc-number">1.0.1.16.</span> <span class="post-toc-text">16 试分析“生产者与消费者”问题中，P-V操作是如何阻止生产者生产速度过快的，又是如何阻止消费者消费速度过快的？又是如何及时唤醒生产者去尽快生产的，又是如何及时唤醒消费者去尽快消费的？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#17-试述Windows的信号量（Semaphore）机制的工作原理（或如何应用该机制）？"><span class="post-toc-number">1.0.1.17.</span> <span class="post-toc-text">17 试述Windows的信号量（Semaphore）机制的工作原理（或如何应用该机制）？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#18-试述Linux中wait函数和exit函数的作用和它们之间的联系？"><span class="post-toc-number">1.0.1.18.</span> <span class="post-toc-text">18 试述Linux中wait函数和exit函数的作用和它们之间的联系？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#19-试述Windows管道通信或Linux信号机制的原理（或如何应用该机制）？"><span class="post-toc-number">1.0.1.19.</span> <span class="post-toc-text">19 试述Windows管道通信或Linux信号机制的原理（或如何应用该机制）？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#20-阅读Linux2-6或更早早期的版本，查看task-struct结构的定义，了解每个成员变量的含义。"><span class="post-toc-number">1.0.1.20.</span> <span class="post-toc-text">20 阅读Linux2.6或更早早期的版本，查看task_struct结构的定义，了解每个成员变量的含义。</span></a></li></ol></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
 </article>
 
-</main>
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                qk6665 &copy; 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/02/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title=《操作系统课程学习笔记四-进程管理》 — welcome to qk6665'blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/02/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/&title=《操作系统课程学习笔记四-进程管理》 — welcome to qk6665'blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE+CAAAAAAxUyPsAAAFQklEQVR42u3aQW7bQBAEQP//0wmQUwKJ6+6ZFRIgpZMhy+Sy1oCaPfz6il8/fr1e3/n9/dfPzI5wfr0e7fW35zWcz/j1iRc+fPjw4cP3cNDzcp9Ok7yff+YJKN+2FqjdSHz48OHDh2/Pd44a+aLbVx56cojzVcyu7vF9fPjw4cOH72N8s88k59rEoFnMyn/Ghw8fPnz4/i5ffuO9GQbkn8mZcmh8+PDhw4fv03z7W/o2dsxG1zlTUjfk71+YdeDDhw8fPnyjYPE//Hz5hQ8fPnz48I0G28kR8hv+9pj52vJx+GrAjw8fPnz48I009g+NtWQXbsIXZf0sphSNCz58+PDhw/dwluQLPi/x26K8HdW32zB7wK7YWnz48OHDh2/El3yFJzfes+CyD0PJudpBe3R2fPjw4cOHb82XLKINLkksmIWku0P9JCR95TT48OHDhw9fUNPvT9DWDXm4yYPIpg4oQhU+fPjw4cP3Ab483LQlexs7kpFAsoZrg3x8+PDhw4dvPSyfDdGTOfKt0nwWU9pNKsYS+PDhw4cPX8mX36gnoWE2rp6dJd+Su4UIPnz48OHDt+HLv/LbYfYsoGwo25XMyvo3lT0+fPjw4cMX8G0iQruIhP5WhZGPuvOY9ea3+PDhw4cPX8k3O+js0a4cfR+A8tCzqTnw4cOHDx++Dd+t8j2vFdoiID/+P1HW48OHDx8+fMe73bvVQFsfbM6Yx6C8jKjLenz48OHDhy/myw+3rxXO52o34Nbja/moAB8+fPjw4dvwtYHgzLcpzTf0bTWfDwaKYIcPHz58+PAFfLM4cg4Q7e4lf5XHkTxOJddelPX48OHDhw9feS/fluZtoGkL9HaFm0H4LCThw4cPHz58M77kq30/CG8DUH7edtv2Y4nIFR8+fPjw4SsL+qQamN2654Pq5DZ+Nqqf1R/48OHDhw/fhq8t3Ntb+pzsVpBqH3fLrzfqWvDhw4cPH740pQxr603cmT2UNgsi+TvDMTk+fPjw4cNXTnjPJXsbL2aX2q6kLevbMcM3Z8GHDx8+fPhKvjZG5DfVmwue1fp5qGprgqKyx4cPHz58+I58G6w8LmwG1XnU2AzsZ/8K+PDhw4cPX8u3iR3tF3+dpEaV+ibWzEzw4cOHDx++W9+/bZjYb0Z72bNH6NrNGPYu+PDhw4cP38sRPjHebmv9BH32ygNQ/rDdm7IeHz58+PDhW9yh53/QUs7G0m20SmJHG1Pw4cOHDx++W3w5QX7oz0WNdiTfBqb8v+yPygAfPnz48OEb8eU07RLbSr2t+2dH3sQgfPjw4cOHb8aXn6YdOe+h2/H5fpMulPX48OHDhw9fPCbPi4BZFJg99HYrAG2O/PhbfPjw4cOHb8TXDonb8Xb+6Ftb0OfD781KHpXw4cOHDx++kq8deM9Ok0eT2S19UrhvxuRFcYAPHz58+PDFlX3+pT4r2fefzzc4jyy31owPHz58+PAla84Hz3eDSFtDDOf8ZRi6NuvAhw8fPnz4gjnv6lm2Ef1djnzwv+d+M+vAhw8fPnz4RnxtWT9DaUuBGWL+aNqs+seHDx8+fPhavlk4OAeCW0EhLzU2g/P8ilaI+PDhw4cPXxxB2ohzd7l3q/lbG4MPHz58+PDt+doAkY+0N+VCss5zHbA/+zf0+PDhw4cP38f48nBztwJI1tlGpQT9cnDBhw8fPnz4RnybvjqKAouheH72pFCI6gZ8+PDhw4dvxLcPJW00SQJNvp23trYuLPDhw4cPH75J110X5e0jYptaYXbk2fbPhhP48OHDhw9fwPcTVUiaqk7Vj3MAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
 </body>
 </html>
