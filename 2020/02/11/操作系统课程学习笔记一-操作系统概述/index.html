@@ -1,238 +1,50 @@
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('http://yoursite.com').hostname,
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.7.1',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
-
-  <meta name="description" content="第一章 操作系统概述1.1 没有安装操作系统的计算机启动过程和结果？启动会比较快，但功能很局限，无法使用常见的软件应用，对于普通用户来说，功能很局限，对于专业工程师来说，想使用没有操作系统的计算机也有难度。 1.2 常见的虚拟机软件（例如VMware，VirtualPC等）能不能理解为操作系统？不能理解为完全的操作系统。因为操作系统是作为硬件部分和应用软件的中间桥梁而存在的，硬件与软件的交互必须通">
-<meta property="og:type" content="article">
-<meta property="og:title" content="操作系统课程学习笔记一-操作系统概述">
-<meta property="og:url" content="http://yoursite.com/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/index.html">
-<meta property="og:site_name" content="welcome to qk6665&#39;blog">
-<meta property="og:description" content="第一章 操作系统概述1.1 没有安装操作系统的计算机启动过程和结果？启动会比较快，但功能很局限，无法使用常见的软件应用，对于普通用户来说，功能很局限，对于专业工程师来说，想使用没有操作系统的计算机也有难度。 1.2 常见的虚拟机软件（例如VMware，VirtualPC等）能不能理解为操作系统？不能理解为完全的操作系统。因为操作系统是作为硬件部分和应用软件的中间桥梁而存在的，硬件与软件的交互必须通">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-02-11T10:23:37.000Z">
-<meta property="article:modified_time" content="2020-02-21T02:26:53.177Z">
-<meta property="article:author" content="qk6665">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://yoursite.com/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true
-  };
-</script>
-
-  <title>操作系统课程学习笔记一-操作系统概述 | welcome to qk6665'blog</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">welcome to qk6665'blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
-
-  </li>
-        <li class="menu-item menu-item-schedule">
-
-    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>日程表</a>
-
-  </li>
-  </ul>
-
-</nav>
-</div>
-    </header>
-
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>welcome to qk6665&#39;blog</title>
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+<link rel="stylesheet" href="/css/style.css">
 
+<meta name="generator" content="Hexo 4.2.0"></head>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
+<body>
 
-          <div class="content">
+<header class="header">
+    <div class="blog-title">
+        <a href="/" class="logo">welcome to qk6665&#39;blog</a>
+    </div>
+    <nav class="navbar">
+        <ul class="menu">
             
+                <li class="menu-item">
+                    <a href="/" class="menu-item-link">首页</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a href="/archives" class="menu-item-link">目录</a>
+                </li>
+            
+                <li class="menu-item">
+                    <a href="https://github.com/qk6665" target="_blank" rel="noopener" class="menu-item-link">GitHub</a>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
 
-  <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="qk6665">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome to qk6665'blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          操作系统课程学习笔记一-操作系统概述
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-11 18:23:37" itemprop="dateCreated datePublished" datetime="2020-02-11T18:23:37+08:00">2020-02-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-21 10:26:53" itemprop="dateModified" datetime="2020-02-21T10:26:53+08:00">2020-02-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
+<main class="main">
+    <article class="post">
+    <div class="post-title">
+        <h2 class="title">操作系统课程学习笔记一-操作系统概述</h2>
+    </div>
+    <div class="post-meta">
+        <span class="post-time">2020-02-11</span>
+    </div>
+    <div class="post-content">
         <h1 id="第一章-操作系统概述"><a href="#第一章-操作系统概述" class="headerlink" title="第一章 操作系统概述"></a>第一章 操作系统概述</h1><h4 id="1-1-没有安装操作系统的计算机启动过程和结果？"><a href="#1-1-没有安装操作系统的计算机启动过程和结果？" class="headerlink" title="1.1 没有安装操作系统的计算机启动过程和结果？"></a>1.1 没有安装操作系统的计算机启动过程和结果？</h4><p>启动会比较快，但功能很局限，无法使用常见的软件应用，对于普通用户来说，功能很局限，对于专业工程师来说，想使用没有操作系统的计算机也有难度。</p>
 <h4 id="1-2-常见的虚拟机软件（例如VMware，VirtualPC等）能不能理解为操作系统？"><a href="#1-2-常见的虚拟机软件（例如VMware，VirtualPC等）能不能理解为操作系统？" class="headerlink" title="1.2 常见的虚拟机软件（例如VMware，VirtualPC等）能不能理解为操作系统？"></a>1.2 常见的虚拟机软件（例如VMware，VirtualPC等）能不能理解为操作系统？</h4><p>不能理解为完全的操作系统。因为操作系统是作为硬件部分和应用软件的中间桥梁而存在的，硬件与软件的交互必须通过操作系统。因此虚拟机虽然可以模拟操作系统的功能，但仍是作为应用软件通过真实操作系统与硬件进行交互</p>
 <h4 id="1-3-现代操作系统会不会因为内存太小，而让应用程序无法启动运行或让系统崩溃？"><a href="#1-3-现代操作系统会不会因为内存太小，而让应用程序无法启动运行或让系统崩溃？" class="headerlink" title="1.3 现代操作系统会不会因为内存太小，而让应用程序无法启动运行或让系统崩溃？"></a>1.3 现代操作系统会不会因为内存太小，而让应用程序无法启动运行或让系统崩溃？</h4><p>一般不会。现代操作系统可以合理分配内存，即使软件所需内存大大超过实际内存，也仅仅是使计算机响应变慢，甚至是出现类似“死机”的情况，表现为计算机无法加载软件初始页面，难以响应输入设备的状态变化，只能通过强制重启计算机解决。但不会无法启动软件或使系统出现故障</p>
@@ -258,187 +70,8 @@
 <h4 id="6-思考运行应用程序（例如记事本程序）需要操作系统提供哪些支持？"><a href="#6-思考运行应用程序（例如记事本程序）需要操作系统提供哪些支持？" class="headerlink" title="6 思考运行应用程序（例如记事本程序）需要操作系统提供哪些支持？"></a>6 思考运行应用程序（例如记事本程序）需要操作系统提供哪些支持？</h4><p>1、文件系统，将程序置入内存中<br>2、内存管理<br>3、设备管理，从键盘、鼠标读取设备状态，向屏幕显示信息<br>4、进程管理，应用程序可能会同时操作多个进程</p>
 
     </div>
+</article>
 
-    
-    
-    
-
-      <footer class="post-footer">
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84/" rel="prev" title="操作系统课程学习笔记二-操作系统逻辑结构">
-      <i class="fa fa-chevron-left"></i> 操作系统课程学习笔记二-操作系统逻辑结构
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2/" rel="next" title="操作系统课程学习笔记三-操作系统用户界面">
-      操作系统课程学习笔记三-操作系统用户界面 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-  </div>
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-操作系统概述"><span class="nav-number">1.</span> <span class="nav-text">第一章 操作系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-没有安装操作系统的计算机启动过程和结果？"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1.1 没有安装操作系统的计算机启动过程和结果？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-常见的虚拟机软件（例如VMware，VirtualPC等）能不能理解为操作系统？"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">1.2 常见的虚拟机软件（例如VMware，VirtualPC等）能不能理解为操作系统？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-现代操作系统会不会因为内存太小，而让应用程序无法启动运行或让系统崩溃？"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">1.3 现代操作系统会不会因为内存太小，而让应用程序无法启动运行或让系统崩溃？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-在多道批处理中尝试不断增加程序的数量，系统的效率会不会持续增加？结果会如何？"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">1.4 在多道批处理中尝试不断增加程序的数量，系统的效率会不会持续增加？结果会如何？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-分时技术的时间片设置太大或太小，应该根据哪些因素来考虑？是尽量大好还是尽量小好？"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">1.5 分时技术的时间片设置太大或太小，应该根据哪些因素来考虑？是尽量大好还是尽量小好？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-站在普通用户的角度，总结操作系统有哪些基本功能？"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">1 站在普通用户的角度，总结操作系统有哪些基本功能？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-操作系统有哪4大核心功能？"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">2 操作系统有哪4大核心功能？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-操作系统有哪4个典型的发展阶段，各有什么特点？"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">3 操作系统有哪4个典型的发展阶段，各有什么特点？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-多道批处理系统为什么工作效率比单道的高？"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">4 多道批处理系统为什么工作效率比单道的高？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-分时技术与多道批处理都能完成多个程序的切换。这两种切换情形有什么差别？"><span class="nav-number">1.0.0.10.</span> <span class="nav-text">5 分时技术与多道批处理都能完成多个程序的切换。这两种切换情形有什么差别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-思考运行应用程序（例如记事本程序）需要操作系统提供哪些支持？"><span class="nav-number">1.0.0.11.</span> <span class="nav-text">6 思考运行应用程序（例如记事本程序）需要操作系统提供哪些支持？</span></a></li></ol></li></ol></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">qk6665</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">16</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-  </nav>
-</div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">qk6665</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.1
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
+</main>
 </body>
 </html>
