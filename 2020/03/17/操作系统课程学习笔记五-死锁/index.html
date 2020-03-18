@@ -47,25 +47,25 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">qk6665</h5>
-          <a href="mailto:277133779@qq.com" title="277133779@qq.com" class="mail">
+          <a href="mailto:478649098@qq.com" title="478649098@qq.com" class="mail">
             
-              <span>2</span>
-            
-              <span>7</span>
+              <span>4</span>
             
               <span>7</span>
             
-              <span>1</span>
+              <span>8</span>
             
-              <span>3</span>
+              <span>6</span>
             
-              <span>3</span>
-            
-              <span>7</span>
-            
-              <span>7</span>
+              <span>4</span>
             
               <span>9</span>
+            
+              <span>0</span>
+            
+              <span>9</span>
+            
+              <span>8</span>
             
               <span>@</span>
             
@@ -87,7 +87,7 @@
         <ul class="menu-link">
           
               <li>
-                <a href="https://github.com/codefine" target="_blank">
+                <a href="https://github.com/qk6665" target="_blank">
                   <i class="icon icon-lg icon-github"></i>
                 </a>
               </li>
@@ -209,14 +209,23 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            
+            <h1 id="第五章-死锁"><a href="#第五章-死锁" class="headerlink" title="第五章 死锁"></a>第五章 死锁</h1><h4 id="5-1-什么是死锁或死锁的定义是什么？"><a href="#5-1-什么是死锁或死锁的定义是什么？" class="headerlink" title="5.1 什么是死锁或死锁的定义是什么？"></a>5.1 什么是死锁或死锁的定义是什么？</h4><p>​两个或多个进程中，每个进程都持有某种资源，但又继续申请其他进程已持有的某种资源，此时每个进程都拥有其运行所需的一部分资源但又都不够，结果每个进程永远陷入阻塞。这种状况成为死锁。</p>
+<h4 id="5-2-在Linux或Windows的实际应用中，用户常说的“死机”或“宕机”或“程序卡住”或“系统卡住，键鼠没有任何响应”与本章的“死锁”是同一问题吗？"><a href="#5-2-在Linux或Windows的实际应用中，用户常说的“死机”或“宕机”或“程序卡住”或“系统卡住，键鼠没有任何响应”与本章的“死锁”是同一问题吗？" class="headerlink" title="5.2 在Linux或Windows的实际应用中，用户常说的“死机”或“宕机”或“程序卡住”或“系统卡住，键鼠没有任何响应”与本章的“死锁”是同一问题吗？"></a>5.2 在Linux或Windows的实际应用中，用户常说的“死机”或“宕机”或“程序卡住”或“系统卡住，键鼠没有任何响应”与本章的“死锁”是同一问题吗？</h4><p>不是。<br>“死机”或“宕机”或“系统卡住，键鼠没有任何响应”可能由于多种原因引起，比如由于进程死锁、程序运行错误导致进程长期陷入阻塞、操作系统无法满足进程申请的资源等因素引起。<br>死锁受影响的仅仅是死锁的进程以及所涉及的部分资源，未必会引起“死机”或“宕机”。</p>
+<h4 id="5-3-如何证明“参与死锁的进程至少有2个已经占有资源”？"><a href="#5-3-如何证明“参与死锁的进程至少有2个已经占有资源”？" class="headerlink" title="5.3 如何证明“参与死锁的进程至少有2个已经占有资源”？"></a>5.3 如何证明“参与死锁的进程至少有2个已经占有资源”？</h4><p>反证法。只有一个资源的话，占有该资源的进程不会由于等待其他资源而陷入死锁，因此发生死锁必须有两个以上资源。</p>
+<h4 id="5-4-死锁的四个必要条件是哪些？"><a href="#5-4-死锁的四个必要条件是哪些？" class="headerlink" title="5.4 死锁的四个必要条件是哪些？"></a>5.4 死锁的四个必要条件是哪些？</h4><p>互斥条件：进程互斥使用资源，资源具有独占性。<br>不剥夺条件：进程在访问完资源前不能被其他进程强行剥夺。<br>部分分配条件：进程边运行边申请资源，临时需要临时分配。<br>环路条件：多个进程构成环路，环中每个已占用资源被前一进程申请，自己所申请资源被后一进程占用。</p>
+<h4 id="5-4-如何证明“按有序资源分配法分配资源并发进程不会死锁”？"><a href="#5-4-如何证明“按有序资源分配法分配资源并发进程不会死锁”？" class="headerlink" title="5.4 如何证明“按有序资源分配法分配资源并发进程不会死锁”？"></a>5.4 如何证明“按有序资源分配法分配资源并发进程不会死锁”？</h4><p>有序资源分配法实质上是为不同进程的资源申请标注了优先级，按先到先得的顺序排列，保证了最靠前的进程对所需的资源有最高访问权限，不会出现每个进程都拥有其运行所需的一部分资源但另一部分资源被其他进程占用的情况。</p>
+<h4 id="5-5-在Linux或Windows是如何处理死锁的？"><a href="#5-5-在Linux或Windows是如何处理死锁的？" class="headerlink" title="5.5 在Linux或Windows是如何处理死锁的？"></a>5.5 在Linux或Windows是如何处理死锁的？</h4><p>由于目前没有一种高效稳定处理死锁的方法，因此Linux或Windows并没有对死锁进行预防和处理的功能，需要使用者主动避免。</p>
+<h4 id="5-6-了解“避免死锁”策略，并了解“银行家算法”的概念和原理"><a href="#5-6-了解“避免死锁”策略，并了解“银行家算法”的概念和原理" class="headerlink" title="5.6 了解“避免死锁”策略，并了解“银行家算法”的概念和原理?"></a>5.6 了解“避免死锁”策略，并了解“银行家算法”的概念和原理?</h4><p>避免死锁是指不采取限制破坏产生死锁的条件，而是在资源分配过程中用某种方式评估分配资源是否会让系统进入死锁状态，若会导致陷入死锁则拒绝分配资源，从而避免死锁。实现难度较大。</p>
+<p>银行家算法：在银行中，客户申请贷款的数量是有限的，每个客户在第一次申请贷款时要声明完成该项目所需的最大资金量，在满足所有贷款要求时，客户应及时归还。银行家在客户申请的贷款数量不超过自己拥有的最大值时，都应尽量满足客户的需要。在这样的描述中，银行家就好比操作系统，资金就是资源，客户就相当于要申请资源的进程。</p>
+<p>银行家算法是一种最有代表性的避免死锁的算法。在避免死锁方法中允许进程动态地申请资源，但系统在进行资源分配之前，应先计算此次分配资源的安全性，若分配不会导致系统进入不安全状态，则分配，否则等待。为实现银行家算法，系统必须设置若干数据结构。</p>
+
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-03-17T04:01:50.559Z" itemprop="dateUpdated">2020-03-17 12:01:50</time>
+    最后更新时间：<time datetime="2020-03-17T05:29:29.576Z" itemprop="dateUpdated">2020-03-17 13:29:29</time>
 </span><br>
 
 
@@ -283,7 +292,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/03/17/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">操作系统课程学习笔记六-进程调度</h4>
+      </a>
+    </div>
   
 
   
@@ -298,6 +314,14 @@
 
 
     
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第五章-死锁"><span class="post-toc-number">1.</span> <span class="post-toc-text">第五章 死锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-1-什么是死锁或死锁的定义是什么？"><span class="post-toc-number">1.0.0.1.</span> <span class="post-toc-text">5.1 什么是死锁或死锁的定义是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-2-在Linux或Windows的实际应用中，用户常说的“死机”或“宕机”或“程序卡住”或“系统卡住，键鼠没有任何响应”与本章的“死锁”是同一问题吗？"><span class="post-toc-number">1.0.0.2.</span> <span class="post-toc-text">5.2 在Linux或Windows的实际应用中，用户常说的“死机”或“宕机”或“程序卡住”或“系统卡住，键鼠没有任何响应”与本章的“死锁”是同一问题吗？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-3-如何证明“参与死锁的进程至少有2个已经占有资源”？"><span class="post-toc-number">1.0.0.3.</span> <span class="post-toc-text">5.3 如何证明“参与死锁的进程至少有2个已经占有资源”？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-4-死锁的四个必要条件是哪些？"><span class="post-toc-number">1.0.0.4.</span> <span class="post-toc-text">5.4 死锁的四个必要条件是哪些？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-4-如何证明“按有序资源分配法分配资源并发进程不会死锁”？"><span class="post-toc-number">1.0.0.5.</span> <span class="post-toc-text">5.4 如何证明“按有序资源分配法分配资源并发进程不会死锁”？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-5-在Linux或Windows是如何处理死锁的？"><span class="post-toc-number">1.0.0.6.</span> <span class="post-toc-text">5.5 在Linux或Windows是如何处理死锁的？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-6-了解“避免死锁”策略，并了解“银行家算法”的概念和原理"><span class="post-toc-number">1.0.0.7.</span> <span class="post-toc-text">5.6 了解“避免死锁”策略，并了解“银行家算法”的概念和原理?</span></a></li></ol></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
     
 </article>
 
