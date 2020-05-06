@@ -318,23 +318,26 @@
 <p>M → 𝜀：    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;  M.quad :&#x3D; nextquad  &#125;</span><br></pre></td></tr></table></figure>
 
-<p>复合语句的翻译模式：<br>S → begin L end：         </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123; S.nextlist :&#x3D; L.nextlist &#125;</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">L → L1; M S：</span><br></pre></td></tr></table></figure>
-<p>{ backpatch(L1.nextlist, M.quad);<br>  L.nextlist := S.nextlist }</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M → 𝜀：</span><br></pre></td></tr></table></figure>
-<p>{ M.quad := nextquad }</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">其它几个语句的翻译：  </span><br><span class="line">S → A：</span><br></pre></td></tr></table></figure>
-<p>{ S.nextlist := makelist( ) }</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L → S：</span><br></pre></td></tr></table></figure>
-<p>{ L.nextlist := S.nextlist }</p>
-<pre><code></code></pre>
+<p>复合语句的翻译模式：<br>S → begin L end：        </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; S.nextlist :&#x3D; L.nextlist &#125;</span><br></pre></td></tr></table></figure>
+
+<p>L → L1; M S：            </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; backpatch(L1.nextlist, M.quad);</span><br><span class="line">  L.nextlist :&#x3D; S.nextlist &#125;</span><br></pre></td></tr></table></figure>
+<p>M → 𝜀：     </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; M.quad :&#x3D; nextquad &#125;</span><br></pre></td></tr></table></figure>
+
+<p>其它几个语句的翻译：<br>S → A：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; S.nextlist :&#x3D; makelist( ) &#125;</span><br></pre></td></tr></table></figure>
+<p>L → S：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; L.nextlist :&#x3D; S.nextlist &#125;</span><br></pre></td></tr></table></figure>
+
         </div>
         
 <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-17T06:55:41.185Z" itemprop="dateUpdated">2020-04-17 14:55:41</time>
+    最后更新时间：<time datetime="2020-05-06T03:26:44.995Z" itemprop="dateUpdated">2020-05-06 11:26:44</time>
 </span><br>
 
 
@@ -343,7 +346,7 @@
         
     </div>
     <footer>
-        <a href="http://yoursite.com">
+        <a href="https://qk6665.github.io">
             <img src="/img/avatar.jpg" alt="qk6665">
             qk6665
         </a>
@@ -508,7 +511,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,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" alt="微信分享二维码">
+    <img src="data:image/png;base64,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" alt="微信分享二维码">
 </div>
 
 

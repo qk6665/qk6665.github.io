@@ -299,14 +299,8 @@
 <h4 id="7-带寄存器分配优化的代码生成"><a href="#7-带寄存器分配优化的代码生成" class="headerlink" title="7 带寄存器分配优化的代码生成"></a>7 带寄存器分配优化的代码生成</h4><p>以基本块为单位生成目标代码：<br>依次把四元式的中间代码变换成目标代码；<br>在基本块的范围内考虑如何充分利用寄存器；<br>进入基本块时，所有寄存器空闲；<br>离开基本块时，把存在寄存器中的现行的值存回主存中，释放所有寄存器；<br>不特别说明，所有说明变量在基本块出口之后均为非活跃变量。  </p>
 <p>在一个基本块的范围内考虑充分利用寄存器：  </p>
 <ol>
-<li>要做到  </li>
-<li>1  尽可能留：在生成计算某变量值的目标代码时，尽可能让该变量保留在寄存器中；  </li>
-<li>2 尽可能用：后续的目标代码尽可能引用变量在寄存器中的值，而不访问内存；  </li>
-<li>3 及时腾空：在离开基本块时，把存在寄存器中的现行的值放到主存中。  </li>
-<li>要知道  </li>
-<li>1 四元式指令：每条指令中各变量在将来会被使用的情况；  </li>
-<li>2 变量：每个变量现行值的存放位置；  </li>
-<li>3 寄存器：每个寄存器当前的使用状况。  </li>
+<li>要做到<br> 1.1  尽可能留：在生成计算某变量值的目标代码时，尽可能让该变量保留在寄存器中；<br> 1.2 尽可能用：后续的目标代码尽可能引用变量在寄存器中的值，而不访问内存；<br> 1.3 及时腾空：在离开基本块时，把存在寄存器中的现行的值放到主存中。  </li>
+<li>要知道<br> 2.1 四元式指令：每条指令中各变量在将来会被使用的情况；<br> 2.2 变量：每个变量现行值的存放位置；<br> 2.3 寄存器：每个寄存器当前的使用状况。  </li>
 </ol>
 <h4 id="8-待用信息和活跃信息"><a href="#8-待用信息和活跃信息" class="headerlink" title="8 待用信息和活跃信息"></a>8 待用信息和活跃信息</h4><p>如果在一个基本块内，四元式i对A定值，四元式j要引用A值，而从i到j之间没有A的其他定值，那么，我们称j是四元式i的变量A的待用信息，即下一个引用点。<br>变量的符号表登记项中含有记录待用信息和活跃信息的栏。  </p>
 <p>二元组(x, x)表示变量的待用信息和活跃信息：<br>第1元：i表示待用信息， ^表示非待用；<br>第2元：y表示活跃，^表示非活跃；<br>待用信息和活跃信息的变化(x，x)→(x，x)，用后者更新前者。</p>
@@ -346,7 +340,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-05-06T03:11:18.572Z" itemprop="dateUpdated">2020-05-06 11:11:18</time>
+    最后更新时间：<time datetime="2020-05-06T03:20:24.934Z" itemprop="dateUpdated">2020-05-06 11:20:24</time>
 </span><br>
 
 
@@ -355,7 +349,7 @@
         
     </div>
     <footer>
-        <a href="http://yoursite.com">
+        <a href="https://qk6665.github.io">
             <img src="/img/avatar.jpg" alt="qk6665">
             qk6665
         </a>
@@ -513,7 +507,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,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" alt="微信分享二维码">
+    <img src="data:image/png;base64,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" alt="微信分享二维码">
 </div>
 
 
