@@ -225,17 +225,13 @@
 
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
 
-<span class="comment">// 我们的第五版Union-Find</span>
 <span class="keyword">namespace</span> UF5{
 
     <span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span>{</span>
 
     <span class="keyword">private</span>:
-        <span class="comment">// rank[i]表示以i为根的集合所表示的树的层数</span>
-        <span class="comment">// 在后续的代码中, 我们并不会维护rank的语意, 也就是rank的值在路径压缩的过程中, 有可能不在是树的层数值</span>
-        <span class="comment">// 这也是我们的rank不叫height或者depth的原因, 他只是作为比较的一个标准</span>
-        <span class="comment">// 关于这个问题，可以参考问答区：http://coding.imooc.com/learn/questiondetail/7287.html</span>
-        <span class="keyword">int</span>* rank;
+
+        <span class="keyword">int</span>* rank;   <span class="comment">// rank[i]表示以i为根的集合所表示的树的层数</span>
         <span class="keyword">int</span>* parent; <span class="comment">// parent[i]表示第i个元素所指向的父节点</span>
         <span class="keyword">int</span> count;   <span class="comment">// 数据个数</span>
 
@@ -269,10 +265,6 @@
             }
             <span class="keyword">return</span> p;
 
-            <span class="comment">// path compression 2, 递归算法</span>
-<span class="comment">//            if( p != parent[p] )</span>
-<span class="comment">//                parent[p] = find( parent[p] );</span>
-<span class="comment">//            return parent[p];</span>
         }
 
         <span class="comment">// 查看元素p和元素q是否所属一个集合</span>
@@ -301,7 +293,7 @@
             }
             <span class="keyword">else</span>{ <span class="comment">// rank[pRoot] == rank[qRoot]</span>
                 parent[pRoot] = qRoot;
-                rank[qRoot] += <span class="number">1</span>;   <span class="comment">// 此时, 我维护rank的值</span>
+                rank[qRoot] += <span class="number">1</span>;   <span class="comment">// 此时维护rank的值</span>
             }
         }
     };
@@ -313,7 +305,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-05-06T04:58:52.298Z" itemprop="dateUpdated">2020-05-06 12:58:52</time>
+    最后更新时间：<time datetime="2020-05-06T05:14:50.975Z" itemprop="dateUpdated">2020-05-06 13:14:50</time>
 </span><br>
 
 
