@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>操作系统课程学习笔记七-存储管理 | 繁华落尽  如梦无痕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qk6665</h5>
+          <a href="mailto:478649098@qq.com" title="478649098@qq.com" class="mail">
+            
+              <span>4</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>4</span>
+            
+              <span>9</span>
+            
+              <span>0</span>
+            
+              <span>9</span>
+            
+              <span>8</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/qk6665" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>操作系统课程学习笔记七-存储管理</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner2.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">操作系统课程学习笔记七-存储管理</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-03-28T01:23:41.000Z" itemprop="datePublished" class="page-time">
+  2020-03-28
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-操作系统课程学习笔记七-存储管理"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">操作系统课程学习笔记七-存储管理</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-03-28 09:23:41" datetime="2020-03-28T01:23:41.000Z"  itemprop="datePublished">2020-03-28</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="第七章-存储管理"><a href="#第七章-存储管理" class="headerlink" title="第七章 存储管理"></a>第七章 存储管理</h1><h4 id="7-1-简述实际的三级存储器体系的结构（组成）和基本原理？"><a href="#7-1-简述实际的三级存储器体系的结构（组成）和基本原理？" class="headerlink" title="7.1 简述实际的三级存储器体系的结构（组成）和基本原理？"></a>7.1 简述实际的三级存储器体系的结构（组成）和基本原理？</h4><figure class="image-box">
+                <a rel=操作系统课程学习笔记七-存储管理 href="/2020/03/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/2.png" title="三级存储器体系的结构" data-fancybox="images"><img src="/2020/03/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/2.png" alt="三级存储器体系的结构" title class></a>
+                <p>三级存储器体系的结构</p>
+            </figure>
+
+<p>三级存储体系包括Cache(快、小、贵)、内存(适中)、外存(慢、大、廉)。<br>基本原理：当内存太小不够用时，用外存来支援内存；暂时不运行的模块换出到外存上，必要时再换入内存。</p>
+<h4 id="7-2-存储管理有哪四大功能"><a href="#7-2-存储管理有哪四大功能" class="headerlink" title="7.2 存储管理有哪四大功能?"></a>7.2 存储管理有哪四大功能?</h4><p>地址映射：把程序中的地址（虚拟地址/虚地址/逻辑地址）变换成内存的真实地址（实地址/物理地址）的过程；<br>虚拟存储：解决内存过大造成的内存不够和多程序并发时的地址冲突问题；<br>内存分配：为程序运行分配足够内存空间；<br>存储保护：保证内存中的多道程序只能在给定的存储区域中活动并互不干扰。</p>
+<h4 id="7-3-有哪三种地址映射方式？"><a href="#7-3-有哪三种地址映射方式？" class="headerlink" title="7.3 有哪三种地址映射方式？"></a>7.3 有哪三种地址映射方式？</h4><p>固定地址映射：编程或编译时确定逻辑地址和物理地址映射关系，程序加载时必须放在指定的内存区域，容易产生地址冲突、运行失败，程序装入后不能移动，程序占用连续的内存空间。<br>静态地址映射：程序装入时由操作系统完成逻辑地址到物理地址的映射，程序运行前确定映射关系，程序装入后不能移动，程序占用连续的内存空间。<br>动态地址映射：程序执行过程中把逻辑地址转换为物理地址，程序占用的内存空间可动态变化，不要求占用连续空间，便于多个进程共享，但需要内存管理单元的硬件支持，软件复杂。</p>
+<h4 id="7-4-为何需要地址映射功能或者它的的作用是什么？在VS（C-C-）开发环境中，我们用”int-i-j-”-定义的i-j变量与地址是什么关系？"><a href="#7-4-为何需要地址映射功能或者它的的作用是什么？在VS（C-C-）开发环境中，我们用”int-i-j-”-定义的i-j变量与地址是什么关系？" class="headerlink" title="7.4 为何需要地址映射功能或者它的的作用是什么？在VS（C/C++）开发环境中，我们用”int i,j ;” 定义的i,j变量与地址是什么关系？"></a>7.4 为何需要地址映射功能或者它的的作用是什么？在VS（C/C++）开发环境中，我们用”int i,j ;” 定义的i,j变量与地址是什么关系？</h4><p>地址映射可以让用户方便的读写物理地址，直接使用物理地址比较繁琐，而且不安全。<br>在VS（C/C++）开发环境执行”int i,j ;”时，编译器将为其分配两块大小为 int型数据所占的内存空间，编译器自动的将其存放在空闲内存空间中。</p>
+<h4 id="7-5-何为动态地址映射？有什么特点"><a href="#7-5-何为动态地址映射？有什么特点" class="headerlink" title="7.5 何为动态地址映射？有什么特点?"></a>7.5 何为动态地址映射？有什么特点?</h4><p>动态地址映射是指程序执行过程中把逻辑地址转换为物理地址。<br>将地址分为逻辑地址VA和基址BA，物理地址MA等于VA+BA，如果程序移动，根据移动后的BA自动计算MA，从而实现动态映射。<br>程序占用的内存空间可动态变化，不要求占用连续空间，便于多个进程共享，但需要内存管理单元的硬件支持，软件复杂。</p>
+<h4 id="7-6-什么是分区存储管理？有哪些类型？"><a href="#7-6-什么是分区存储管理？有哪些类型？" class="headerlink" title="7.6 什么是分区存储管理？有哪些类型？"></a>7.6 什么是分区存储管理？有哪些类型？</h4><p>分区存储管理是指把用户区内存划分为若干大小不等的分区供不同程序使用，分为两种类型。<br>固定分区：把内存固定地划分为若干个大小不等的分区供各个程序使用，每个分区的大小和位置都固定，系统运行期间不再重新划分。<br>动态分区：在程序装入时创建分区，使分区大小刚好与程序的大小相等，分区动态建立，分区个数和大小可变，存在内存碎片。</p>
+<h4 id="7-7-虚拟内存管理的目标是什么？"><a href="#7-7-虚拟内存管理的目标是什么？" class="headerlink" title="7.7 虚拟内存管理的目标是什么？"></a>7.7 虚拟内存管理的目标是什么？</h4><p>使大程序可以在小内存中运行；<br>使多个程序可以在小内存中运行；<br>使多个程序并发运行时地址不冲突；<br>使内存利用率高：无碎片，共享方便。</p>
+<h4 id="7-8-使用虚拟存储管理功能的操作系统，还需不需要真是的内存？"><a href="#7-8-使用虚拟存储管理功能的操作系统，还需不需要真是的内存？" class="headerlink" title="7.8 使用虚拟存储管理功能的操作系统，还需不需要真是的内存？"></a>7.8 使用虚拟存储管理功能的操作系统，还需不需要真是的内存？</h4><p>虚拟内存技术，即匀出一部分硬盘空间来充当内存使用。当内存耗尽时，电脑就会自动调用硬盘来充当内存，以缓解内存的紧张。<br>而计算机并不能自己访问硬盘，只能访问内存或者Cache，虚拟内存技术将程序部分内容放到内存中。本质上还是储存在内存上被CPU使用。</p>
+<h4 id="7-9-分区存储管理用在专用的，具有特定工作任务的，嵌入式系统中，可不可行？"><a href="#7-9-分区存储管理用在专用的，具有特定工作任务的，嵌入式系统中，可不可行？" class="headerlink" title="7.9 分区存储管理用在专用的，具有特定工作任务的，嵌入式系统中，可不可行？"></a>7.9 分区存储管理用在专用的，具有特定工作任务的，嵌入式系统中，可不可行？</h4><p>可以。如果嵌入式系统大多数时间执行单任务，那就适合不分区，简单，无需复杂硬件支持，也提高了内存利用率。</p>
+<h4 id="7-10-何为放置策略？有哪些防止策略？各种防止策略的特点或优点是什么？"><a href="#7-10-何为放置策略？有哪些防止策略？各种防止策略的特点或优点是什么？" class="headerlink" title="7.10 何为放置策略？有哪些防止策略？各种防止策略的特点或优点是什么？"></a>7.10 何为放置策略？有哪些防止策略？各种防止策略的特点或优点是什么？</h4><p>放置策略是指空前区表排序原则。<br>最佳适应法将空闲区表按大小递增排序，优点是尽可能先使用较小空闲区，当需要较大分区时有较大的满足可能性。但在内存中留下许多难以利用的碎片。<br>最坏适应法将空闲区表按大小递减排序，优点是大空闲区分割后剩余部分还是很大，还能装下较大的分区，仅一次查找就可找到所有分区，不易产生碎片，对中小型文件分配分区操作有利。但造成存储器中缺乏大的空闲区，对大型文件的分区分配不利。<br>首次适应法将空闲区表按首址递增排序，尽可能先使用低地址空间，当需要较大分区时在高地址空间有较大的满足可能性，方法易于实现，但每次查找都从低址开始，增加查找开销。</p>
+<h4 id="7-11-何为内存覆盖技术（Overlay）？有何缺点？"><a href="#7-11-何为内存覆盖技术（Overlay）？有何缺点？" class="headerlink" title="7.11 何为内存覆盖技术（Overlay）？有何缺点？"></a>7.11 何为内存覆盖技术（Overlay）？有何缺点？</h4><p>内存覆盖技术将内存分为多个区间，将程序的不同段按需取用，解决大程序在小内存中的运行问题。<br>缺点：<br>编程复杂，程序员划分程序模块并确定覆盖关系，模块过大无法运行；<br>程序执行时间长，程序从外存装入内存，涉及I/O操作耗时长。 </p>
+<h4 id="7-12-何为内存交换技术（Swapping）？有何优缺点？"><a href="#7-12-何为内存交换技术（Swapping）？有何优缺点？" class="headerlink" title="7.12 何为内存交换技术（Swapping）？有何优缺点？"></a>7.12 何为内存交换技术（Swapping）？有何优缺点？</h4><p>内存交换技术是指当内存不够时将进程写到磁盘(称为换出过程)，当进程要运行时重新写回内存(称为换入过程)。<br>优点：增加程序并发数，不考虑程序结构。<br>缺点：换入和换出增加CPU开销，交换单位太大，为整个进程。</p>
+<h4 id="7-13-内存交换技术在实现过程，为何要考虑地址重定位的问题？"><a href="#7-13-内存交换技术在实现过程，为何要考虑地址重定位的问题？" class="headerlink" title="7.13 内存交换技术在实现过程，为何要考虑地址重定位的问题？"></a>7.13 内存交换技术在实现过程，为何要考虑地址重定位的问题？</h4><p>因为旧模块取出后新模块换入前，原内存位置可能被其他程序占用，所以新模块换入要重新分配内存空间。</p>
+<h4 id="7-14-内存在分配过程中产生碎片的本质是什么？有哪些方法可以消除或减轻碎片问题？"><a href="#7-14-内存在分配过程中产生碎片的本质是什么？有哪些方法可以消除或减轻碎片问题？" class="headerlink" title="7.14 内存在分配过程中产生碎片的本质是什么？有哪些方法可以消除或减轻碎片问题？"></a>7.14 内存在分配过程中产生碎片的本质是什么？有哪些方法可以消除或减轻碎片问题？</h4><p>产生碎片的本质是: 过小的空闲区满足不了程序所需内存, 而一直得不到利用, 形成了内存碎片。<br>解决办法:<br>规定门限值：分配空闲区时, 如果剩余部分小于门限值, 则将此空闲区整体分配给此程序。<br>内存拼接技术：将内存碎片(所有的空闲区)拼接成一个大的空闲区，但这种方法消耗系统资源。<br>让程序能够在不同内存分区进行运行：把程序分开装入不同的空闲区, 充分利用空闲区，避免造成碎片。</p>
+<h4 id="7-15-何为程序运行的局部性？"><a href="#7-15-何为程序运行的局部性？" class="headerlink" title="7.15 何为程序运行的局部性？"></a>7.15 何为程序运行的局部性？</h4><p>程序在一个有限的时间段内访问的代码和数据往往集中在有限的地址范围内，把程序的一部分装入内存在较大概率上足够让其运行一小段时间。</p>
+<h4 id="7-16-试述页式内存管理方案的概念，进程装入和使用内存的原则？"><a href="#7-16-试述页式内存管理方案的概念，进程装入和使用内存的原则？" class="headerlink" title="7.16 试述页式内存管理方案的概念，进程装入和使用内存的原则？"></a>7.16 试述页式内存管理方案的概念，进程装入和使用内存的原则？</h4><p>页式虚拟内存管理把进程空间和内存空间划分成等大小的小片，进程的小片称为页，内存的小片称为页框。<br>进程装入和使用内存的原则：只把程序部分页装入内存便可运行，页在内存中占用的页框不必相邻，需要新页时按需从硬盘中调入内存，不再运行的页及时删除。</p>
+<h4 id="7-17-何为页表？描述利用页表完成页式地址映射的过程。"><a href="#7-17-何为页表？描述利用页表完成页式地址映射的过程。" class="headerlink" title="7.17 何为页表？描述利用页表完成页式地址映射的过程。"></a>7.17 何为页表？描述利用页表完成页式地址映射的过程。</h4><p>页表记录页与页框的对应关系（起索引作用）。<br>地址映射过程分为三步：从VA分离页号P和页内偏移W；查页表，以P为索引查页框号P’；计算物理地址MA，MA=P’×页大小+W。</p>
+<h4 id="7-18-何为快表？描述有快表的情况下页式地址的映射过程。"><a href="#7-18-何为快表？描述有快表的情况下页式地址的映射过程。" class="headerlink" title="7.18 何为快表？描述有快表的情况下页式地址的映射过程。"></a>7.18 何为快表？描述有快表的情况下页式地址的映射过程。</h4><p>快表是指页表放在Cache中。<br><a rel=操作系统课程学习笔记七-存储管理 href="/2020/03/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/1.png" title="页式地址的映射过程" data-fancybox="images"><img src="/2020/03/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/1.png" alt="页式地址的映射过程"></a></p>
+<h4 id="7-19-在有快表的存储管理系统中，一条访存指令要访问到真正的数据，需要访问内存几次？"><a href="#7-19-在有快表的存储管理系统中，一条访存指令要访问到真正的数据，需要访问内存几次？" class="headerlink" title="7.19 在有快表的存储管理系统中，一条访存指令要访问到真正的数据，需要访问内存几次？"></a>7.19 在有快表的存储管理系统中，一条访存指令要访问到真正的数据，需要访问内存几次？</h4><p>一次或三次。<br>如果命中Cache中的快表的情况下，从Cache中得到地址，直接去内存取数据，只需访存一次。<br>如果没有命中，需要得到内存中页表的地址，从页表中得到物理地址，最后得到数据，共三次。</p>
+<h4 id="7-20-试述页式存储管理系统的页面共享原理。"><a href="#7-20-试述页式存储管理系统的页面共享原理。" class="headerlink" title="7.20 试述页式存储管理系统的页面共享原理。"></a>7.20 试述页式存储管理系统的页面共享原理。</h4><p>在不同进程的页表中填上相同的页框号，多个进程能访问相同的内存空间，从而实现页面共享。共享页面在内存中只有一份真实存储，节省内存。</p>
+<h4 id="7-21-试述缺页中断的概念和缺页中断响应的过程。"><a href="#7-21-试述缺页中断的概念和缺页中断响应的过程。" class="headerlink" title="7.21 试述缺页中断的概念和缺页中断响应的过程。"></a>7.21 试述缺页中断的概念和缺页中断响应的过程。</h4><p>在地址映射过程中，当要访问的目的页不在内存中时，则系统产生异常中断——缺页中断。<br>缺页中断处理程序把所缺的页从页表指出的外存地址调入内存的某个页框中，并更新页表中该页对应的页框号以及修改中断位I。</p>
+<h4 id="7-22-页式虚拟内存管理是否适合实时操作系统采用？"><a href="#7-22-页式虚拟内存管理是否适合实时操作系统采用？" class="headerlink" title="7.22 页式虚拟内存管理是否适合实时操作系统采用？"></a>7.22 页式虚拟内存管理是否适合实时操作系统采用？</h4><p>不适合。<br>因为采用页式虚拟内存管理时，操作系统所需指令会储存在三种不同的存储介质中，访问时间大小关系：cache&lt;内存&lt;外存（硬盘）。<br>这样给每条指令或过程的完成时间添加了很大的不确定性，不符合“实时操作系统：每条指令或过程的完成时间是确定的或有上限”的要求。</p>
+<h4 id="7-23-何为页面淘汰？页面淘汰的主要算法有哪些？"><a href="#7-23-何为页面淘汰？页面淘汰的主要算法有哪些？" class="headerlink" title="7.23 何为页面淘汰？页面淘汰的主要算法有哪些？"></a>7.23 何为页面淘汰？页面淘汰的主要算法有哪些？</h4><p>当发生缺页中断时，如果操作系统内存中没有空闲页面，则操作系统必须在内存选择一个页面将其移出内存，以便为即将调入的页面让出空间，这一过程称为页面淘汰。而用来选择淘汰哪一页的规则叫做淘汰策略。<br>主要有以下几种淘汰策略：<br>最佳算法（OPT）：从主存中移出永远不再需要或最长时间不需要访问的页面，实践中无法实现。<br>先进先出淘汰算法（FIFO）：淘汰在内存中停留时间最长的页面，实现简单，对于一些特定的访问序列缺页率很高。<br>最近最久未使用淘汰算法（LRU）：淘汰最长时间未被使用的页面。<br>最不经常使用算法（LFU）：选择到当前时间被访问次数最少的页面。</p>
+<h4 id="7-24-影响缺页的因素有哪些？"><a href="#7-24-影响缺页的因素有哪些？" class="headerlink" title="7.24 影响缺页的因素有哪些？"></a>7.24 影响缺页的因素有哪些？</h4><p>淘汰算法、分配给进程的页框数、页本身的大小、程序的编制方法。</p>
+<h4 id="7-25-试述段页式存储管理的主要概念和地址映射过程。"><a href="#7-25-试述段页式存储管理的主要概念和地址映射过程。" class="headerlink" title="7.25 试述段页式存储管理的主要概念和地址映射过程。"></a>7.25 试述段页式存储管理的主要概念和地址映射过程。</h4><p>段页式存储管理是在段式存储管理中结合页式存储管理技术，在段中划分页面。<br>同时采用段表和页表实现地址映射。系统为每个进程建立一个段表； 系统为每个段建立一个页表； 段表给出每段的页表基地址及页表长度（段长）。页表给出每页对应的页框。逻辑地址：段号S、页号P和页内位移W。</p>
+<h4 id="7-26-X86-CPU-架构下有哪三种地址？"><a href="#7-26-X86-CPU-架构下有哪三种地址？" class="headerlink" title="7.26 X86 CPU 架构下有哪三种地址？"></a>7.26 X86 CPU 架构下有哪三种地址？</h4><p>逻辑地址、线性地址、物理地址。<br>逻辑地址为汇编语言的段偏移，线性地址由逻辑地址转换得到。<br>逻辑地址到线性地址为段机制，线性地址到物理地址为分页机制。</p>
+<h4 id="7-27-何为段描述符，其结构中主要包括哪些内容？"><a href="#7-27-何为段描述符，其结构中主要包括哪些内容？" class="headerlink" title="7.27 何为段描述符，其结构中主要包括哪些内容？"></a>7.27 何为段描述符，其结构中主要包括哪些内容？</h4><p>段描述符用于描述段的属性，8字节，包括段基址、段界限、段属性、段类型、访问该段最小特权级、是否在内存等信息。</p>
+<h4 id="7-28-在何为选择子？选择子的结构是什么？选择子的作用是什么？"><a href="#7-28-在何为选择子？选择子的结构是什么？选择子的作用是什么？" class="headerlink" title="7.28 在何为选择子？选择子的结构是什么？选择子的作用是什么？"></a>7.28 在何为选择子？选择子的结构是什么？选择子的作用是什么？</h4><p>选择子用于选择GDT/LDT中的某个描述符，存放在段寄存器中。<br>高13位是整数索引，给出段描述符的位置；<br>下面1位是TI域，1表示LDT中，0表示GDT中；<br>下面2位是特权级别域，从0到3。</p>
+<h4 id="7-29-逻辑地址如何通过选择子-描述符表转化为线性地址？"><a href="#7-29-逻辑地址如何通过选择子-描述符表转化为线性地址？" class="headerlink" title="7.29 逻辑地址如何通过选择子/描述符表转化为线性地址？"></a>7.29 逻辑地址如何通过选择子/描述符表转化为线性地址？</h4><p>根据选择子在GDT/LDT表中找到对应描述符，然后根据偏移地址得出线性地址。</p>
+<figure class="image-box">
+                <a rel=操作系统课程学习笔记七-存储管理 href="/2020/03/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/3.png" title="偏移地址-线性地址" data-fancybox="images"><img src="/2020/03/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/3.png" alt="偏移地址-线性地址" title class></a>
+                <p>偏移地址-线性地址</p>
+            </figure>
+
+<h4 id="7-30-Windows和Linux为何不用普通页表，而要用二级或三级页表结构？（即如果直接使用普通页表会有哪些问题？）"><a href="#7-30-Windows和Linux为何不用普通页表，而要用二级或三级页表结构？（即如果直接使用普通页表会有哪些问题？）" class="headerlink" title="7.30 Windows和Linux为何不用普通页表，而要用二级或三级页表结构？（即如果直接使用普通页表会有哪些问题？）"></a>7.30 Windows和Linux为何不用普通页表，而要用二级或三级页表结构？（即如果直接使用普通页表会有哪些问题？）</h4><p>对于大容量内存，直接使用普通页表，会占很大内存。例如4G空间，每页4K，页表每个记录占4字节，共需要4M内存储存页表，难以找到连续1K个页框存放页表。</p>
+<h4 id="7-31-Linux本质上采用的是二级页表结构。为何它在形式上要采用三级页表结构？"><a href="#7-31-Linux本质上采用的是二级页表结构。为何它在形式上要采用三级页表结构？" class="headerlink" title="7.31 Linux本质上采用的是二级页表结构。为何它在形式上要采用三级页表结构？"></a>7.31 Linux本质上采用的是二级页表结构。为何它在形式上要采用三级页表结构？</h4><p>增加Linux对硬件的适应性。</p>
+<h4 id="7-32-Linux中段机制的作用什么？"><a href="#7-32-Linux中段机制的作用什么？" class="headerlink" title="7.32 Linux中段机制的作用什么？"></a>7.32 Linux中段机制的作用什么？</h4><p>利用段机制隔离用户数据和系统数据；<br>避免逻辑地址到线性地址的转换。</p>
+<h4 id="7-33-Linux内存管理的基本框架和典型算法。"><a href="#7-33-Linux内存管理的基本框架和典型算法。" class="headerlink" title="7.33 Linux内存管理的基本框架和典型算法。"></a>7.33 Linux内存管理的基本框架和典型算法。</h4><p><a href="https://www.cnblogs.com/ralap7/p/9184773.html" target="_blank" rel="noopener">https://www.cnblogs.com/ralap7/p/9184773.html</a></p>
+<h4 id="7-34-了解“页式虚拟内存管理”的实时性？"><a href="#7-34-了解“页式虚拟内存管理”的实时性？" class="headerlink" title="7.34 了解“页式虚拟内存管理”的实时性？"></a>7.34 了解“页式虚拟内存管理”的实时性？</h4><p><a href="https://blog.csdn.net/lxc19861120/article/details/8449981" target="_blank" rel="noopener">https://blog.csdn.net/lxc19861120/article/details/8449981</a></p>
+<h4 id="7-35-了解关于Intel-CPU的保护模式的概念，了解段描述符，描述符特权级（DPL），请求特权级-RPL-等概念。"><a href="#7-35-了解关于Intel-CPU的保护模式的概念，了解段描述符，描述符特权级（DPL），请求特权级-RPL-等概念。" class="headerlink" title="7.35 了解关于Intel CPU的保护模式的概念，了解段描述符，描述符特权级（DPL），请求特权级(RPL)等概念。"></a>7.35 了解关于Intel CPU的保护模式的概念，了解段描述符，描述符特权级（DPL），请求特权级(RPL)等概念。</h4><p><a href="https://blog.csdn.net/chuanwang66/article/details/84410042" target="_blank" rel="noopener">https://blog.csdn.net/chuanwang66/article/details/84410042</a></p>
+<h4 id="7-36-Linux段机制的实现过程。"><a href="#7-36-Linux段机制的实现过程。" class="headerlink" title="7.36 Linux段机制的实现过程。"></a>7.36 Linux段机制的实现过程。</h4><p><a href="https://blog.csdn.net/hzrandd/article/details/50898817?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">https://blog.csdn.net/hzrandd/article/details/50898817?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
+<h4 id="7-37-Linux是如何解析ELF文件并加载其中内容到内存中的？"><a href="#7-37-Linux是如何解析ELF文件并加载其中内容到内存中的？" class="headerlink" title="7.37 Linux是如何解析ELF文件并加载其中内容到内存中的？"></a>7.37 Linux是如何解析ELF文件并加载其中内容到内存中的？</h4><p><a href="https://blog.csdn.net/gatieme/article/details/51628257?utm_source=blogxgwz1" target="_blank" rel="noopener">https://blog.csdn.net/gatieme/article/details/51628257?utm_source=blogxgwz1</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-03-28T10:15:09.881Z" itemprop="dateUpdated">2020-03-28 18:15:09</time>
+</span><br>
+
+
+        
+        转载请注明出处
+        
+    </div>
+    <footer>
+        <a href="https://qk6665.github.io">
+            <img src="/img/avatar.jpg" alt="qk6665">
+            qk6665
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/03/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/&title=《操作系统课程学习笔记七-存储管理》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/03/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB-%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">操作系统课程学习笔记八-设备管理</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/03/25/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AD-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">编译原理学习笔记六-自下而上的语法分析</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第七章-存储管理"><span class="post-toc-text">第七章 存储管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-1-简述实际的三级存储器体系的结构（组成）和基本原理？"><span class="post-toc-text">7.1 简述实际的三级存储器体系的结构（组成）和基本原理？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-2-存储管理有哪四大功能"><span class="post-toc-text">7.2 存储管理有哪四大功能?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-3-有哪三种地址映射方式？"><span class="post-toc-text">7.3 有哪三种地址映射方式？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-4-为何需要地址映射功能或者它的的作用是什么？在VS（C-C-）开发环境中，我们用”int-i-j-”-定义的i-j变量与地址是什么关系？"><span class="post-toc-text">7.4 为何需要地址映射功能或者它的的作用是什么？在VS（C&#x2F;C++）开发环境中，我们用”int i,j ;” 定义的i,j变量与地址是什么关系？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-5-何为动态地址映射？有什么特点"><span class="post-toc-text">7.5 何为动态地址映射？有什么特点?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-6-什么是分区存储管理？有哪些类型？"><span class="post-toc-text">7.6 什么是分区存储管理？有哪些类型？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-7-虚拟内存管理的目标是什么？"><span class="post-toc-text">7.7 虚拟内存管理的目标是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-8-使用虚拟存储管理功能的操作系统，还需不需要真是的内存？"><span class="post-toc-text">7.8 使用虚拟存储管理功能的操作系统，还需不需要真是的内存？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-9-分区存储管理用在专用的，具有特定工作任务的，嵌入式系统中，可不可行？"><span class="post-toc-text">7.9 分区存储管理用在专用的，具有特定工作任务的，嵌入式系统中，可不可行？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-10-何为放置策略？有哪些防止策略？各种防止策略的特点或优点是什么？"><span class="post-toc-text">7.10 何为放置策略？有哪些防止策略？各种防止策略的特点或优点是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-11-何为内存覆盖技术（Overlay）？有何缺点？"><span class="post-toc-text">7.11 何为内存覆盖技术（Overlay）？有何缺点？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-12-何为内存交换技术（Swapping）？有何优缺点？"><span class="post-toc-text">7.12 何为内存交换技术（Swapping）？有何优缺点？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-13-内存交换技术在实现过程，为何要考虑地址重定位的问题？"><span class="post-toc-text">7.13 内存交换技术在实现过程，为何要考虑地址重定位的问题？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-14-内存在分配过程中产生碎片的本质是什么？有哪些方法可以消除或减轻碎片问题？"><span class="post-toc-text">7.14 内存在分配过程中产生碎片的本质是什么？有哪些方法可以消除或减轻碎片问题？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-15-何为程序运行的局部性？"><span class="post-toc-text">7.15 何为程序运行的局部性？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-16-试述页式内存管理方案的概念，进程装入和使用内存的原则？"><span class="post-toc-text">7.16 试述页式内存管理方案的概念，进程装入和使用内存的原则？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-17-何为页表？描述利用页表完成页式地址映射的过程。"><span class="post-toc-text">7.17 何为页表？描述利用页表完成页式地址映射的过程。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-18-何为快表？描述有快表的情况下页式地址的映射过程。"><span class="post-toc-text">7.18 何为快表？描述有快表的情况下页式地址的映射过程。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-19-在有快表的存储管理系统中，一条访存指令要访问到真正的数据，需要访问内存几次？"><span class="post-toc-text">7.19 在有快表的存储管理系统中，一条访存指令要访问到真正的数据，需要访问内存几次？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-20-试述页式存储管理系统的页面共享原理。"><span class="post-toc-text">7.20 试述页式存储管理系统的页面共享原理。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-21-试述缺页中断的概念和缺页中断响应的过程。"><span class="post-toc-text">7.21 试述缺页中断的概念和缺页中断响应的过程。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-22-页式虚拟内存管理是否适合实时操作系统采用？"><span class="post-toc-text">7.22 页式虚拟内存管理是否适合实时操作系统采用？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-23-何为页面淘汰？页面淘汰的主要算法有哪些？"><span class="post-toc-text">7.23 何为页面淘汰？页面淘汰的主要算法有哪些？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-24-影响缺页的因素有哪些？"><span class="post-toc-text">7.24 影响缺页的因素有哪些？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-25-试述段页式存储管理的主要概念和地址映射过程。"><span class="post-toc-text">7.25 试述段页式存储管理的主要概念和地址映射过程。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-26-X86-CPU-架构下有哪三种地址？"><span class="post-toc-text">7.26 X86 CPU 架构下有哪三种地址？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-27-何为段描述符，其结构中主要包括哪些内容？"><span class="post-toc-text">7.27 何为段描述符，其结构中主要包括哪些内容？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-28-在何为选择子？选择子的结构是什么？选择子的作用是什么？"><span class="post-toc-text">7.28 在何为选择子？选择子的结构是什么？选择子的作用是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-29-逻辑地址如何通过选择子-描述符表转化为线性地址？"><span class="post-toc-text">7.29 逻辑地址如何通过选择子&#x2F;描述符表转化为线性地址？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-30-Windows和Linux为何不用普通页表，而要用二级或三级页表结构？（即如果直接使用普通页表会有哪些问题？）"><span class="post-toc-text">7.30 Windows和Linux为何不用普通页表，而要用二级或三级页表结构？（即如果直接使用普通页表会有哪些问题？）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-31-Linux本质上采用的是二级页表结构。为何它在形式上要采用三级页表结构？"><span class="post-toc-text">7.31 Linux本质上采用的是二级页表结构。为何它在形式上要采用三级页表结构？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-32-Linux中段机制的作用什么？"><span class="post-toc-text">7.32 Linux中段机制的作用什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-33-Linux内存管理的基本框架和典型算法。"><span class="post-toc-text">7.33 Linux内存管理的基本框架和典型算法。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-34-了解“页式虚拟内存管理”的实时性？"><span class="post-toc-text">7.34 了解“页式虚拟内存管理”的实时性？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-35-了解关于Intel-CPU的保护模式的概念，了解段描述符，描述符特权级（DPL），请求特权级-RPL-等概念。"><span class="post-toc-text">7.35 了解关于Intel CPU的保护模式的概念，了解段描述符，描述符特权级（DPL），请求特权级(RPL)等概念。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-36-Linux段机制的实现过程。"><span class="post-toc-text">7.36 Linux段机制的实现过程。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-37-Linux是如何解析ELF文件并加载其中内容到内存中的？"><span class="post-toc-text">7.37 Linux是如何解析ELF文件并加载其中内容到内存中的？</span></a></li></ol></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://qk6665.github.io/" target="_blank">HOME</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/qk6665" target="_blank">GITHUB</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                qk6665 &copy; 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/03/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/&title=《操作系统课程学习笔记七-存储管理》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE+CAAAAAAxUyPsAAAFQ0lEQVR42u3aQW7jMBAEwPz/01lgTwEcS90zVBDslk6BY0tk0YCHPfz4iK/Pv9fXv79e168nd3h9//UYXl+/fu5szMcufPjw4cOHL3jA62PyT10P6Ppu7WLk3AlxboIPHz58+PBt+GbFyrt3Xg8rKTty+k2BlY/z7ev48OHDhw/fY3ztRv26XGhLlllhkRdk+PDhw4cP32/ja6OBdjM/axvkDYDZUuHDhw8fPnxP8LXt5DZMz7fomyKjXc7ZfPHhw4cPH74N375c+Pf+Pnzhw4cPHz58cTkyi+OTaL4tXGbthLY1Xmjgw4cPHz58I408Os+Z2s8m90menm/s8yW8GSE+fPjw4cMXzzQP6NtI/YmJtYfPkjKobQl8U7Lgw4cPHz58ow5yW1jM+NoGQP702Rjag3RREYMPHz58+PC9eT2P12et9JZytmDtnWfvvInp8eHDhw8fvvi5s4Z00kKeNc7bYKKNDNr71GEBPnz48OHDl+bkH5sbzaY9K2jyQicJKdroHx8+fPjw4dvwJVvxvNBJHpwXEKdw829QOyp8+PDhw4cvH9UTzeb8/U9s8vMoIVmAm6IHHz58+PDhK/mSyKBtop9ajDYun8UBs8UrEhd8+PDhw4fvZc/bTrttk+dN9H1TPCdry5pv3o8PHz58+PCVfGeva5p2o55Db5Z5VqLhw4cPHz58M77NFjoBasOCvLjJFykvkvJ54cOHDx8+fDO+/cZ4w/TEf2cBxGZ2+PDhw4cPXz67WSO8bWPnkfrsGFxeeLWt/Zvx4MOHDx8+fKNZ5Cn+vtW9mdhsDPlXoQ1Q8OHDhw8fvhlfC7GffFKytG3sWXGzHw8+fPjw4cOXjycfyuZnPh/cqZFsSqXiKfjw4cOHD9/kKcMf+7bZvA/fN3VZHj1sGg/48OHDhw9f3ixPttNJObI57tY+K291b+YYxfT48OHDhw9f2SDPB7SqjBZT3TTv23nhw4cPHz58T/O1cflmy70paGaNgdkTo7AAHz58+PDhG/HN2uFt8/vUpr1tjW8WYHjKAB8+fPjw4Xvz2c2Pel6IfMZXG+XvmwpJNYIPHz58+PCd4pttvPefmhUom7IjGU9b4uDDhw8fPnw5X77xTqCHx7zWm/n2SzAbGz58+PDhw/cEX7IJPxWXn2oJ5AVTUcEFxwLw4cOHDx++lq89fHYqAmjD8bNH6PbcNyPBhw8fPnz43txzz9T+8G+OqbXTy5/SfvbYtwwfPnz48P1nfEnpMCtH8uNrbUCwD+43ZRY+fPjw4cP3NN+srGlLkFkb/mzLIZfBhw8fPnz4Znx5FJ6XF0n5kuPuy5087GhDBHz48OHDh2/GN4vO93doC4hN3J8XSUXwgQ8fPnz48JV8bfM7Ccr3jfb2UFob9M/a4fjw4cOHD9+eL9825+uwOdZ2YBsfL8CM+G3igg8fPnz48AV8s23zPjTfxPGzpU1ebwMOfPjw4cOHr+WbHfZqt9abYL2F2H8V8uIMHz58+PDhm/HNio9NEzqPyDfH3dqip24G4MOHDx8+fGu+fSM5CQXyQD8vTVanA/JiZZbu48OHDx8+fOV1KhbPt/Q5WbtsyQLkJRE+fPjw4cPX8s3i9Zyv7du3BVPegN+0AW7OF+DDhw8fPnwlXxFSx8H9rDhoQ/MkgGjjg1VNhw8fPnz48B3ia+HyDX8e6yeIsyNos5Y/Pnz48OHD9/N8syghOeiWN783HYnVOPHhw4cPH74R32zyLfGmIb0vbtr2f1SE4cOHDx8+fJP9+4Gf9llcnscKPxNPzJoQ+PDhw4cPXzCGP4UwWqG3YxNnAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

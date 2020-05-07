@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>编译原理学习笔记七-属性文法和语法制导翻译 | 繁华落尽  如梦无痕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qk6665</h5>
+          <a href="mailto:478649098@qq.com" title="478649098@qq.com" class="mail">
+            
+              <span>4</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>4</span>
+            
+              <span>9</span>
+            
+              <span>0</span>
+            
+              <span>9</span>
+            
+              <span>8</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/qk6665" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>编译原理学习笔记七-属性文法和语法制导翻译</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner2.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">编译原理学习笔记七-属性文法和语法制导翻译</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-04-05T01:51:32.000Z" itemprop="datePublished" class="page-time">
+  2020-04-05
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-编译原理学习笔记七-属性文法和语法制导翻译"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">编译原理学习笔记七-属性文法和语法制导翻译</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-05 09:51:32" datetime="2020-04-05T01:51:32.000Z"  itemprop="datePublished">2020-04-05</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="第七章-属性文法和语法制导翻译"><a href="#第七章-属性文法和语法制导翻译" class="headerlink" title="第七章 属性文法和语法制导翻译"></a>第七章 属性文法和语法制导翻译</h1><h3 id="第一部分：属性文法及属性计算方法"><a href="#第一部分：属性文法及属性计算方法" class="headerlink" title="第一部分：属性文法及属性计算方法"></a>第一部分：属性文法及属性计算方法</h3><h4 id="1-属性文法"><a href="#1-属性文法" class="headerlink" title="1 属性文法"></a>1 属性文法</h4><p>以上下文无关文法为基础；<br>为每个文法符号（终结符或非终结符）配备若干相关的“值”（称为属性），代表与文法符号相关信息，如类型、值、代码序列、符号表内容等；<br>对于文法的每个产生式都配备了一组属性的语义规则，对属性进行计算和传递。</p>
+<h4 id="2-综合属性"><a href="#2-综合属性" class="headerlink" title="2 综合属性"></a>2 综合属性</h4><p>自下而上传递信息；<br>语法规则：根据右部候选式中的符号的属性计算左部被定义符号的综合属性；<br>语法树：根据子结点的属性和父结点自身的属性计算父节点的综合属性。</p>
+<h4 id="3-继承属性"><a href="#3-继承属性" class="headerlink" title="3 继承属性"></a>3 继承属性</h4><p>自上而下传递信息；<br>语法规则：根据右部候选式中的符号的属性和左部被定义符号的属性计算右部候选式中的符号的继承属性；<br>语法树：根据父结点和兄弟节点的属性计算子结点的继承属性。</p>
+<h4 id="4-属性依赖"><a href="#4-属性依赖" class="headerlink" title="4 属性依赖"></a>4 属性依赖</h4><p>对应于每个产生式A→α都有一套与之相关联的语义规则，每条规则的形式为(f是一个函数)：<br>b:=f(c1,c2,…,ck)<br>属性b依赖于属性c1,c2,…,ck：<br>b是A的一个综合属性并且c1,c2,…,ck是产生式右边文法符号的属性，或者<br>b是产生式右边某个文法符号的一个继承属性并且c1,c2,…,ck是A或产生式右边任何文法符号的属性。</p>
+<p>终结符只有综合属性，由词法分析器提供；<br>非终结符既可有综合属性也可有继承属性，文法开始符号的所有继承属性作为属性计算前的初始值。</p>
+<h4 id="5-语义规则"><a href="#5-语义规则" class="headerlink" title="5 语义规则"></a>5 语义规则</h4><p>对出现在产生式右边的继承属性和出现在产生式左边的综合属性都必须提供一个计算规则。属性计算规则中只能使用相应产生式中的文法符号的属性。</p>
+<p>出现在产生式左边的继承属性和出现在产生式右边的综合属性不由所给的产生式的属性计算规则进行计算，由其它产生式的属性规则计算或者由属性计算器的参数提供。</p>
+<p>语义规则所描述的工作可以包括属性计算、静态语义检查、符号表操作、代码生成等。</p>
+<h4 id="6-带注释的语法树"><a href="#6-带注释的语法树" class="headerlink" title="6 带注释的语法树"></a>6 带注释的语法树</h4><p>在语法树中，一个结点的综合属性的值由其子结点和它本身的属性值确定，使用自底向上的方法在每一个结点处使用语义规则计算综合属性的值，仅使用综合属性的属性文法称S－属性文法。</p>
+<p>在语法树中，一个结点的继承属性由其父结点、其兄弟结点和其本身的某些属性确定，用继承属性来表示程序设计语言结构中的上下文依赖关系很方便。</p>
+<h4 id="7-基于属性文法的处理方法"><a href="#7-基于属性文法的处理方法" class="headerlink" title="7 基于属性文法的处理方法"></a>7 基于属性文法的处理方法</h4><p>语义规则的计算：<br>产生代码；<br>在符号表中存放信息；<br>给出错误信息；<br>执行任何其它动作。  </p>
+<p>对输入串的翻译就是根据语义规则进行计算。<br>由源程序的语法结构所驱动的处理办法就是语法制导翻译法。  </p>
+<p>基于属性文法的处理方法有依赖图、 树遍历、一遍扫描。</p>
+<h4 id="8-依赖图"><a href="#8-依赖图" class="headerlink" title="8 依赖图"></a>8 依赖图</h4><p>在一棵语法树中的结点的继承属性和综合属性之间的相互依赖关系可以由依赖图(有向图)来描述。<br>为每一个包含过程调用的语义规则引入一个虚综合属性b，这样把每一个语义规则都写成b:=f(c1,c2,…,ck)的形式。<br>依赖图中为每一个属性设置一个结点，如果属性b依赖于属性c，则从属性c的结点有一条有向边连到属性b的结点。</p>
+<p>依赖图的构建算法：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for   语法树中每一结点n  do</span><br><span class="line">	   for  结点n的文法符号的每一个属性a  do</span><br><span class="line">		         为a在依赖图中建立一个结点；</span><br><span class="line">for 语法树中每一个结点n  do</span><br><span class="line">	   for  结点n所用产生式对应的每一个语义规则</span><br><span class="line">				b:&#x3D;f(c1,c2,…,ck )  do</span><br><span class="line">		         for  i:&#x3D;1 to k  do</span><br><span class="line">		               从ci结点到b结点构造一条有向边；</span><br></pre></td></tr></table></figure>
+
+<p>依赖图示例:<br><a rel=编译原理学习笔记七-属性文法和语法制导翻译 href="/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/1.png" title="依赖图示例" data-fancybox="images"><img src="/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/1.png" alt="依赖图示例"></a></p>
+<p>如果一属性文法不存在属性之间的循环依赖关系，则称该文法为良定义的；<br>一个依赖图的任何拓扑排序都给出一个语法树中结点的语义规则计算的有效顺序。</p>
+<p>属性的计算次序：<br>基础文法用于建立输入符号串的语法分析树；<br>根据语义规则建立依赖图；<br>根据依赖图的拓扑排序，得到计算语义规则的顺序。  </p>
+<h4 id="9-树遍历"><a href="#9-树遍历" class="headerlink" title="9 树遍历"></a>9 树遍历</h4><p>通过树遍历的方法计算属性的值：<br>假设语法树已建立，且树中已带有开始符号的继承属性和终结符的综合属性，以某种次序遍历语法树，直至计算出所有属性。<br>深度优先，从左到右的遍历。 </p>
+<p>树遍历算法：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">While  还有未被计算的属性  do</span><br><span class="line">	VisitNode(S) 	  &#x2F;*S是开始符号*&#x2F;</span><br><span class="line"></span><br><span class="line">procedure VisitNode (N:Node) ;</span><br><span class="line">begin</span><br><span class="line">     if N是一个非终结符 then  &#x2F;*假设其产生式为N→X1…Xm*&#x2F;</span><br><span class="line">	     for i :&#x3D;1 to  m  do</span><br><span class="line">              if Xi∈VN  then &#x2F;*即Xi是非终结符*&#x2F;</span><br><span class="line">		         begin</span><br><span class="line">		              计算Xi的所有能够计算的继承属性；</span><br><span class="line">		              VisitNode (Xi)</span><br><span class="line">              end;</span><br><span class="line">     计算N的所有能够计算的综合属性</span><br></pre></td></tr></table></figure>
+
+<p>树遍历算法示例：<br>考虑属性的文法G(S)，其中，<br>S有继承属性a，综合属性b，<br>X有继承属性c、综合属性d，<br>Y有继承属性e、综合属性f，<br>Z有继承属性h、综合属性g。  </p>
+<p><a rel=编译原理学习笔记七-属性文法和语法制导翻译 href="/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/2.png" title="树遍历示例" data-fancybox="images"><img src="/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/2.png" alt="树遍历示例"></a></p>
+<h4 id="10-一遍扫描（效率较高）"><a href="#10-一遍扫描（效率较高）" class="headerlink" title="10 一遍扫描（效率较高）"></a>10 一遍扫描（效率较高）</h4><p>一遍扫描在语法分析的同时计算属性值，取决于所采用的语法分析方法和属性的计算次序。<br>所谓语法制导翻译法，直观上说就是为文法中每个产生式配上一组语义规则，并且在语法分析的同时执行这些语义规则。<br>语义规则被计算的时机：<br>自上而下分析，一个产生式匹配输入串成功时；<br>自下而上分析，一个产生式被用于进行归约时 。</p>
+<p>抽象语法树：<br>抽象语法树(Abstract Syntax Tree，AST)，在语法树中去掉那些对翻译不必要的信息，从而获得更有效的源程序中间表示。<br><a rel=编译原理学习笔记七-属性文法和语法制导翻译 href="/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/3.png" title="抽象语法树" data-fancybox="images"><img src="/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/3.png" alt="抽象语法树"></a></p>
+<p>建立表达式的抽象语法树：<br>mknode(op, left, right) 建立一个运算符号结点，标号是op，两个域left和right分别指向左子树和右子树；<br>mkleaf(id, entry) 建立一个标识符结点，标号为id，一个域entry指向标识符在符号表中的入口；<br>mkleaf(num, val) 建立一个数结点，标号为num，一个域val用于存放数的值。</p>
+<p>建立抽象语法树的语义规则：<br>E→E1+T 转换为 <code>E.nptr := mknode(&#39;+&#39;, E1.nptr, T.nptr )</code><br>E→E1-T 转换为 <code>E.nptr := mknode(&#39;-&#39;, E1.nptr, T.nptr )</code><br>E→T 转换为 <code>E.nptr := T.nptr</code><br>T→id 转换为 <code>T.nptr := mkleaf ( id, id.entry )</code><br>T→num 转换为 <code>T.nptr := mkleaf ( num, num.val )</code>   </p>
+<p>示例：<br><a rel=编译原理学习笔记七-属性文法和语法制导翻译 href="/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/4.png" title="一遍扫描" data-fancybox="images"><img src="/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/4.png" alt="一遍扫描"></a></p>
+<h3 id="第二部分：语法制导翻译方法和翻译模式的设计"><a href="#第二部分：语法制导翻译方法和翻译模式的设计" class="headerlink" title="第二部分：语法制导翻译方法和翻译模式的设计"></a>第二部分：语法制导翻译方法和翻译模式的设计</h3><h4 id="11-S-属性文法"><a href="#11-S-属性文法" class="headerlink" title="11 S-属性文法"></a>11 S-属性文法</h4><p>S-属性文法：只含有综合属性。<br>在自下而上的分析器分析输入符号串的同时计算综合属性，<br>分析栈中保存语法符号和有关的综合属性值，<br>每当进行归约时，新的语法符号的属性值就由栈中正在归约的产生式右边符号的属性值来计算。</p>
+<p>示例：<br><a rel=编译原理学习笔记七-属性文法和语法制导翻译 href="/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/5.png" title="S-属性文法" data-fancybox="images"><img src="/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/5.png" alt="S-属性文法"></a></p>
+<h4 id="12-L-属性文法"><a href="#12-L-属性文法" class="headerlink" title="12 L-属性文法"></a>12 L-属性文法</h4><p>S－属性文法适合一遍扫描的自下而上分析；<br>L－属性文法适合一遍扫描的自上而下分析。</p>
+<p>一个属性文法称为L-属性文法，如果对于每个产生式A→X1X2…Xn，其每个语义规则中的每个属性或者是综合属性，或者是Xi(1≤i≤n)的一个继承属性且这个继承属性仅依赖于：<br>(1) 产生式中Xi左边符号X1，X2，…，Xi-1的属性；<br>(2) A的继承属性。<br>S-属性文法一定是L-属性文法</p>
+<p>L－属性文法按照深度优先遍历语法树，计算所有属性值，与LL(1) 自上而下分析方法结合，深度优先建立语法树，按照语义规则计算属性。</p>
+<h4 id="13-翻译模式"><a href="#13-翻译模式" class="headerlink" title="13 翻译模式"></a>13 翻译模式</h4><p>语义规则：给出了属性计算的定义，没有属性计算的次序等实现细节。<br>翻译模式：给出使用语义规则进行计算的次序，把实现细节表示出来。<br>在翻译模式中，和文法符号相关的属性和语义规则（也称语义动作），用花括号{ }括起来，插入到产生式右部的合适位置上。</p>
+<p>设计翻译模式的原则：<br>设计翻译模式时，必须保证当某个动作引用一个属性时它必须是有定义的，L-属性文法本身就能确保每个动作不会引用尚未计算出来的属性。  </p>
+<p>当只需要综合属性时，为每一个语义规则建立一个包含赋值的动作，并把这个动作放在相应的产生式右边的末尾。</p>
+<p>如果既有综合属性又有继承属性，在建立翻译模式时就必须保证：</p>
+<ol>
+<li>产生式右边的符号的继承属性必须在这个符号以前的动作中计算出来；  </li>
+<li>一个动作不能引用这个动作右边的符号的综合属性；  </li>
+<li>产生式左边非终结符的综合属性只有在它所引用的所有属性都计算出来以后才能计算，计算这种属性的动作通常可放在产生式右端的末尾。</li>
+</ol>
+<h4 id="14-语义动作执行时机统一"><a href="#14-语义动作执行时机统一" class="headerlink" title="14 语义动作执行时机统一"></a>14 语义动作执行时机统一</h4><p>把所有的语义动作都放在产生式的末尾，语义动作的执行时机统一。<br>转换方法：<br>加入新产生式M→𝜀，<br>把嵌入在产生式中的每个语义动作用不同的非终结符M代替，并把这个动作放在产生式M→的末尾。 </p>
+<h4 id="15-消除翻译模式中的左递归"><a href="#15-消除翻译模式中的左递归" class="headerlink" title="15 消除翻译模式中的左递归"></a>15 消除翻译模式中的左递归</h4><p>语义动作是在相同位置上的符号被展开（匹配成功）时执行的，为了构造不带回溯的自顶向下语法分析，必须消除文法中的左递归。<br>当消除一个翻译模式的基本文法的左递归时同时考虑属性计算，适合带综合属性的翻译模式。</p>
+<p>假设有翻译模式：<br>A → A1Y    {A.a:=g(A1.a, Y.y) }<br>A → X {A.a:=f(X.x) }<br>它的每个文法符号都有一个综合属性，用小写字母表示，g和f是任意函数。<br>基础文法消除左递归：<br>A → XR<br>R → YR<br>翻译模式消除左递归：<br>A →  X    {R.i:=f (X.x) }<br>         R    {A.a:=R.s}<br>R →  Y {R1.i:=g(R.i, Y.y) } R1 {R.s:=R1.s}<br>R →  𝜀 {R.s:=R.i}  </p>
+<h4 id="16-递归下降翻译器的设计"><a href="#16-递归下降翻译器的设计" class="headerlink" title="16 递归下降翻译器的设计"></a>16 递归下降翻译器的设计</h4><p>分析程序由一组递归子程序(函数)组成，每个非终结符对应一个子程序(函数)。</p>
+<p>对每个非终结符A构造一个函数过程：<br>A的属性实现为参数和变量：<br>继承属性：对A的每个继承属性设置为函数的一个形式参数；<br>综合属性：实现为函数的返回值，若有多个综合属性，打包成作为结构或记录记录返回，为了简单，我们假设每个非终结只有一个综合属性；<br>A的产生式中的每一个文法符号的每一个属性：实现为A对应的函数过程中的局部变量。</p>
+<p>非终结符A对应的函数过程中，根据当前的输入符号决定使用哪个产生式候选。</p>
+<p>按照产生式右部从左到右的，对于单词符号（终结符）、非终结符和语义动作，分别实现：<br>对于带有综合属性x的终结符X，把x的值存入为X.x设置的变量中。然后产生一个匹配X的调用，并继续读入一个输入符号。<br>对于每个非终结符B，产生一个右边带有函数调用的赋值语句c=B(b1,b2,…,bk)，其中，b1,b2,…,bk是为B的继承属性设置的变量，c是为B的综合属性设置的变量。<br>对于语义动作，把动作的代码抄进分析器中，用代表属性的变量来代替对属性的每一次引用。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-17T03:30:59.210Z" itemprop="dateUpdated">2020-04-17 11:30:59</time>
+</span><br>
+
+
+        
+        转载请注明出处
+        
+    </div>
+    <footer>
+        <a href="https://qk6665.github.io">
+            <img src="/img/avatar.jpg" alt="qk6665">
+            qk6665
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/&title=《编译原理学习笔记七-属性文法和语法制导翻译》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/04/17/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">编译原理学习笔记八-语义分析和中间代码生成</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/03/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">操作系统课程学习笔记九-文件管理</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第七章-属性文法和语法制导翻译"><span class="post-toc-text">第七章 属性文法和语法制导翻译</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一部分：属性文法及属性计算方法"><span class="post-toc-text">第一部分：属性文法及属性计算方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-属性文法"><span class="post-toc-text">1 属性文法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-综合属性"><span class="post-toc-text">2 综合属性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-继承属性"><span class="post-toc-text">3 继承属性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-属性依赖"><span class="post-toc-text">4 属性依赖</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-语义规则"><span class="post-toc-text">5 语义规则</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-带注释的语法树"><span class="post-toc-text">6 带注释的语法树</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-基于属性文法的处理方法"><span class="post-toc-text">7 基于属性文法的处理方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-依赖图"><span class="post-toc-text">8 依赖图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-树遍历"><span class="post-toc-text">9 树遍历</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-一遍扫描（效率较高）"><span class="post-toc-text">10 一遍扫描（效率较高）</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二部分：语法制导翻译方法和翻译模式的设计"><span class="post-toc-text">第二部分：语法制导翻译方法和翻译模式的设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11-S-属性文法"><span class="post-toc-text">11 S-属性文法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#12-L-属性文法"><span class="post-toc-text">12 L-属性文法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13-翻译模式"><span class="post-toc-text">13 翻译模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#14-语义动作执行时机统一"><span class="post-toc-text">14 语义动作执行时机统一</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#15-消除翻译模式中的左递归"><span class="post-toc-text">15 消除翻译模式中的左递归</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#16-递归下降翻译器的设计"><span class="post-toc-text">16 递归下降翻译器的设计</span></a></li></ol></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://qk6665.github.io/" target="_blank">HOME</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/qk6665" target="_blank">GITHUB</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                qk6665 &copy; 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/&title=《编译原理学习笔记七-属性文法和语法制导翻译》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,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" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

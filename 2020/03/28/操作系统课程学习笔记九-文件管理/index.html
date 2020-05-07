@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>操作系统课程学习笔记九-文件管理 | 繁华落尽  如梦无痕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qk6665</h5>
+          <a href="mailto:478649098@qq.com" title="478649098@qq.com" class="mail">
+            
+              <span>4</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>4</span>
+            
+              <span>9</span>
+            
+              <span>0</span>
+            
+              <span>9</span>
+            
+              <span>8</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/qk6665" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>操作系统课程学习笔记九-文件管理</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner2.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">操作系统课程学习笔记九-文件管理</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-03-28T09:25:22.000Z" itemprop="datePublished" class="page-time">
+  2020-03-28
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-操作系统课程学习笔记九-文件管理"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">操作系统课程学习笔记九-文件管理</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-03-28 17:25:22" datetime="2020-03-28T09:25:22.000Z"  itemprop="datePublished">2020-03-28</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="第九章-文件管理"><a href="#第九章-文件管理" class="headerlink" title="第九章 文件管理"></a>第九章 文件管理</h1><h4 id="9-1-什么是文件，什么是文件系统？"><a href="#9-1-什么是文件，什么是文件系统？" class="headerlink" title="9.1 什么是文件，什么是文件系统？"></a>9.1 什么是文件，什么是文件系统？</h4><p>文件是计算机信息存取的一种重要组织形式。<br>文件由若干信息项有序构成，信息项可以是字节，可以是结构化数据。用户通过读写指针存取文件的信息项。文件具有文件名，用户通过文件名存取文件。<br>负责管理文件的机构称为文件系统。负责文件的创立、撤销、读写、修改、复制、存取控制等，并管理存放文件的存储设备。</p>
+<h4 id="9-2-什么是文件的逻辑结构？有哪二种典型的逻辑结构？"><a href="#9-2-什么是文件的逻辑结构？有哪二种典型的逻辑结构？" class="headerlink" title="9.2 什么是文件的逻辑结构？有哪二种典型的逻辑结构？"></a>9.2 什么是文件的逻辑结构？有哪二种典型的逻辑结构？</h4><p>文件的逻辑结构是用户的观点，为用户提供逻辑结构清晰、使用方便的文件，强调文件信息项的构成方式和用户的存取方式。有两种典型逻辑结构：<br>记录式文件，信息项是记录，结构化数据，文件中需要保存记录长度和数量等说明信息，浪费存储空间；<br>流式文件，信息项是字节，文件长度就是字节的数量，文件无需额外说明信息，节省存储空间。</p>
+<h4 id="9-3-什么是文件的物理结构？有哪三种典型的物理结构？"><a href="#9-3-什么是文件的物理结构？有哪三种典型的物理结构？" class="headerlink" title="9.3 什么是文件的物理结构？有哪三种典型的物理结构？"></a>9.3 什么是文件的物理结构？有哪三种典型的物理结构？</h4><p>文件的物理结构是系统的观点，文件在存储设备上的存储结构，强调合理利用存储空间，缩短I/O存取时间。有三种典型物理结构：<br>连续文件，文件按逻辑块的顺序存放在硬盘连续的物理存储块中，文件目录记录文件长度（块数）和第一个储存块的块号，简单，支持顺序存取和随机存取，顺序存取速度快，但文件不易动态增长，不利于文件插入、删除，有外部碎片问题；<br>索引文件，文件存放在不连续的存储块中，靠索引表记录文件逻辑块和物理存储块的对应联系，先访问索引再访问数据，支持顺序存储和随机存储，支持文件动态增长、插入、删除；<br>串联文件，文件存放在不连续的存储块中，是靠链表的形式将储存块联系起来。适用于顺序存取，随机存取较为困难，提高了磁盘空间利用率，不存在外部碎片问题，有利于文件动态扩充、插入、删除。</p>
+<h4 id="9-4-文件还原工具的工作原理是什么？"><a href="#9-4-文件还原工具的工作原理是什么？" class="headerlink" title="9.4 文件还原工具的工作原理是什么？"></a>9.4 文件还原工具的工作原理是什么？</h4><p>删除文件后文件并未真正清空，只是文件在硬盘中首字节改变，fat表中对应簇的信息被清空；<br>FAT32文件系统数据删除后，会将描述文件存放地址的高位字节清零，文件分配表也清空，文件还原工具就是找到位置并恢复信息，但并不能百分百找到。</p>
+<h4 id="9-5-何为空闲文件，何为空闲文件目录？"><a href="#9-5-何为空闲文件，何为空闲文件目录？" class="headerlink" title="9.5 何为空闲文件，何为空闲文件目录？"></a>9.5 何为空闲文件，何为空闲文件目录？</h4><p>空闲文件：把连续空闲区看作一个特殊文件，由多个连续空闲块组成。<br>空闲文件目录：所有空闲文件代表存储设备全部空闲空间，为每个空闲文件建立的专门目录，每个表项对应一个空闲文件，包括第一个空闲块号，空闲块个数等信息。</p>
+<h4 id="9-6-何为文件目录，其作用是什么？何为目录文件？"><a href="#9-6-何为文件目录，其作用是什么？何为目录文件？" class="headerlink" title="9.6 何为文件目录，其作用是什么？何为目录文件？"></a>9.6 何为文件目录，其作用是什么？何为目录文件？</h4><p>文件目录是文件名址录，记录文件名和存放地址的目录表，具有将文件名转换为外存物理位置的功能，文件属性也记录在目录中。<br>文件目录以文件形式存于外存，这个文件叫目录文件。</p>
+<h4 id="9-7-研究FAT16文件系统的结构。"><a href="#9-7-研究FAT16文件系统的结构。" class="headerlink" title="9.7 研究FAT16文件系统的结构。"></a>9.7 研究FAT16文件系统的结构。</h4><p><a href="http://blog.chinaunix.net/uid-23215128-id-2521274.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-23215128-id-2521274.html</a></p>
+<h4 id="9-8-了解Linux虚拟文件系统的概念和作用。"><a href="#9-8-了解Linux虚拟文件系统的概念和作用。" class="headerlink" title="9.8 了解Linux虚拟文件系统的概念和作用。"></a>9.8 了解Linux虚拟文件系统的概念和作用。</h4><p><a href="https://blog.csdn.net/jy54264946/article/details/61925853" target="_blank" rel="noopener">https://blog.csdn.net/jy54264946/article/details/61925853</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-03-28T10:16:33.481Z" itemprop="dateUpdated">2020-03-28 18:16:33</time>
+</span><br>
+
+
+        
+        转载请注明出处
+        
+    </div>
+    <footer>
+        <a href="https://qk6665.github.io">
+            <img src="/img/avatar.jpg" alt="qk6665">
+            qk6665
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/03/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/&title=《操作系统课程学习笔记九-文件管理》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">编译原理学习笔记七-属性文法和语法制导翻译</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/03/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB-%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">操作系统课程学习笔记八-设备管理</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第九章-文件管理"><span class="post-toc-text">第九章 文件管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-1-什么是文件，什么是文件系统？"><span class="post-toc-text">9.1 什么是文件，什么是文件系统？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-2-什么是文件的逻辑结构？有哪二种典型的逻辑结构？"><span class="post-toc-text">9.2 什么是文件的逻辑结构？有哪二种典型的逻辑结构？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-3-什么是文件的物理结构？有哪三种典型的物理结构？"><span class="post-toc-text">9.3 什么是文件的物理结构？有哪三种典型的物理结构？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-4-文件还原工具的工作原理是什么？"><span class="post-toc-text">9.4 文件还原工具的工作原理是什么？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-5-何为空闲文件，何为空闲文件目录？"><span class="post-toc-text">9.5 何为空闲文件，何为空闲文件目录？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-6-何为文件目录，其作用是什么？何为目录文件？"><span class="post-toc-text">9.6 何为文件目录，其作用是什么？何为目录文件？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-7-研究FAT16文件系统的结构。"><span class="post-toc-text">9.7 研究FAT16文件系统的结构。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-8-了解Linux虚拟文件系统的概念和作用。"><span class="post-toc-text">9.8 了解Linux虚拟文件系统的概念和作用。</span></a></li></ol></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://qk6665.github.io/" target="_blank">HOME</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/qk6665" target="_blank">GITHUB</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                qk6665 &copy; 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/03/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/&title=《操作系统课程学习笔记九-文件管理》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE+CAAAAAAxUyPsAAAFOklEQVR42u3bwW7bMBAE0Pz/T7tAr66ZmV0qKNqnUxFHEvkYwMtZ9usrvl6/r/efvP/8/dP8Nz/d+z6G813nMZ/H+fXEhQ8fPnz48AVTbQd3nmQ+uFdwJffmnyZL+PHJ+PDhw4cP34gvh2gLlLxcyJcwWcjN7JK78OHDhw8fvqf5NkPMI4kW8bxgSSmTzxcfPnz48OH7eb48TG8LoBnx7AmzYggfPnz48OG7xZeUC7em0QYHeYifFDGb8AIfPnz48OHb88229P/2vy9f+PDhw4cPX1kK5PFBUih8GsO5mJi1CpJPZxc+fPjw4cM30hgG1m248MhWPMDKxzN7Pj58+PDhw5c/Pzl2di4s8lZ3fmhstrSzsikvoYqKCR8+fPjw4Vuk0AnZ7IjbJjJoF37zh1JT4sOHDx8+fMc97+agWBujJ4fJ8gNns7B+dqCtONmHDx8+fPjwff9dv9r2z5rfs2Z8W2y10fzmU3z48OHDh+/8aVKUtEzJZPLmeltk5IfS8kX6uCT48OHDhw/fiC/ZirdxfBtMtMVKG+Xn4y+O6+HDhw8fPnwjvv02vv7Kj582K2ja2c1w8eHDhw8fvj1f3t5ug/iWbLax38T9eTscHz58+PDhu8XXtpaTzfkqEF+XQe2xs2GvAx8+fPjw4evGVv9XqLyUyQug/TLM3tKWQfjw4cOHD98tvjNlPtxNoJ88J2+Bt+OpSxZ8+PDhw4dvtNttI+y2cMnf0k5y1oafjfMP48GHDx8+fPhKvjYibwuLdkvfTqaFeDCsx4cPHz58+ILxPD3c/HoinsgXdRjW48OHDx8+fCO+PKCfDah9WtuSbzf8+R/KN2/Bhw8fPnz4Yr7NF3zbtM6/659Yhv0b//B2fPjw4cOHb8G3by23z9mUF+e3z8ZQF0b48OHDhw/fYk897K7HxUE+rDawSH4ya0UUEQk+fPjw4cNX8s2+yO9OuC2Y8rfnn+bRAz58+PDhwzfju3WEa1ZY7KPzZBb5YrRPxocPHz58+GY+7YGwfKCrjfeo0JkdPptFGPjw4cOHD1/O9wquu9DJtny2JHcbA9EfDT58+PDhwzfpHdexdV4N7afXNuM33LN34cOHDx8+fC1fvo3Pj6zdCvfzEieJCW4VRvjw4cOHD9+Mrw0F8hJnU4jsw/pbfEV/Ax8+fPjw4Yv5coK8cHnF162i51zKzGq6b+aLDx8+fPjwjfb4m812G823yzArd5K3z+7Fhw8fPnz4Nnz7QPxVXvvSYTbaPDIoZoEPHz58+PAt9un5o2f3njfhSXGTxxmz4mx1IAAfPnz48OGLc+YcZV+ItNHAz4T1+Rjw4cOHDx++DV8esrfV0L6YaFsCs1BjH+7jw4cPHz58bVjfftknMUFbOmya1m3Q37YEPo4THz58+PDhK/lmW+VZcTObfMu6b0jks8CHDx8+fPg2fJtGcltqtAuTT2wW1rfRw+U+PD58+PDh+2/49tH2vsndNtqT8eQRwCNhPT58+PDhw3fkaxvk7aGxJw605Uu4PzaHDx8+fPjwPcfXNobP9HnQkAz31rb/VkiBDx8+fPjwtXyzQmET3OelTzv0NuZo3zuEw4cPHz58+OIXJyFCW+jkDfikYLoV1q9KLnz48OHDh2/Elw+x3fbnZF+L6xZiEdbjw4cPHz58D/NtmuWzJKNtxs8WNS/C8OHDhw8fvr+NL28854vRRuqzIL4dJz58+PDhw7fhm4X1s9h9c28bZ2yaCtFv4sOHDx8+fCXfrSg8f0K+Lc9b5rfiibwgw4cPHz58+Eq+XxhM2IiOg2b1AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>算法课程笔记-图论 | 繁华落尽  如梦无痕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qk6665</h5>
+          <a href="mailto:478649098@qq.com" title="478649098@qq.com" class="mail">
+            
+              <span>4</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>4</span>
+            
+              <span>9</span>
+            
+              <span>0</span>
+            
+              <span>9</span>
+            
+              <span>8</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/qk6665" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>算法课程笔记-图论</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner2.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">算法课程笔记-图论</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-03-13T15:46:07.000Z" itemprop="datePublished" class="page-time">
+  2020-03-13
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-算法课程笔记-图论"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">算法课程笔记-图论</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-03-13 23:46:07" datetime="2020-03-13T15:46:07.000Z"  itemprop="datePublished">2020-03-13</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1><p>分为无向图和有向图<br>分为有权图和无权图（边的值）<br>图的连通性<br><a rel=算法课程笔记-图论 href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/1.png" title="自环边和平行边" data-fancybox="images"><img src="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/1.png" alt="自环边和平行边"></a>  </p>
+<h4 id="1-图的表示"><a href="#1-图的表示" class="headerlink" title="1 图的表示"></a>1 图的表示</h4><figure class="image-box">
+                <a rel=算法课程笔记-图论 href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/2.png" title="邻接矩阵" data-fancybox="images"><img src="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/2.png" alt="邻接矩阵" title class></a>
+                <p>邻接矩阵</p>
+            </figure>  
+
+<p><a rel=算法课程笔记-图论 href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/3.png" title="邻接表1" data-fancybox="images"><img src="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/3.png" alt="邻接表1"></a>  </p>
+<figure class="image-box">
+                <a rel=算法课程笔记-图论 href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/4.png" title="邻接表2" data-fancybox="images"><img src="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/4.png" alt="邻接表2" title class></a>
+                <p>邻接表2</p>
+            </figure>  
+
+<p>邻接矩阵适合表示稠密图，邻接表适合表示稀疏图。稠密与稀疏取决于边（edge）的数量。</p>
+<h4 id="2-深度优先遍历（dfs）与连通分量（Components）"><a href="#2-深度优先遍历（dfs）与连通分量（Components）" class="headerlink" title="2 深度优先遍历（dfs）与连通分量（Components）"></a>2 深度优先遍历（dfs）与连通分量（Components）</h4><p>深度优先遍历与树的前序遍历类似，但需要记录该节点是否遍历过<br><a rel=算法课程笔记-图论 href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/5.png" title="连通分量" data-fancybox="images"><img src="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/5.png" alt="连通分量"></a> </p>
+<h4 id="3-寻路"><a href="#3-寻路" class="headerlink" title="3 寻路"></a>3 寻路</h4><p>与dfs相似</p>
+<h4 id="4-广度优先遍历（bfs）与最短路径"><a href="#4-广度优先遍历（bfs）与最短路径" class="headerlink" title="4 广度优先遍历（bfs）与最短路径"></a>4 广度优先遍历（bfs）与最短路径</h4><p>广度优先遍历与树的层序遍历类似，利用队列，一个节点出队，将所有相连节点加入队列，需要记录该节点是否遍历过。<br>广度优先遍历的特点在于先遍历的元素距离起点近（无权图）。</p>
+<h4 id="5-有权图（weighted-graph）"><a href="#5-有权图（weighted-graph）" class="headerlink" title="5 有权图（weighted graph）"></a>5 有权图（weighted graph）</h4><figure class="image-box">
+                <a rel=算法课程笔记-图论 href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/6.png" title="有权图" data-fancybox="images"><img src="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/6.png" alt="有权图" title class></a>
+                <p>有权图</p>
+            </figure>  
+<figure class="image-box">
+                <a rel=算法课程笔记-图论 href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/7.png" title="有权图邻接矩阵" data-fancybox="images"><img src="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/7.png" alt="有权图邻接矩阵" title class></a>
+                <p>有权图邻接矩阵</p>
+            </figure>  
+<figure class="image-box">
+                <a rel=算法课程笔记-图论 href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/8.png" title="有权图邻接表" data-fancybox="images"><img src="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/8.png" alt="有权图邻接表" title class></a>
+                <p>有权图邻接表</p>
+            </figure>  
+
+<h4 id="6-最小生成树和切分定理（cut-property）"><a href="#6-最小生成树和切分定理（cut-property）" class="headerlink" title="6 最小生成树和切分定理（cut property）"></a>6 最小生成树和切分定理（cut property）</h4><p>n-1条边连接了n个节点，称为生成树。若总权值最小，称为最小生成树。<br>将图进行切分，边的两个节点分属两半称为横切边。<br>切分定理：对于任意切分，横切边中权值最小的边属于最小生成树。  </p>
+<h4 id="7-prim算法"><a href="#7-prim算法" class="headerlink" title="7 prim算法"></a>7 prim算法</h4><figure class="image-box">
+                <a rel=算法课程笔记-图论 href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/9.png" title="有权图邻接表" data-fancybox="images"><img src="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/9.png" alt="有权图邻接表" title class></a>
+                <p>有权图邻接表</p>
+            </figure>  
+
+<h4 id="8-kruskal算法"><a href="#8-kruskal算法" class="headerlink" title="8 kruskal算法"></a>8 kruskal算法</h4><h4 id="9-最短路径问题与松弛操作（relaxation）"><a href="#9-最短路径问题与松弛操作（relaxation）" class="headerlink" title="9 最短路径问题与松弛操作（relaxation）"></a>9 最短路径问题与松弛操作（relaxation）</h4><p>松弛操作是最短路径问题的核心。</p>
+<h4 id="10-dijkstra算法"><a href="#10-dijkstra算法" class="headerlink" title="10 dijkstra算法"></a>10 dijkstra算法</h4><p>前提：没有负权边。<br><a rel=算法课程笔记-图论 href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/10.png" title="dijkstra算法" data-fancybox="images"><img src="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/10.png" alt="dijkstra算法"></a><br>如图所示，0到2的路径最短，因此0到2的最短路径可以确定为2。  </p>
+<p><a rel=算法课程笔记-图论 href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/11.png" title="dijkstra算法" data-fancybox="images"><img src="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/11.png" alt="dijkstra算法"></a><br>如图所示，2到1的距离是1，则0到1的最短距离更新为3，距离为5的边被废弃，这一操作为松弛操作。  </p>
+<p>通过上述两种操作，可得到如下结果。<br><a rel=算法课程笔记-图论 href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/12.png" title="dijkstra算法" data-fancybox="images"><img src="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/12.png" alt="dijkstra算法"></a>   </p>
+<h4 id="11-负权边与bellman-ford算法"><a href="#11-负权边与bellman-ford算法" class="headerlink" title="11 负权边与bellman-ford算法"></a>11 负权边与bellman-ford算法</h4><p>如果有负权环，则没有最短路径。<br>bellman-ford算法可解决负权边最短路径问题。<br>最短路径最多经过n个节点，否则就有负权环。<br>一个点的一次松弛操作就是找到经过这个点的另外一条路径，多一条边，权值更小。从一点到另外一点最多有n-1条边。对所有的点进行n-1次松弛操作，找到最短路径。如果n-1次松弛操作后还可以继续松弛，则有负权环。  </p>
+<h4 id="12-拓扑排序"><a href="#12-拓扑排序" class="headerlink" title="12 拓扑排序"></a>12 拓扑排序</h4><p>用于有向无环图</p>
+<h4 id="13-课程用到的算法思想"><a href="#13-课程用到的算法思想" class="headerlink" title="13 课程用到的算法思想"></a>13 课程用到的算法思想</h4><figure class="image-box">
+                <a rel=算法课程笔记-图论 href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/13.png" title="总结" data-fancybox="images"><img src="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/13.png" alt="总结" title class></a>
+                <p>总结</p>
+            </figure>  
+
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-03-25T08:55:06.194Z" itemprop="dateUpdated">2020-03-25 16:55:06</time>
+</span><br>
+
+
+        
+        转载请注明出处
+        
+    </div>
+    <footer>
+        <a href="https://qk6665.github.io">
+            <img src="/img/avatar.jpg" alt="qk6665">
+            qk6665
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/&title=《算法课程笔记-图论》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/03/16/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%94-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">编译原理学习笔记五-自上而下的语法分析</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%B9%B6%E6%9F%A5%E9%9B%86/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">算法课程笔记-并查集</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#图论"><span class="post-toc-text">图论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-图的表示"><span class="post-toc-text">1 图的表示</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-深度优先遍历（dfs）与连通分量（Components）"><span class="post-toc-text">2 深度优先遍历（dfs）与连通分量（Components）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-寻路"><span class="post-toc-text">3 寻路</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-广度优先遍历（bfs）与最短路径"><span class="post-toc-text">4 广度优先遍历（bfs）与最短路径</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-有权图（weighted-graph）"><span class="post-toc-text">5 有权图（weighted graph）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-最小生成树和切分定理（cut-property）"><span class="post-toc-text">6 最小生成树和切分定理（cut property）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-prim算法"><span class="post-toc-text">7 prim算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-kruskal算法"><span class="post-toc-text">8 kruskal算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-最短路径问题与松弛操作（relaxation）"><span class="post-toc-text">9 最短路径问题与松弛操作（relaxation）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-dijkstra算法"><span class="post-toc-text">10 dijkstra算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11-负权边与bellman-ford算法"><span class="post-toc-text">11 负权边与bellman-ford算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#12-拓扑排序"><span class="post-toc-text">12 拓扑排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13-课程用到的算法思想"><span class="post-toc-text">13 课程用到的算法思想</span></a></li></ol></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://qk6665.github.io/" target="_blank">HOME</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/qk6665" target="_blank">GITHUB</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                qk6665 &copy; 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/03/13/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%9B%BE%E8%AE%BA/&title=《算法课程笔记-图论》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAEA0lEQVR42u3ay27iQBAF0Pz/TzPSrBJNMPdWtUlGOr1CYEz38aKox8dHvB5/V/7p53eevf78zueVfPrv6+trDi8cOHDgwBEc9dm6vubZfa7fuf5WcuD8+vyMOHDgwIHjLMd1+MwJ8oCaB85THNEfCBw4cODA8UaONsHb3OGO0IsDBw4cOP4XjrzOtilK5gVHHDhw4MDxGzhmKVZbBNy3lGaFv1tqpThw4MCBYx7v6oD3217fON+BAwcOHDjiELspvbWtrLxNdR0gH4uFAwcOHDj2HHkq1camfCRi1oLalzKLjBYHDhw4cMQceSI0G4lLgm479JYXKHO4L/87cODAgQPHUY5koC1JonLiGVD72KJAjgMHDhw41hxtKMqPNEv28nJhG5g3fDhw4MCBIz9Xsq28gDgLk5tkbN9w+uZ/Bw4cOHDguIFjNpowC375r7RFyTb848CBAweOPUc7WNCGtHyj+Xdnpcn8F3HgwIEDx4ajTdjaJGpGOXuGeZL59DUOHDhw4DjKEbX242G4vIGUp395OyrH/XI3HDhw4MBxiGNz+DZlmgXpfYGy6FzhwIEDB45DHO0m8i3mgTNJw5LmUzsw8SWFw4EDBw4cC47ZFtvttilfHozbgYyofYUDBw4cOA5xzNKeNhy2Taz8T0DeJHtxJQ4cOHDgOMSRN4fahGp2/zZ8tr/+9Ls4cODAgWPN0SY/+TDBPrlKDpkPRhRYOHDgwIFjwTHbVjv00MLNxibaQI4DBw4cOO7jmJXt2tbOqeLgftXFQRw4cODAEXDMhgySoJu3i2YtotnIxYvgjQMHDhw4DnG0gwh5cvUI1gY0KUQWZUQcOHDgwHEzR56StSFtNsSQh/nDkx04cODAgaOcCktulDdv8qLeJj2b3a2e78CBAwcOHCVHnpjlW0mKjHkhsm19zQb+6pwVBw4cOHDErZ28bFeX3kZBsR2bu/5zED0eHDhw4MBxiKPI9sogmm89b1nlUbLeMw4cOHDgWHPMSmn5OEJScNy0o9q21jDHxYEDBw4cAUe73Vko3aRws4fU3h8HDhw4cLyT41RTqmj8xAdod/gieOPAgQMHjkMceeFvU7abFQRnyd7wAePAgQMHjjVHO2S2KRHOgutsb/mvfHM9Dhw4cOBYcDzK1Qbg2fX7JG043IADBw4cONYc+yJdmyzN0rl2lGGTLuLAgQMHjj3HJrgmoasdmGjv1rbEXpwFBw4cOHAc4mjTp/wYs9jeDih8lOtFoMWBAwcOHG/hyBtReQLWXrlvO12ngjhw4MCB46c42m3lAfLFdkfJZ7ETHDhw4MBxiGMzxLDva51qL+V9tlvaTjhw4MCBYz3Q0F6Tl//Otrs2d8aBAwcOHPGd/wAJuZEDCfV49QAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

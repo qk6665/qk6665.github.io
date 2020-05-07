@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>编译原理学习笔记八-语义分析和中间代码生成 | 繁华落尽  如梦无痕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qk6665</h5>
+          <a href="mailto:478649098@qq.com" title="478649098@qq.com" class="mail">
+            
+              <span>4</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>4</span>
+            
+              <span>9</span>
+            
+              <span>0</span>
+            
+              <span>9</span>
+            
+              <span>8</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/qk6665" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                CATEGORIES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-plus-square"></i>
+                CUSTOM
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>编译原理学习笔记八-语义分析和中间代码生成</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner2.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">编译原理学习笔记八-语义分析和中间代码生成</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-04-17T01:33:52.000Z" itemprop="datePublished" class="page-time">
+  2020-04-17
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-编译原理学习笔记八-语义分析和中间代码生成"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">编译原理学习笔记八-语义分析和中间代码生成</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-17 09:33:52" datetime="2020-04-17T01:33:52.000Z"  itemprop="datePublished">2020-04-17</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="第八章-语义分析和中间代码生成"><a href="#第八章-语义分析和中间代码生成" class="headerlink" title="第八章 语义分析和中间代码生成"></a>第八章 语义分析和中间代码生成</h1><h3 id="第一部分：中间语言"><a href="#第一部分：中间语言" class="headerlink" title="第一部分：中间语言"></a>第一部分：中间语言</h3><h4 id="1-中间语言的特点和作用"><a href="#1-中间语言的特点和作用" class="headerlink" title="1 中间语言的特点和作用"></a>1 中间语言的特点和作用</h4><p>特点：<br>独立于机器；<br>复杂性界于源语言和目标语言之间。<br>引入中间语言的优点：<br>使编译程序的结构在逻辑上更为简单明确 ；<br>便于进行与机器无关的代码优化工作 ；<br>易于移植。</p>
+<figure class="image-box">
+                <a rel=编译原理学习笔记八-语义分析和中间代码生成 href="/2020/04/17/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/1.png" title="中间语言的地位" data-fancybox="images"><img src="/2020/04/17/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/1.png" alt="中间语言的地位" title class></a>
+                <p>中间语言的地位</p>
+            </figure>
+
+<h4 id="2-常用的中间语言"><a href="#2-常用的中间语言" class="headerlink" title="2 常用的中间语言"></a>2 常用的中间语言</h4><p>后缀式，逆波兰表示。<br>图表示： 抽象语法树(AST)、有向无环图(DAG)。<br>三地址代码：三元式、四元式、间接三元式。</p>
+<h4 id="3-后缀式"><a href="#3-后缀式" class="headerlink" title="3 后缀式"></a>3 后缀式</h4><p>后缀式表示法：Lukasiewicz发明的一种表示表达式的方法，又称逆波兰表示法。  </p>
+<p>一个表达式E的后缀形式可以如下定义：<br>如果E是一个变量或常量，则E的后缀式是E自身；<br>如果E是E1 op E2形式的表达式，其中op是任何二元操作符，则E的后缀式为E1‘ E2’ op，其中E1‘ 和E2’ 分别为E1 和E2的后缀式；<br>如果E是(E1)形式的表达式，则E1 的后缀式就是E的后缀式。</p>
+<p>特点：<br>后缀式表示法不用括号：只要知道每个算符的目数，对于后缀式，不论从哪一端进行扫描，都能对它进行无歧义地分解；<br>后缀式的计算：用一个栈实现，自左至右扫描后缀式，每碰到运算量就把它推进栈。每碰到k目运算符就把它作用于栈顶的k个项，并用运算结果代替这k个项。</p>
+<p>示例：<br><a rel=编译原理学习笔记八-语义分析和中间代码生成 href="/2020/04/17/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/2.png" title="后缀式" data-fancybox="images"><img src="/2020/04/17/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/2.png" alt="后缀式"></a></p>
+<h4 id="4-图表示法"><a href="#4-图表示法" class="headerlink" title="4 图表示法"></a>4 图表示法</h4><p>有向无环图(Directed Acyclic Graph，简称DAG)：<br>对表达式中的每个子表达式，DAG中都有一个结点；<br>一个内部结点代表一个操作符，它的孩子代表操作数；<br>在一个DAG中代表公共子表达式的结点具有多个父结点。</p>
+<figure class="image-box">
+                <a rel=编译原理学习笔记八-语义分析和中间代码生成 href="/2020/04/17/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/3.png" title="图表示法" data-fancybox="images"><img src="/2020/04/17/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/3.png" alt="图表示法" title class></a>
+                <p>图表示法</p>
+            </figure>
+
+<h4 id="5-三地址代码"><a href="#5-三地址代码" class="headerlink" title="5 三地址代码"></a>5 三地址代码</h4><p>三地址代码：<code>x:=y op z</code><br>可以看成是抽象语法树或有向无环图的一种线性表示。</p>
+<p>三地址语句的种类：<br>x:=y op z<br>x:=op y<br>x:=y<br>goto L<br>if x relop y goto L或if a goto L<br>传参、转子：param x、call p,n<br>返回语句：return y<br>索引赋值：x:=y[i]、x[i]:=y<br>地址和指针赋值：x:=&amp;y、x:=<em>y、</em>x:=y  </p>
+<p>四元式：一个带有四个域的记录结构，这四个域分别称为op, arg1, arg2及result。示例：<br><a rel=编译原理学习笔记八-语义分析和中间代码生成 href="/2020/04/17/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/4.png" title="四元式" data-fancybox="images"><img src="/2020/04/17/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/4.png" alt="四元式"></a></p>
+<p>三元式：用三个域表示：op、arg1和arg2。</p>
+<p>间接三元式：三元式表+间接码表。<br>间接码表是一张指示器表，按运算的先后次序列出有关三元式在三元式表中的位置。优点是方便优化，节省空间。</p>
+<h3 id="第二部分：赋值语句的翻译"><a href="#第二部分：赋值语句的翻译" class="headerlink" title="第二部分：赋值语句的翻译"></a>第二部分：赋值语句的翻译</h3><h4 id="6-简单算术表达式及赋值语句"><a href="#6-简单算术表达式及赋值语句" class="headerlink" title="6 简单算术表达式及赋值语句"></a>6 简单算术表达式及赋值语句</h4><p>赋值语句的形式：<br>id:=E<br>赋值语句的意义(功能) ：<br>对表达式E求值并置于变量T中，id.place:=T。</p>
+<h4 id="7-产生赋值语句三地址代码的翻译模式"><a href="#7-产生赋值语句三地址代码的翻译模式" class="headerlink" title="7 产生赋值语句三地址代码的翻译模式"></a>7 产生赋值语句三地址代码的翻译模式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">S→id:&#x3D;E  </span><br><span class="line">&#123; p:&#x3D;lookup(id.name);  </span><br><span class="line">if p≠nil then  emit(p ‘:&#x3D;’ E.place)  </span><br><span class="line">else error  &#125;</span><br><span class="line"></span><br><span class="line">E→E1+E2  </span><br><span class="line">&#123; E.place:&#x3D;newtemp;  </span><br><span class="line">emit(E.place ‘:&#x3D;’ E1.place ‘+’ E2.place)&#125;  </span><br><span class="line"></span><br><span class="line">E→E1*E2  </span><br><span class="line">&#123; E.place:&#x3D;newtemp;  </span><br><span class="line">emit(E.place ‘:&#x3D;’ E 1.place ‘*’ E 2.place)&#125;</span><br><span class="line"></span><br><span class="line">E→-E1  </span><br><span class="line">&#123; E.place:&#x3D;newtemp;  </span><br><span class="line">emit(E.place‘:&#x3D;’ ‘uminus’ E 1.place) &#125;</span><br><span class="line"></span><br><span class="line">E→(E1)  </span><br><span class="line">&#123; E.place:&#x3D;E1.place &#125;</span><br><span class="line"></span><br><span class="line">E→id  </span><br><span class="line">&#123; p:&#x3D;lookup(id.name);  </span><br><span class="line">if p≠nil then  E.place:&#x3D;p  </span><br><span class="line">else error &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-数组元素引用的翻译"><a href="#8-数组元素引用的翻译" class="headerlink" title="8 数组元素引用的翻译"></a>8 数组元素引用的翻译</h4><h4 id="9-类型转换"><a href="#9-类型转换" class="headerlink" title="9 类型转换"></a>9 类型转换</h4><p>示例：<br>x := y＋i*j，其中x、y为实型；i、j为整型，该赋值句产生的三地址代码为：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">T1 :&#x3D; i  int*  j  </span><br><span class="line">T3 :&#x3D; inttoreal  T1  </span><br><span class="line">T2 :&#x3D; y  real+ T3  </span><br><span class="line">x :&#x3D; T2</span><br></pre></td></tr></table></figure>
+<p>用E.type表示非终结符E的类型属性，产生式E→E1 op E2的语义动作中关于E.type的语义规则可定义为：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;  if E1.type&#x3D;integer and E2.type&#x3D;integer  </span><br><span class="line">       E.type:&#x3D;integer  </span><br><span class="line">    else E.type:&#x3D;real  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第三部分：布尔表达式的翻译"><a href="#第三部分：布尔表达式的翻译" class="headerlink" title="第三部分：布尔表达式的翻译"></a>第三部分：布尔表达式的翻译</h3><h4 id="10-布尔表达式的简介"><a href="#10-布尔表达式的简介" class="headerlink" title="10 布尔表达式的简介"></a>10 布尔表达式的简介</h4><p>文法：<br> <code>E → E or E | E and E | not E | (E) | i rop i | i</code></p>
+<p>用途：<br>用于逻辑演算，计算逻辑值；用于控制语句的条件式。</p>
+<p>计算布尔表达式的两种方法：<br>数值表示法：如同计算算术表达式一样,一步步算。<br>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 or (not 0 and 0) or 0</span><br><span class="line">&#x3D;1 or (1 and 0) or 0</span><br><span class="line">&#x3D;1 or 0 or 0</span><br><span class="line">&#x3D;1 or 0</span><br><span class="line">&#x3D;1</span><br></pre></td></tr></table></figure>
+<p>带优化的翻译法:<br>把A or B解释成      <code>if A then true else B</code>；<br>把A and B解释成  <code>if A then B else false</code>；<br>把not A解释成    <code>if A then false else true</code>；<br>适合于作为条件表达式的布尔表达式使用。</p>
+<h4 id="11-数值表示法的翻译模式"><a href="#11-数值表示法的翻译模式" class="headerlink" title="11 数值表示法的翻译模式"></a>11 数值表示法的翻译模式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">E→E1 or E2     </span><br><span class="line">&#123; E.place:&#x3D;newtemp;</span><br><span class="line">emit(E.place ‘:&#x3D;’ E 1.place ‘or’ E2.place)&#125;</span><br><span class="line"></span><br><span class="line">E→E1 and E2</span><br><span class="line">&#123; E.place:&#x3D;newtemp;</span><br><span class="line">  emit(E.place ‘:&#x3D;’ E 1.place ‘and’ E2.place)&#125;</span><br><span class="line"></span><br><span class="line">E→not E1</span><br><span class="line">&#123; E.place:&#x3D;newtemp;</span><br><span class="line">  emit(E.place ‘:&#x3D;’ ‘not’ E 1.place) &#125;</span><br><span class="line"></span><br><span class="line">E→(E1)</span><br><span class="line">&#123; E.place:&#x3D;E1.place &#125;</span><br><span class="line"></span><br><span class="line">E→id1  relop id2 </span><br><span class="line">&#123; E.place:&#x3D;newtemp;</span><br><span class="line">  emit(‘if’  id1.place  relop.op  id2.place ‘goto’ nextstat+3);</span><br><span class="line">  emit(E.place ‘:&#x3D;’ ‘0’);</span><br><span class="line">  emit(‘goto’ nextstat+2);</span><br><span class="line">  emit(E.place‘:&#x3D;’ ‘1’) &#125;</span><br><span class="line"></span><br><span class="line">E→id </span><br><span class="line">&#123; E.place:&#x3D;id.place &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="12-产生布尔表达式三地址代码的属性文法"><a href="#12-产生布尔表达式三地址代码的属性文法" class="headerlink" title="12 产生布尔表达式三地址代码的属性文法"></a>12 产生布尔表达式三地址代码的属性文法</h4><p>语义函数newlabel，返回一个新的符号标号；<br>对于一个布尔表达式E，设置两个继承属性：E.true是E为‘真’时控制流转向的标号，E.false是E为‘假’时控制流转向的标号；<br>E.code记录E生成的三地址代码序列。</p>
+<p>E→E1 or E2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">E1.true:&#x3D;E.true;</span><br><span class="line">E1.false:&#x3D;newlabel;</span><br><span class="line">E2.true:&#x3D;E.true;</span><br><span class="line">E2.false:&#x3D;E.false;</span><br><span class="line">E.code:&#x3D;E1.code || gen(E1.false ‘:’) || E2.code</span><br></pre></td></tr></table></figure>
+
+<p>E→E1 and E2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">E1.true:&#x3D;newlabel;</span><br><span class="line">E1.false:&#x3D;E.false;</span><br><span class="line">E2.true:&#x3D;E.true;</span><br><span class="line">E2.false:&#x3D;E.fasle;</span><br><span class="line">E.code:&#x3D;E1.code || gen(E1.true ‘:’) || E2.code</span><br></pre></td></tr></table></figure>
+
+<p>E→not E1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">E1.true:&#x3D;E.false;</span><br><span class="line">E1.false:&#x3D;E.true;</span><br><span class="line">E.code:&#x3D;E1.code</span><br></pre></td></tr></table></figure>
+
+<p>E→ (E1)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">E1.true:&#x3D;E.true;</span><br><span class="line">E1.false:&#x3D;E.false;</span><br><span class="line">E.code:&#x3D;E1.code</span><br></pre></td></tr></table></figure>
+
+<p>E→id1 relop id2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">E.code:&#x3D;gen(‘if ’ id1.place relop.op id2.place ‘goto’ E.true) </span><br><span class="line">        || gen(‘goto’  E.false)</span><br></pre></td></tr></table></figure>
+
+<p>E→true：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E.code:&#x3D;gen(‘goto’  E.true)</span><br></pre></td></tr></table></figure>
+
+<p>E→false：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E.code:&#x3D;gen(‘goto’  E.false)</span><br></pre></td></tr></table></figure>
+
+<h4 id="13-一遍扫描翻译模式"><a href="#13-一遍扫描翻译模式" class="headerlink" title="13 一遍扫描翻译模式"></a>13 一遍扫描翻译模式</h4><p>以四元式为中间语言。<br>四元式存入一个数组中，数组下标代表四元式的标号。<br>约定：<br>四元式(jnz, a, -, p)    表示    <code>if  a  goto  p</code> ；<br>四元式(jrop, x, y, p) 表示    <code>if  x rop y  goto  p</code>；<br>四元式(j, -, -, p) 表示    <code>goto  p</code>。</p>
+<p>产生跳转四元式时，它的转移地址无法立即知道，需要以后扫描到特定位置时才能回过头来确定，把这些未完成的四元式地址作为E的语义值保存,待机“回填”。</p>
+<p>为非终结符E赋予两个综合属性E.truelist和E.falselist。它们分别记录布尔表达式E所对应的四元式中需回填“真”、“假”出口的四元式的标号所构成的链表。   </p>
+<p>引入语义变量和过程：<br>变量nextquad，它指向下一条将要产生但尚未形成的四元式的地址(标号)。nextquad的初值为1，每当执行一次emit之后，nextquad将自动增1；<br>函数makelist(i)，它将创建一个仅含i的新链表，其中i是四元式数组的一个下标(标号)；函数返回指向这个链的指针；<br>函数merge(p1,p2)， 把以p1和p2为链首的两条链合并为一，作为函数值，回送合并后的链首；<br>过程backpatch(p, t)，其功能是完成“回填”，把p所链接的每个四元式的第四区段都填为t。</p>
+<p>布尔表达式的文法：<br>(1) E → E1 or M E2<br>(2) E → E1 and M E2<br>(3)     E → not E1<br>(4)     E → (E1)<br>(5) E → id1 relop id2<br>(6)     E → id<br>(7) M→𝜀  </p>
+<p>E→E1 or M E2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123; backpatch(E1.falselist, M.quad);</span><br><span class="line">  E.truelist:&#x3D;merge(E1.truelist, E2.truelist);</span><br><span class="line">  E.falselist:&#x3D;E2.falselist &#125;</span><br></pre></td></tr></table></figure>
+
+<p>E→E1 and M E2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123; backpatch(E1.truelist, M.quad);</span><br><span class="line">  E.truelist:&#x3D;E2.truelist;</span><br><span class="line">  E.falselist:&#x3D;merge(E1.falselist,E2.falselist) &#125;</span><br></pre></td></tr></table></figure>
+
+<p>E→not E1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; E.truelist:&#x3D;E1.falselist;</span><br><span class="line">  E.falselist:&#x3D;E1.truelist&#125;</span><br></pre></td></tr></table></figure>
+
+<p>E→ (E1)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; E.truelist:&#x3D;E1.truelist;</span><br><span class="line">  E.falselist:&#x3D;E1.falselist&#125;</span><br></pre></td></tr></table></figure>
+
+<p>E→id1 relop id2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; E.truelist:&#x3D;makelist(nextquad);</span><br><span class="line">  E.falselist:&#x3D;makelist(nextquad+1);</span><br><span class="line">  emit(‘j’ relop.op ‘,’ id 1.place ‘,’ id 2.place‘,’　‘0’);</span><br><span class="line">  emit(‘j, －, －, 0’) &#125;</span><br></pre></td></tr></table></figure>
+
+<p>E→id：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; E.truelist:&#x3D;makelist(nextquad);</span><br><span class="line">  E.falselist:&#x3D;makelist(nextquad+1);</span><br><span class="line">  emit(‘jnz’ ‘,’ id .place ‘,’ ‘－’ ‘,’　‘0’)；</span><br><span class="line">  emit(‘ j, -, -, 0’) &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第四部分：控制语句的翻译"><a href="#第四部分：控制语句的翻译" class="headerlink" title="第四部分：控制语句的翻译"></a>第四部分：控制语句的翻译</h3><h4 id="14-常用的控制语句"><a href="#14-常用的控制语句" class="headerlink" title="14 常用的控制语句"></a>14 常用的控制语句</h4><p>S → if E then S1<br>S → if E then S1 else S2<br>S → while E do S1<br>其中E为布尔表达式。</p>
+<h4 id="15-if语句的属性文法"><a href="#15-if语句的属性文法" class="headerlink" title="15 if语句的属性文法"></a>15 if语句的属性文法</h4><p>S→if E then S1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">E.true:&#x3D;newlabel;</span><br><span class="line">E.flase:&#x3D;S.next;</span><br><span class="line">S1.next:&#x3D;S.next</span><br><span class="line">S.code:&#x3D;E.code || gen(E.true ‘:’) || S1.code</span><br></pre></td></tr></table></figure>
+
+<p>S→if E then S1 else S2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">E.true:&#x3D;newlabel;</span><br><span class="line">E.false:&#x3D;newlabel;</span><br><span class="line">S1.next:&#x3D;S.next</span><br><span class="line">S2.next:&#x3D;S.next;</span><br><span class="line">S.code:&#x3D;E.code || </span><br><span class="line">        gen(E.true ‘:’) || S1.code ||</span><br><span class="line">        gen(‘goto’  S.next) ||</span><br><span class="line">        gen(E.false ‘:’) || S2.code</span><br></pre></td></tr></table></figure>
+
+<h4 id="16-while语句的属性文法"><a href="#16-while语句的属性文法" class="headerlink" title="16 while语句的属性文法"></a>16 while语句的属性文法</h4><p>S→while E do S1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">S.begin:&#x3D;newlabel;</span><br><span class="line">E.true:&#x3D;newlabel;</span><br><span class="line">E.false:&#x3D;S.next;</span><br><span class="line">S1.next:&#x3D;S.begin;</span><br><span class="line">S.code:&#x3D;gen(S.begin ‘:’) || E.code || </span><br><span class="line">        gen(E.true ‘:’) || S1.code ||</span><br><span class="line">        gen(‘goto’  S.begin)</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="17-一遍扫描翻译控制语句"><a href="#17-一遍扫描翻译控制语句" class="headerlink" title="17 一遍扫描翻译控制语句"></a>17 一遍扫描翻译控制语句</h4><p>控制语句的文法：<br>(1) S → if E then S<br>(2) S → if E then S else S<br>(3)    S → while E do S<br>(4) S → begin L end<br>(5)    S → A<br>(6) L → L;S<br>(7)    L → S  </p>
+<p>if 语句的翻译模式：<br>S→if E then M S1：        </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; backpatch(E.truelist, M.quad);</span><br><span class="line">  S.nextlist:&#x3D;merge(E.falselist, S1.nextlist) &#125;</span><br></pre></td></tr></table></figure>
+<p>S→if E then M1 S1 N else M2 S2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123; backpatch(E.truelist, M1.quad);</span><br><span class="line">  backpatch(E.falselist, M2.quad);</span><br><span class="line">  S.nextlist:&#x3D;merge(S1.nextlist, N.nextlist, S2.nextlist) &#125;</span><br></pre></td></tr></table></figure>
+<p>M→𝜀：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; M.quad:&#x3D;nextquad &#125;</span><br></pre></td></tr></table></figure>
+<p>N→𝜀：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; N.nextlist:&#x3D;makelist(nextquad);</span><br><span class="line">  emit(‘j,－,－,－’) &#125;</span><br></pre></td></tr></table></figure>
+
+<p>while-do语句的翻译模式：<br>S → while M1 E do M2 S1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; backpatch(E.truelist, M2.quad);</span><br><span class="line">  backpatch(S1.nextlist, M1.quad);</span><br><span class="line">  S.nextlist :&#x3D; E.falselist;</span><br><span class="line">  emit(‘j,－,－,’ M1.quad)  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>M → 𝜀：    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;  M.quad :&#x3D; nextquad  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>复合语句的翻译模式：<br>S → begin L end：        </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; S.nextlist :&#x3D; L.nextlist &#125;</span><br></pre></td></tr></table></figure>
+
+<p>L → L1; M S：            </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; backpatch(L1.nextlist, M.quad);</span><br><span class="line">  L.nextlist :&#x3D; S.nextlist &#125;</span><br></pre></td></tr></table></figure>
+<p>M → 𝜀：     </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; M.quad :&#x3D; nextquad &#125;</span><br></pre></td></tr></table></figure>
+
+<p>其它几个语句的翻译：<br>S → A：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; S.nextlist :&#x3D; makelist( ) &#125;</span><br></pre></td></tr></table></figure>
+<p>L → S：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; L.nextlist :&#x3D; S.nextlist &#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-06T03:26:44.995Z" itemprop="dateUpdated">2020-05-06 11:26:44</time>
+</span><br>
+
+
+        
+        转载请注明出处
+        
+    </div>
+    <footer>
+        <a href="https://qk6665.github.io">
+            <img src="/img/avatar.jpg" alt="qk6665">
+            qk6665
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/04/17/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/&title=《编译原理学习笔记八-语义分析和中间代码生成》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/05/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D-%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%97%B6%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E7%BB%84%E7%BB%87/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">编译原理学习笔记九-程序运行时存储空间的组织</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/04/05/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%83-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">编译原理学习笔记七-属性文法和语法制导翻译</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第八章-语义分析和中间代码生成"><span class="post-toc-text">第八章 语义分析和中间代码生成</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一部分：中间语言"><span class="post-toc-text">第一部分：中间语言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-中间语言的特点和作用"><span class="post-toc-text">1 中间语言的特点和作用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-常用的中间语言"><span class="post-toc-text">2 常用的中间语言</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-后缀式"><span class="post-toc-text">3 后缀式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-图表示法"><span class="post-toc-text">4 图表示法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-三地址代码"><span class="post-toc-text">5 三地址代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二部分：赋值语句的翻译"><span class="post-toc-text">第二部分：赋值语句的翻译</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-简单算术表达式及赋值语句"><span class="post-toc-text">6 简单算术表达式及赋值语句</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-产生赋值语句三地址代码的翻译模式"><span class="post-toc-text">7 产生赋值语句三地址代码的翻译模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-数组元素引用的翻译"><span class="post-toc-text">8 数组元素引用的翻译</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-类型转换"><span class="post-toc-text">9 类型转换</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三部分：布尔表达式的翻译"><span class="post-toc-text">第三部分：布尔表达式的翻译</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-布尔表达式的简介"><span class="post-toc-text">10 布尔表达式的简介</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11-数值表示法的翻译模式"><span class="post-toc-text">11 数值表示法的翻译模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#12-产生布尔表达式三地址代码的属性文法"><span class="post-toc-text">12 产生布尔表达式三地址代码的属性文法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13-一遍扫描翻译模式"><span class="post-toc-text">13 一遍扫描翻译模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第四部分：控制语句的翻译"><span class="post-toc-text">第四部分：控制语句的翻译</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#14-常用的控制语句"><span class="post-toc-text">14 常用的控制语句</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#15-if语句的属性文法"><span class="post-toc-text">15 if语句的属性文法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#16-while语句的属性文法"><span class="post-toc-text">16 while语句的属性文法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#17-一遍扫描翻译控制语句"><span class="post-toc-text">17 一遍扫描翻译控制语句</span></a></li></ol></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://qk6665.github.io/" target="_blank">HOME</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/qk6665" target="_blank">GITHUB</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                qk6665 &copy; 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/04/17/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%85%AB-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/&title=《编译原理学习笔记八-语义分析和中间代码生成》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,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" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
