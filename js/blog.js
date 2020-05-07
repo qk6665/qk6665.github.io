@@ -21,7 +21,7 @@ $.BLOG = {
 		this.tabBar();
 	},
 	console: function() {
-		console.log('%cMellow','background:#aaa;color:#bada55', 'https://github.com/codefine/hexo-theme-mellow');
+		console.log('欢迎来到我的博客！！！！！');
 	},
 	basic: function() {
 		$.fixedClick();
