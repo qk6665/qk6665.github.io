@@ -199,7 +199,7 @@ var searchFunc = function (path, search_id, content_id) {
                 if (keywords.length === 1 && keywords[0] === "") {
                     resultContent.innerHTML = '<div id="no-result"><i class="icon icon-search icon-5x" /></div>'
                 } else if (resultItems.length === 0) {
-                    resultContent.innerHTML = '<div id="no-result"><i class="icon icon-frown-o icon-5x" /></div>'
+                    resultContent.innerHTML = '<div id="no-result"><i class="icon icon-frown-o icon-5x" /><div class="no-result-word">未找到</div></div>'
                 } else {
                     resultItems.sort(function (resultLeft, resultRight) {
                         if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
