@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>原生js函数的理解 | 繁华落尽  如梦无痕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="前端,JavaScript">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qk6665</h5>
+          <a href="mailto:478649098@qq.com" title="478649098@qq.com" class="mail">
+            
+              <span>4</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>4</span>
+            
+              <span>9</span>
+            
+              <span>0</span>
+            
+              <span>9</span>
+            
+              <span>8</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/qk6665" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章统计
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>原生js函数的理解</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner2.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">原生js函数的理解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-06-06T03:00:57.000Z" itemprop="datePublished" class="page-time">
+  2020-06-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-原生js函数的理解"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">原生js函数的理解</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-06-06 11:00:57" datetime="2020-06-06T03:00:57.000Z"  itemprop="datePublished">2020-06-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="函数的作用及用法"><a href="#函数的作用及用法" class="headerlink" title="函数的作用及用法"></a>函数的作用及用法</h1><h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数?"></a>什么是函数?</h2><ul>
+<li>具有特定功能的 n 条语句的封装体</li>
+<li>只有函数是可执行的，其它类型的数据是不可执行的</li>
+<li>函数也是对象，<code>instanceof Object===true</code></li>
+</ul>
+<h2 id="为什么要用函数"><a href="#为什么要用函数" class="headerlink" title="为什么要用函数?"></a>为什么要用函数?</h2><ul>
+<li>提高代码复用</li>
+<li>便于阅读和交流</li>
+</ul>
+<h2 id="如何定义函数"><a href="#如何定义函数" class="headerlink" title="如何定义函数?"></a>如何定义函数?</h2><ul>
+<li>函数声明</li>
+<li>表达式</li>
+</ul>
+<h2 id="调用-执行-函数"><a href="#调用-执行-函数" class="headerlink" title="调用(执行)函数"></a>调用(执行)函数</h2><ul>
+<li>直接调用：<code>test()</code></li>
+<li>构造函数：<code>new test()</code></li>
+<li>对象方法：<code>obj.test()</code></li>
+<li>间接调用其他对象方法：<code>test.call/apply(obj)</code></li>
+</ul>
+<h2 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h2><p>函数<strong>定义</strong>了但<strong>没有直接调用</strong>，但<strong>最终在特定条件下执行了</strong></p>
+<p>常见的回调函数：</p>
+<ul>
+<li>DOM 事件函数</li>
+<li>定时器函数</li>
+<li>ajax 回调函数</li>
+<li>生命周期回调函数</li>
+</ul>
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>专业术语为: IIFE (Immediately Invoked Function Expression) 立即调用函数表达式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="function"><span class="keyword">function</span> (<span class="params">w, obj</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//实现代码</span></span><br><span class="line">&#125;)(<span class="built_in">window</span>, obj)</span><br></pre></td></tr></table></figure>
+
+<p>作用：</p>
+<ul>
+<li>隐藏内部实现</li>
+<li>不污染外部命名空间</li>
+</ul>
+<h2 id="函数中的-this"><a href="#函数中的-this" class="headerlink" title="函数中的 this"></a>函数中的 this</h2><ul>
+<li>显式指定谁：<code>obj.xxx()</code></li>
+<li>通过 call/apply 指定谁调用：<code>xxx.call(obj)</code></li>
+<li>不指定谁调用：<code>xxx() : window</code></li>
+<li>回调函数：看背后是通过谁来调用的，window/其它</li>
+</ul>
+<h1 id="原型与原型链"><a href="#原型与原型链" class="headerlink" title="原型与原型链"></a>原型与原型链</h1><h2 id="原型-prototype"><a href="#原型-prototype" class="headerlink" title="原型 prototype"></a>原型 prototype</h2><p>每个函数都有一个 prototype 属性, 它默认指向一个 Object 空对象(即称为: 原型对象)。原型对象中有一个属性 constructor, 它指向函数对象。</p>
+<p>给原型对象添加属性(一般都是方法)，可以使函数的所有实例对象自动拥有原型中的属性(方法)。因此原型一般只在创建实例对象时起作用。</p>
+<h2 id="显式原型和隐式原型"><a href="#显式原型和隐式原型" class="headerlink" title="显式原型和隐式原型"></a>显式原型和隐式原型</h2><p>每个函数 function 都有一个<code>prototype</code>属性，即显式原型；每个实例对象都有一个<code>__proto__</code>属性，可称为隐式原型。对象的隐式原型的值为其对应构造函数的显式原型的值。</p>
+<figure class="image-box">
+                <a rel=原生js函数的理解 href="/2020/06/06/%E5%8E%9F%E7%94%9Fjs%E5%87%BD%E6%95%B0%E7%9A%84%E7%90%86%E8%A7%A3/1.png" title="显式原型和隐式原型" data-fancybox="images"><img src="/2020/06/06/%E5%8E%9F%E7%94%9Fjs%E5%87%BD%E6%95%B0%E7%9A%84%E7%90%86%E8%A7%A3/1.png" alt="显式原型和隐式原型" title class></a>
+                <p>显式原型和隐式原型</p>
+            </figure>
+
+<p>函数的 prototype 属性在定义函数时自动添加，默认值是一个空 Object 对象；对象的 proto 属性在创建对象时自动添加，默认值为构造函数的 prototype 属性值。</p>
+<p>原型对象即为当前实例对象的父对象。</p>
+<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>所有的实例对象都有<code>__proto__</code>属性，指向原型对象。这样通过<code>__proto__</code>属性就形成了一个链的结构——原型链。</p>
+<p>当查找对象内部的属性/方法时，js 引擎自动沿着这个原型链查找：先在自身属性中查找，找到返回；如果没有，再沿原型链向上查找，找到返回；如果最终没找到，返回 undefined。<br>当给对象属性赋值时不会使用原型链，而只是在当前对象中进行操作。</p>
+<h1 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h1><h2 id="变量提升与函数提升"><a href="#变量提升与函数提升" class="headerlink" title="变量提升与函数提升"></a>变量提升与函数提升</h2><p>变量声明提升：通过 var 定义(声明)的变量，在定义语句之前就可以访问到。值为 undefined。<br>函数声明提升：通过 function 声明的函数，在之前就可以直接调用值为函数定义(对象)。<br>先有变量提升, 再有函数提升。</p>
+<h2 id="执行上下文-1"><a href="#执行上下文-1" class="headerlink" title="执行上下文"></a>执行上下文</h2><p>执行上下文是由 js 引擎自动创建的对象，包含对应作用域中的所有变量属性。</p>
+<p>将代码分为全局代码和函数代码两种。</p>
+<p>全局执行上下文：在执行全局代码前将 window 确定为全局执行上下文，对全局数据进行预处理。var 定义的全局变量==&gt;undefined，添加为 window 的属性；function 声明的全局函数==&gt;赋值(fun)，添加为 window 的方法；this==&gt;赋值(window)。然后开始执行全局代码。 当页面刷新/关闭时死亡。</p>
+<p>函数执行上下文：在调用函数，准备执行函数体之前，创建对应的函数执行上下文对象。对局部数据进行预处理。形参变量==&gt;赋值(实参)==&gt;添加为执行上下文的属性；arguments==&gt;赋值(实参列表的伪数组)，添加为执行上下文的属性；var 定义的局部变量==&gt;undefined，添加为执行上下文的属性；function 声明的函数 ==&gt;赋值(fun)，添加为执行上下文的方法；this==&gt;赋值(调用函数的对象，如果没有指定就是 window)。然后开始执行函数体代码。函数执行完时死亡。</p>
+<h2 id="执行上下文栈"><a href="#执行上下文栈" class="headerlink" title="执行上下文栈"></a>执行上下文栈</h2><ol>
+<li>在全局代码执行前，JS 引擎就会创建一个栈来存储管理所有的执行上下文对象；</li>
+<li>在全局执行上下文(window)确定后，将其添加到栈中(压栈)；</li>
+<li>在函数执行上下文创建后，将其添加到栈中(压栈)；</li>
+<li>在当前函数执行完后，将栈顶的对象移除(出栈)；</li>
+<li>当所有的代码执行完后，栈中只剩下 window。</li>
+</ol>
+<h1 id="作用域与作用域链"><a href="#作用域与作用域链" class="headerlink" title="作用域与作用域链"></a>作用域与作用域链</h1><h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>作用域就是一块代码区域。它是静态的(相对于上下文对象)，在编写代码时就确定了。作用是隔离变量，不同作用域下同名变量不会有冲突。</p>
+<p>分类：</p>
+<ul>
+<li>全局作用域</li>
+<li>函数作用域</li>
+<li>块作用域</li>
+</ul>
+<h2 id="作用域与执行上下文"><a href="#作用域与执行上下文" class="headerlink" title="作用域与执行上下文"></a>作用域与执行上下文</h2><ol>
+<li><p>区别 1</p>
+<ul>
+<li>全局作用域之外，每个函数都会创建自己的作用域，作用域在函数定义时就已经确定了。而不是在函数调用时；</li>
+<li>全局执行上下文环境是在全局作用域确定之后, js 代码马上执行之前创建；</li>
+<li>函数执行上下文环境是在调用函数时, 函数体代码执行之前创建。</li>
+</ul>
+</li>
+<li><p>区别 2</p>
+<ul>
+<li>作用域是静态的, 只要函数定义好了就一直存在, 且不会再变化；</li>
+<li>上下文环境是动态的, 调用函数时创建, 函数调用结束时上下文环境就会被释放。</li>
+</ul>
+</li>
+<li><p>联系：上下文环境(对象)是从属于所在的作用域</p>
+<ul>
+<li>全局上下文环境==&gt;全局作用域；</li>
+<li>函数上下文环境==&gt;对应的函数使用域。</li>
+</ul>
+</li>
+</ol>
+<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>多个上下级关系的作用域形成的链，它的方向是从内到外，查找变量时就是沿着作用域链来查找，直到全局作用域, 如果还找不到就抛出找不到的异常。</p>
+<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><h2 id="闭包的概念"><a href="#闭包的概念" class="headerlink" title="闭包的概念"></a>闭包的概念</h2><p>当一个嵌套的内部(子)函数引用了嵌套的外部(父)函数的变量(函数)时, 就产生了闭包。闭包存在于嵌套的内部函数中。</p>
+<p>产生闭包的条件是函数嵌套以及内部函数引用了外部函数的数据(变量/函数)。</p>
+<p>闭包可以理解为嵌套的内部函数，也可以理解为包含被引用变量(函数)。</p>
+<p>闭包程序示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    a++</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fn2</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = fn1()</span><br><span class="line">f()</span><br><span class="line">f()</span><br></pre></td></tr></table></figure>
+
+<h2 id="闭包的意义"><a href="#闭包的意义" class="headerlink" title="闭包的意义"></a>闭包的意义</h2><p>作用：</p>
+<ol>
+<li>使函数内部的变量在函数执行完后,仍然存活在内存中(延长了局部变量的生命周期)；</li>
+<li>让函数外部可以操作到函数内部的数据(变量/函数)。</li>
+</ol>
+<p>缺点:</p>
+<ol>
+<li>变量占用内存的时间可能会过长；</li>
+<li>可能导致内存泄露。</li>
+</ol>
+<ul>
+<li>解决：及时释放，让内部函数对象成为垃圾对象。<code>f = null</code></li>
+</ul>
+<p>应用：</p>
+<p>闭包应用:</p>
+<ul>
+<li>模块化: 封装一些数据以及操作数据的函数, 向外暴露一些行为；</li>
+<li>循环遍历加监听。</li>
+</ul>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-06-06T14:58:12.472Z" itemprop="dateUpdated">2020-06-06 22:58:12</time>
+</span><br>
+
+
+        
+        转载请注明出处
+        
+    </div>
+    <footer>
+        <a href="https://qk6665.github.io">
+            <img src="/img/avatar.jpg" alt="qk6665">
+            qk6665
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qk6665.github.io/2020/06/06/%E5%8E%9F%E7%94%9Fjs%E5%87%BD%E6%95%B0%E7%9A%84%E7%90%86%E8%A7%A3/&title=《原生js函数的理解》 — 繁华落尽  如梦无痕&pic=https://qk6665.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/06/06/%E5%8E%9F%E7%94%9Fjs%E5%87%BD%E6%95%B0%E7%9A%84%E7%90%86%E8%A7%A3/&title=《原生js函数的理解》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qk6665.github.io/2020/06/06/%E5%8E%9F%E7%94%9Fjs%E5%87%BD%E6%95%B0%E7%9A%84%E7%90%86%E8%A7%A3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《原生js函数的理解》 — 繁华落尽  如梦无痕&url=https://qk6665.github.io/2020/06/06/%E5%8E%9F%E7%94%9Fjs%E5%87%BD%E6%95%B0%E7%9A%84%E7%90%86%E8%A7%A3/&via=https://qk6665.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/06/09/%E7%8E%A9%E8%BD%ACcanvas/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">玩转canvas</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/05/26/%E5%B8%B8%E7%94%A8%E7%9A%84js%E5%87%BD%E6%95%B0%E5%BA%93/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">常用的js函数库</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#函数的作用及用法"><span class="post-toc-text">函数的作用及用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是函数"><span class="post-toc-text">什么是函数?</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为什么要用函数"><span class="post-toc-text">为什么要用函数?</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何定义函数"><span class="post-toc-text">如何定义函数?</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调用-执行-函数"><span class="post-toc-text">调用(执行)函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#回调函数"><span class="post-toc-text">回调函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#匿名函数"><span class="post-toc-text">匿名函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数中的-this"><span class="post-toc-text">函数中的 this</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#原型与原型链"><span class="post-toc-text">原型与原型链</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原型-prototype"><span class="post-toc-text">原型 prototype</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#显式原型和隐式原型"><span class="post-toc-text">显式原型和隐式原型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原型链"><span class="post-toc-text">原型链</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#执行上下文"><span class="post-toc-text">执行上下文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变量提升与函数提升"><span class="post-toc-text">变量提升与函数提升</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#执行上下文-1"><span class="post-toc-text">执行上下文</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#执行上下文栈"><span class="post-toc-text">执行上下文栈</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#作用域与作用域链"><span class="post-toc-text">作用域与作用域链</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作用域"><span class="post-toc-text">作用域</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作用域与执行上下文"><span class="post-toc-text">作用域与执行上下文</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作用域链"><span class="post-toc-text">作用域链</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#闭包"><span class="post-toc-text">闭包</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#闭包的概念"><span class="post-toc-text">闭包的概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#闭包的意义"><span class="post-toc-text">闭包的意义</span></a></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://qk6665.github.io/" target="_blank">HOME</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/qk6665" target="_blank">GITHUB</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                qk6665 &copy; 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qk6665.github.io/2020/06/06/%E5%8E%9F%E7%94%9Fjs%E5%87%BD%E6%95%B0%E7%9A%84%E7%90%86%E8%A7%A3/&title=《原生js函数的理解》 — 繁华落尽  如梦无痕&pic=https://qk6665.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/06/06/%E5%8E%9F%E7%94%9Fjs%E5%87%BD%E6%95%B0%E7%9A%84%E7%90%86%E8%A7%A3/&title=《原生js函数的理解》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qk6665.github.io/2020/06/06/%E5%8E%9F%E7%94%9Fjs%E5%87%BD%E6%95%B0%E7%9A%84%E7%90%86%E8%A7%A3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《原生js函数的理解》 — 繁华落尽  如梦无痕&url=https://qk6665.github.io/2020/06/06/%E5%8E%9F%E7%94%9Fjs%E5%87%BD%E6%95%B0%E7%9A%84%E7%90%86%E8%A7%A3/&via=https://qk6665.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADNUlEQVR42u3aS3IiQQwEUO5/aSZiVuNFQ6YKT4B4tXL4011PXgh9brf43P+eW3nu/5yrp90vztVPk+e/7GBjY2N/CPv+8OTsq+smvMf3SW6bW7CxsbG3sltGHrir8M1CkDwzSsDY2NjYX8n+n9d6nDLbRIuNjY2NnWPaMuY8cNjY2NjY+YvbayXgZJCQ3OoXe2nY2NjYb89uB73v/PUvzrexsbGx35J9L8/jdZm83Z80hpLEcx8dbGxs7E3stjXffj9v6LdBnzW/hhMJbGxs7Ddmz1LO7HP+rOCZsZ/cHBsbG3sdux3HtsVAnjvysmQ2wPhRgWFjY2MvYrerOclfzcqPF9RVSfLDxsbG/hp2XhgkIcjbWHmTq31ClMCwsbGxF7Fnl8iTX1LAnIQg6qVhY2Njr2DfRqflJUXLbEjQpk9sbGzsrexoRHq8jnMy3G0T3pOmEjY2NvYKdtsGOildZiFOQtY2vLCxsbH3sWcrOG0zqC1UTtpPSbLExsbG3sFOPvTnDabZADghtUF5MlrAxsbGXsQ+abXPRgKzNtNsQaf4R2JjY2N/OPuoHTNq9LQlUNuiikojbGxs7C9gP35N205qE8xJ8yi6CTY2NvZqdvudk7Jkdqu85XQZCGxsbOwV7Lyhn7xm1hiaha9tOf14AjY2NvYi9iwBnAwAZoxZHRGVW9jY2Ngfzp6VFrf4nKSuPBz5YlCR37CxsbE/kJ2/4LxgeO36Th0IbGxs7EXsBJ83nk4Wd5JR7qyAubwDNjY29gr2+cLNbEh8sjD0gkYYNjY29mr2q0qF9rp54szPkwoMGxsbewV71lo6ST+zEJ+XHy/oqGFjY2O/Jbtdvnl86SQQ50PlfEh8GSxsbGzsdexZWpoND5IUla/ytMtD2NjY2FvZbZumTXV5mNrm1DAdYmNjYy9itwmgLRjakUBbbMyGCtjY2Nj72LMkdN7KP0mT+f8TGxsb+3vYs6SVDxjan+YJNf8dbGxsbOzk437y+8U+0WhBJwoTNjY29hez84HuSdMqGQzPBhLY2NjYW9ltkTBr989aSyeJ9vJu2NjY2IvYbYJpF2VmY9rZCk77dmxsbOwPZ/8B73BaPQ3lqsoAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

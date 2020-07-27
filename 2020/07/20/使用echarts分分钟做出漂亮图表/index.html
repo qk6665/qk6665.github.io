@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>使用echarts分分钟做出漂亮图表 | 繁华落尽  如梦无痕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="使用手册,前端,动画">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qk6665</h5>
+          <a href="mailto:478649098@qq.com" title="478649098@qq.com" class="mail">
+            
+              <span>4</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>4</span>
+            
+              <span>9</span>
+            
+              <span>0</span>
+            
+              <span>9</span>
+            
+              <span>8</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/qk6665" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章统计
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>使用echarts分分钟做出漂亮图表</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner2.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">使用echarts分分钟做出漂亮图表</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-07-20T08:00:38.000Z" itemprop="datePublished" class="page-time">
+  2020-07-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8A%A8%E7%94%BB/">动画</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-使用echarts分分钟做出漂亮图表"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">使用echarts分分钟做出漂亮图表</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-07-20 16:00:38" datetime="2020-07-20T08:00:38.000Z"  itemprop="datePublished">2020-07-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8A%A8%E7%94%BB/">动画</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>与 canvas 类似，echarts 通过标签做出图表占位，具体图表内容通过 js 绘制。如果学过 canvas，echarts 会很容易上手。echarts 是第三方插件，可以通过标签引入 echarts.js 文件或通过 npm install 安装。</p>
+<p>图表生成的基本步骤是：</p>
+<ol>
+<li>为 ECharts 准备一个具备高宽的 DOM 容器；</li>
+<li>通过 echarts.init 方法初始化一个 echarts 实例</li>
+<li>通过实例的 setOption 方法导入配置项生成对应图形</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 为 ECharts 准备一个具备大小（宽高）的 DOM --&gt;</span><br><span class="line">&lt;div id=<span class="string">"main"</span> style=<span class="string">"width: 600px;height:400px;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">    // 基于准备好的dom，初始化echarts实例</span></span><br><span class="line"><span class="string">    var myChart = echarts.init(document.getElementById('main'));</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    // 指定图表的配置项和数据</span></span><br><span class="line"><span class="string">    var option = &#123;</span></span><br><span class="line"><span class="string">        title: &#123;</span></span><br><span class="line"><span class="string">            text: 'ECharts 入门示例'</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        tooltip: &#123;&#125;,</span></span><br><span class="line"><span class="string">        legend: &#123;</span></span><br><span class="line"><span class="string">            data:['销量']</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        xAxis: &#123;</span></span><br><span class="line"><span class="string">            data: ["</span>衬衫<span class="string">","</span>羊毛衫<span class="string">","</span>雪纺衫<span class="string">","</span>裤子<span class="string">","</span>高跟鞋<span class="string">","</span>袜子<span class="string">"]</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        yAxis: &#123;&#125;,</span></span><br><span class="line"><span class="string">        series: [&#123;</span></span><br><span class="line"><span class="string">            name: '销量',</span></span><br><span class="line"><span class="string">            type: 'bar',</span></span><br><span class="line"><span class="string">            data: [5, 20, 36, 10, 10, 20]</span></span><br><span class="line"><span class="string">        &#125;]</span></span><br><span class="line"><span class="string">    &#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    // 使用刚指定的配置项和数据显示图表。</span></span><br><span class="line"><span class="string">    myChart.setOption(option);</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码可以生成一个柱状图。</p>
+<p>使用 option 来描述其对图表的各种需求，包括：有什么数据、要画什么图表、图表长什么样子、含有什么组件、组件能操作什么事情等等。简而言之，option 表述了：数据、数据如何映射成图形、交互行为。</p>
+<h1 id="图形基本画法"><a href="#图形基本画法" class="headerlink" title="图形基本画法"></a>图形基本画法</h1><h3 id="系列"><a href="#系列" class="headerlink" title="系列"></a>系列</h3><p>一个 html 可以配置多个作为 echarts 渲染容器的 DOM 节点，每个 DOM 节点只能放置一个 echarts 实例，每个 echarts 实例可以通过系列(series)绘制多个有关联的图形。</p>
+<p>echarts 里系列类型(series.type)就是图表类型。系列类型(series.type)有：line(折线图)、bar(柱状图)、pie(饼图)、scatter(散点图)、graph(关系图)、tree(树图)等。系列的数据从 series.dataset 中取。通过 series.encode 选择 dataset 中对应的列。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    dataset: &#123;</span><br><span class="line">        source: [</span><br><span class="line">            [<span class="number">121</span>, <span class="string">'XX'</span>, <span class="number">442</span>, <span class="number">43.11</span>],</span><br><span class="line">            [<span class="number">663</span>, <span class="string">'ZZ'</span>, <span class="number">311</span>, <span class="number">91.14</span>],</span><br><span class="line">            [<span class="number">913</span>, <span class="string">'ZZ'</span>, <span class="number">312</span>, <span class="number">92.12</span>],</span><br><span class="line">            ...</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    xAxis: &#123;&#125;,</span><br><span class="line">    yAxis: &#123;&#125;,</span><br><span class="line">    series: [</span><br><span class="line">        <span class="comment">// 数据从 dataset 中取，encode 中的数值是 dataset.source 的维度 index （即第几列）</span></span><br><span class="line">        &#123;<span class="attr">type</span>: <span class="string">'bar'</span>, <span class="attr">encode</span>: &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">0</span>&#125;&#125;,</span><br><span class="line">        &#123;<span class="attr">type</span>: <span class="string">'bar'</span>, <span class="attr">encode</span>: &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>&#125;&#125;,</span><br><span class="line">        &#123;<span class="attr">type</span>: <span class="string">'scatter'</span>, <span class="attr">encode</span>: &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">3</span>&#125;&#125;,</span><br><span class="line">        ...</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p>option 中各种属性，被抽象为“组件”。例如，echarts 中至少有这些组件：xAxis(直角坐标系 X 轴)、yAxis(直角坐标系 Y 轴)、grid(直角坐标系底板)、angleAxis(极坐标系角度轴)、radiusAxis(极坐标系半径轴)、polar(极坐标系底板)、geo(地理坐标系)、dataZoom(数据区缩放组件)、visualMap(视觉映射组件)、tooltip(提示框组件)、toolbox(工具栏组件)等。其实系列(series)也是一种组件，可以理解为：系列是专门绘制“图”的组件。</p>
+<figure class="image-box">
+                <a rel=使用echarts分分钟做出漂亮图表 href="/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/1.jpg" title="option组件" data-fancybox="images"><img src="/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/1.jpg" alt="option组件" title class></a>
+                <p>option组件</p>
+            </figure>
+
+<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>多数组件和系列，都能够基于 top / right / down / left / width / height 绝对定位。 这种绝对定位的方式，类似于 CSS 的绝对定位（position: absolute）。绝对定位基于的是 echarts 容器 DOM 节点。每个值都可以是绝对数值或基于 echarts 容器高宽的百分比。left right width 是一组（横向）、top bottom height 是另一组（纵向）。每组中，至多设置两项就可以了。</p>
+<p>少数圆形的组件或系列，可以使用“中心半径定位”，例如，pie（饼图）、sunburst（旭日图）、polar（极坐标系）。中心半径定位往往依据 center（中心）、radius（半径）来决定位置。</p>
+<h3 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h3><p>很多系列，例如 line（折线图）、bar（柱状图）、scatter（散点图）、heatmap（热力图）等等，需要运行在 “坐标系” 上。坐标系用于布局这些图，以及显示数据的刻度等等。还有一些图，例如 graph（关系图）等，既能独立存在，也能布局在坐标系中，依据用户的设定而来。其他一些系列，例如 pie（饼图）、tree（树图）等等，并不依赖坐标系。</p>
+<p>直角坐标系中，包括有 xAxis（直角坐标系 X 轴）、yAxis（直角坐标系 Y 轴）、grid（直角坐标系底板）三种组件。xAxis、yAxis 被 grid 自动引用并组织起来，共同工作。</p>
+<p>下图中，两个 yAxis，共享了一个 xAxis。两个 series，也共享了这个 xAxis，但是分别使用不同的 yAxis，使用 yAxisIndex 来指定它自己使用的是哪个 yAxis：</p>
+<figure class="image-box">
+                <a rel=使用echarts分分钟做出漂亮图表 href="/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/2.jpg" title="共享同一grid" data-fancybox="images"><img src="/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/2.jpg" alt="共享同一grid" title class></a>
+                <p>共享同一grid</p>
+            </figure>
+
+<p>下图中，一个 echarts 实例中，有多个 grid，每个 grid 分别有 xAxis、yAxis，他们使用 xAxisIndex、yAxisIndex、gridIndex 来指定引用关系：</p>
+<figure class="image-box">
+                <a rel=使用echarts分分钟做出漂亮图表 href="/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/3.jpg" title="使用两个grid" data-fancybox="images"><img src="/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/3.jpg" alt="使用两个grid" title class></a>
+                <p>使用两个grid</p>
+            </figure>
+
+<h1 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h1><p>ECharts 能够从全局、系列、数据三个层级设置数据图形的样式。</p>
+<h3 id="全局样式"><a href="#全局样式" class="headerlink" title="全局样式"></a>全局样式</h3><p>color：调色盘列表样式，会依次循环从该列表中取颜色作为系列颜色。默认的列表为<code>[&#39;#c23531&#39;,&#39;#2f4554&#39;, &#39;#61a0a8&#39;, &#39;#d48265&#39;, &#39;#91c7ae&#39;,&#39;#749f83&#39;, &#39;#ca8622&#39;, &#39;#bda29a&#39;,&#39;#6e7074&#39;, &#39;#546570&#39;, &#39;#c4ccd3&#39;]</code>。</p>
+<p>backgroundColor：背景色。Echarts 中所有的颜色配置除了纯色之外也支持渐变色和纹理填充。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 线性渐变，前四个参数分别是 x0, y0, x2, y2, 范围从 0 - 1，相当于在图形包围盒中的百分比，如果 globalCoord 为 `true`，则该四个值是绝对的像素位置</span></span><br><span class="line">color: &#123;</span><br><span class="line">    type: <span class="string">'linear'</span>,</span><br><span class="line">    x: <span class="number">0</span>,</span><br><span class="line">    y: <span class="number">0</span>,</span><br><span class="line">    x2: <span class="number">0</span>,</span><br><span class="line">    y2: <span class="number">1</span>,</span><br><span class="line">    colorStops: [&#123;</span><br><span class="line">        offset: <span class="number">0</span>, <span class="attr">color</span>: <span class="string">'red'</span> <span class="comment">// 0% 处的颜色</span></span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        offset: <span class="number">1</span>, <span class="attr">color</span>: <span class="string">'blue'</span> <span class="comment">// 100% 处的颜色</span></span><br><span class="line">    &#125;],</span><br><span class="line">    global: <span class="literal">false</span> <span class="comment">// 缺省为 false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变</span></span><br><span class="line">color: &#123;</span><br><span class="line">    type: <span class="string">'radial'</span>,</span><br><span class="line">    x: <span class="number">0.5</span>,</span><br><span class="line">    y: <span class="number">0.5</span>,</span><br><span class="line">    r: <span class="number">0.5</span>,</span><br><span class="line">    colorStops: [&#123;</span><br><span class="line">        offset: <span class="number">0</span>, <span class="attr">color</span>: <span class="string">'red'</span> <span class="comment">// 0% 处的颜色</span></span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        offset: <span class="number">1</span>, <span class="attr">color</span>: <span class="string">'blue'</span> <span class="comment">// 100% 处的颜色</span></span><br><span class="line">    &#125;],</span><br><span class="line">    global: <span class="literal">false</span> <span class="comment">// 缺省为 false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 纹理填充</span></span><br><span class="line">color: &#123;</span><br><span class="line">    image: imageDom, <span class="comment">// 支持为 HTMLImageElement, HTMLCanvasElement，不支持路径字符串</span></span><br><span class="line">    repeat: <span class="string">'repeat'</span> <span class="comment">// 是否平铺，可以是 'repeat-x', 'repeat-y', 'no-repeat'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>textStyle 全局文本样式。textStyle 的属性有：</p>
+<ol>
+<li>color；</li>
+<li>fontStyle；</li>
+<li>fontWeight；</li>
+<li>fontFamily；</li>
+<li>fontSize；</li>
+<li>lineHeight；</li>
+<li>width；</li>
+<li>height；</li>
+<li>textBorderColor；</li>
+<li>textBorderWidth；</li>
+<li>textShadowColor；</li>
+<li>textShadowBlur；</li>
+<li>textShadowOffsetX；</li>
+<li>textShadowOffsetY。</li>
+</ol>
+<p>全局还可以设置一些动画样式：</p>
+<ol>
+<li>animation: true，是否开启动画；</li>
+<li>animationThreshold: 2000，是否开启动画的阈值，当单个系列显示的图形数量大于这个阈值时会关闭动画；</li>
+<li>animationDuration: 1000，初始动画的时长，支持回调函数，可以通过每个数据返回不同的时长实现更戏剧的初始动画效果；</li>
+<li>animationEasing: cubicOut，初始动画的缓动效果；</li>
+<li>animationDelay: 0，初始动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的初始动画效果；</li>
+<li>animationDurationUpdate: 300，数据更新动画的时长；</li>
+<li>animationEasingUpdate: cubicOut，数据更新动画的缓动效果；</li>
+<li>animationDelayUpdate: 0，数据更新动画的延迟。</li>
+</ol>
+<h3 id="系列样式"><a href="#系列样式" class="headerlink" title="系列样式"></a>系列样式</h3><p>ECharts 中有一些通用的样式，诸如图形元素的颜色、线宽、点的大小、标签的文字、标签的样式，这些样式一般都会在系列的 itemStyle、lineStyle、areaStyle、label 里设置。</p>
+<p>在四个配置项中，阴影配置是公用的：</p>
+<ol>
+<li>图形阴影的模糊大小：shadowBlur，该属性配合 shadowColor,shadowOffsetX, shadowOffsetY 一起设置图形的阴影效果；</li>
+<li>阴影颜色：shadowColor；</li>
+<li>阴影水平方向上的偏移距离：shadowOffsetX；</li>
+<li>阴影垂直方向上的偏移距离：shadowOffsetY；</li>
+</ol>
+<p>itemStyle 为折线拐点标志的样式，有如下配置项：</p>
+<ol>
+<li>图形的颜色：color；</li>
+<li>图形的描边颜色：borderColor；</li>
+<li>描边线宽：borderWidth，为 0 时无描边；</li>
+<li>柱条的描边类型：borderType，默认为实线，支持 ‘solid’, ‘dashed’, ‘dotted’；</li>
+<li>图形透明度：opacity，0-1。</li>
+</ol>
+<p>lineStyle 为线条样式，有如下配置项：</p>
+<ol>
+<li>color，修改 lineStyle 中的颜色不会影响图例颜色，如果需要图例颜色和折线图颜色一致，需修改 itemStyle.color，线条颜色默认也会取该颜色；</li>
+<li>width；</li>
+<li>type；</li>
+<li>opacity。</li>
+</ol>
+<p>areaStyle 为区域填充样式，有如下配置项：</p>
+<ol>
+<li>color；</li>
+<li>origin，图形区域的起始位置，默认情况下图形会从坐标轴轴线到数据间进行填充，如果需要填充的区域是坐标轴最大值到数据间，或者坐标轴最小值到数据间，则可以通过这个配置项进行设置，<br>可选值包括 ‘auto’（默认值）填充坐标轴轴线到数据间的区域、 ‘start’填充坐标轴底部（非 inverse 情况是最小值）到数据间的区域、 ‘end’填充坐标轴顶部（非 inverse 情况是最大值）到数据间的区域；</li>
+<li>opacity。</li>
+</ol>
+<p>label 为图形上的文本标签，可用于说明图形的一些数据信息，属性中项除了阴影属性和 textStyle 中的属性，还有：</p>
+<ol>
+<li>show，是否显示标签，接受布尔值；</li>
+<li>position: ‘top’，标签的位置，可以通过内置的语义声明位置，可以用一个数组表示相对的百分比或者绝对像素值表示标签相对于图形包围盒左上角的位置；</li>
+<li>distance，距离图形元素的距离，当 position 为字符描述值（如 ‘top’、’insideRight’）时候有效；</li>
+<li>rotate，标签旋转，从 -90 度到 90 度，正值是逆时针；</li>
+<li>offset，是否对文字进行偏移。默认不偏移，例如 [30, 40] 表示文字在横向上偏移 30，纵向上偏移 40；</li>
+<li>formatter，标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行；</li>
+<li>align，文字水平对齐方式，默认自动，可选’left’、’center’、’right’；</li>
+<li>verticalAlign，文字垂直对齐方式，默认自动，可选’top’、’middle’、’bottom’；</li>
+<li>backgroundColor，文字块背景色；</li>
+<li>borderColor，文字块边框颜色；</li>
+<li>borderWidth，文字块边框宽度；</li>
+<li>borderRadius，文字块圆角；</li>
+<li>padding，文字块的内边距；</li>
+<li>rich，自定义富文本样式，利用富文本样式，可以在标签中做出非常丰富的效果，下面单独拿出来说。</li>
+</ol>
+<p>label.rich 中的属性除了阴影属性和 textStyle 中的属性还有 label 中的：align , verticalAlign , backgroundColor , borderColor , borderWidth , borderRadius , padding。原先 echarts 中的文本标签，只能对整块统一进行样式设置，并且仅仅支持颜色和字体的设置，从而导致不易于制作表达能力更强的文字描述信息。通过 label.rich，可以实现如下功能：</p>
+<ul>
+<li>定制文本块整体的样式（如背景、边框、阴影等）、位置、旋转等。</li>
+<li>对文本块中个别片段定义样式（如颜色、字体、高宽、背景、阴影等）、对齐方式等。</li>
+<li>在文本中使用图片做小图标或者背景。</li>
+<li>特定组合以上的规则，可以做出简单表格、分割线等效果。</li>
+</ul>
+<p>开始下面的介绍之前，先说明一下下面会使用的两个名词的含义：</p>
+<p>文本块（Text Block）：文本标签块整体。<br>文本片段（Text fragment）：文本标签块中的部分文本。</p>
+<h3 id="数据样式"><a href="#数据样式" class="headerlink" title="数据样式"></a>数据样式</h3><p>ECharts 中每个数据对应图形的样式可以通过分别设置 data 下的数据项实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data: [&#123;</span><br><span class="line">    value:<span class="number">400</span>,</span><br><span class="line">    name:<span class="string">'搜索引擎'</span>,</span><br><span class="line">    itemStyle: &#123;</span><br><span class="line">        color: <span class="string">'#c23531'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;, ...]</span><br></pre></td></tr></table></figure>
+
+<h3 id="高亮样式"><a href="#高亮样式" class="headerlink" title="高亮样式"></a>高亮样式</h3><p>在鼠标悬浮到图形元素上时，一般会出现高亮的样式。默认情况下，高亮的样式是根据普通样式自动生成的。但是高亮的样式也可以自己定义，主要是通过 emphasis 属性来定制。ECharts4 之前 emphasis 在 label 和 itemStyle 的属性中，ECharts4 将 emphasis 抽离出来作为 label 和 itemStyle 的平级属性，在 emphasis 中设置了 label 和 itemStyle 两个属性，分别设置对应的高亮状态。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 高亮样式</span></span><br><span class="line">emphasis: &#123;</span><br><span class="line">    itemStyle: &#123;</span><br><span class="line">        <span class="comment">// 高亮时点的颜色</span></span><br><span class="line">        color: <span class="string">'blue'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    label: &#123;</span><br><span class="line">        show: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">// 高亮时标签的文字</span></span><br><span class="line">        formatter: <span class="string">'This is a emphasis label.'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="异步数据加载和更新"><a href="#异步数据加载和更新" class="headerlink" title="异步数据加载和更新"></a>异步数据加载和更新</h1><p>很多时候可能数据需要异步加载后再填入。ECharts 中实现异步数据的更新非常简单，在图表初始化后不管任何时候只要通过 jQuery 等工具异步获取数据后通过 setOption 填入数据和配置项就行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'main'</span>))</span><br><span class="line"><span class="comment">// 显示标题，图例和空的坐标轴</span></span><br><span class="line">myChart.setOption(&#123;</span><br><span class="line">  title: &#123;</span><br><span class="line">    text: <span class="string">'异步数据加载示例'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  tooltip: &#123;&#125;,</span><br><span class="line">  legend: &#123;</span><br><span class="line">    data: [<span class="string">'销量'</span>],</span><br><span class="line">  &#125;,</span><br><span class="line">  xAxis: &#123;</span><br><span class="line">    data: [],</span><br><span class="line">  &#125;,</span><br><span class="line">  yAxis: &#123;&#125;,</span><br><span class="line">  series: [</span><br><span class="line">    &#123;</span><br><span class="line">      name: <span class="string">'销量'</span>,</span><br><span class="line">      type: <span class="string">'bar'</span>,</span><br><span class="line">      data: [],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 异步加载数据</span></span><br><span class="line">$.<span class="keyword">get</span>('data.json').done(function (data) &#123;</span><br><span class="line">  <span class="comment">// 填入数据</span></span><br><span class="line">  myChart.setOption(&#123;</span><br><span class="line">    xAxis: &#123;</span><br><span class="line">      data: data.categories,</span><br><span class="line">    &#125;,</span><br><span class="line">    series: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">// 根据名字对应到相应的系列</span></span><br><span class="line">        name: <span class="string">'销量'</span>,</span><br><span class="line">        data: data.data,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>上面代码先设置完其它的样式，显示一个空的直角坐标轴，然后获取数据后填入数据。</p>
+<p>如果数据加载时间较长，一个空的坐标轴放在画布上也会让用户觉得是不是产生 bug 了，因此需要一个 loading 的动画来提示用户数据正在加载。ECharts 默认有提供了一个简单的加载动画。只需要调用 showLoading 方法显示。数据加载完成后再调用 hideLoading 方法隐藏加载动画。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">myChart.showLoading();</span><br><span class="line">$.<span class="keyword">get</span>('data.json').done(function (data) &#123;</span><br><span class="line">    myChart.hideLoading();</span><br><span class="line">    myChart.setOption(...);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>所有数据的更新都通过 setOption 实现，只需要定时获取数据，然后 setOption 填入数据，而不用考虑数据到底产生了那些变化，ECharts 会找到两组数据之间的差异然后通过合适的动画去表现数据的变化。</p>
+<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>在 ECharts 的图表中用户的操作将会触发相应的事件。开发者可以监听这些事件，然后通过回调函数做相应的处理，比如跳转到一个地址，或者弹出对话框，或者做数据下钻等等。如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myChart.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">params</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(params.name)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>ECharts 支持常规的鼠标事件类型，包括 ‘click’、’dblclick’、’mousedown’、’mousemove’、’mouseup’、’mouseover’、’mouseout’、’globalout’、’contextmenu’ 事件。</p>
+<p>同时，ECharts 也支持一些图表行为的监听。例如’updateAxisPointer’可以实现多图联动。</p>
+<h1 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a>其他功能</h1><p>除以上用法外，还有其他不少使用的功能，如：</p>
+<ol>
+<li>visualMap 组件提供了通用的视觉映射，用于把更多的维度展现出来。</li>
+<li>toolbox 组件，内置有导出图片，数据视图，动态类型切换，数据区域缩放，重置五个工具。</li>
+<li>数据区域缩放组件(dataZoom)，可以对数轴(axis)进行『数据窗口缩放』、『数据窗口平移』操作。</li>
+<li>timeline 组件，提供了在多个 ECharts option 间进行切换、播放等操作的功能。</li>
+<li>legend 组件用于展示图例。展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示。</li>
+<li>ECharts4 发布了 SVG 渲染器。设置 renderer 参数 为 ‘canvas’ 或 ‘svg’ 即可指定渲染器。SVG 具有重要的优势：内存占用更低(移动端)、渲染性能略高、使用浏览器内置缩放功能时不会模糊。</li>
+<li>ECharts GL 为 ECharts 补充了丰富的三维可视化组件，可以实现一些常见的三维可视化作品。</li>
+</ol>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-07-27T07:15:43.022Z" itemprop="dateUpdated">2020-07-27 15:15:43</time>
+</span><br>
+
+
+        
+        转载请注明出处
+        
+    </div>
+    <footer>
+        <a href="https://qk6665.github.io">
+            <img src="/img/avatar.jpg" alt="qk6665">
+            qk6665
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" rel="tag">使用手册</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E7%94%BB/" rel="tag">动画</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qk6665.github.io/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/&title=《使用echarts分分钟做出漂亮图表》 — 繁华落尽  如梦无痕&pic=https://qk6665.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/&title=《使用echarts分分钟做出漂亮图表》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qk6665.github.io/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用echarts分分钟做出漂亮图表》 — 繁华落尽  如梦无痕&url=https://qk6665.github.io/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/&via=https://qk6665.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/07/24/%E4%B8%80%E7%A7%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A8%E9%80%81%E6%8A%80%E6%9C%AF-WebSocket/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">一种服务器推送技术-WebSocket</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/07/11/%E5%AD%A6%E4%BC%9AH5%E9%9F%B3%E8%A7%86%E9%A2%91%E6%A0%87%E7%AD%BE%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">学会H5音视频标签基本用法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#简介"><span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#图形基本画法"><span class="post-toc-text">图形基本画法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#系列"><span class="post-toc-text">系列</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#组件"><span class="post-toc-text">组件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定位"><span class="post-toc-text">定位</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#坐标系"><span class="post-toc-text">坐标系</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#样式"><span class="post-toc-text">样式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全局样式"><span class="post-toc-text">全局样式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#系列样式"><span class="post-toc-text">系列样式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据样式"><span class="post-toc-text">数据样式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#高亮样式"><span class="post-toc-text">高亮样式</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#异步数据加载和更新"><span class="post-toc-text">异步数据加载和更新</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#事件"><span class="post-toc-text">事件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#其他功能"><span class="post-toc-text">其他功能</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://qk6665.github.io/" target="_blank">HOME</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/qk6665" target="_blank">GITHUB</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                qk6665 &copy; 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qk6665.github.io/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/&title=《使用echarts分分钟做出漂亮图表》 — 繁华落尽  如梦无痕&pic=https://qk6665.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/&title=《使用echarts分分钟做出漂亮图表》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qk6665.github.io/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用echarts分分钟做出漂亮图表》 — 繁华落尽  如梦无痕&url=https://qk6665.github.io/2020/07/20/%E4%BD%BF%E7%94%A8echarts%E5%88%86%E5%88%86%E9%92%9F%E5%81%9A%E5%87%BA%E6%BC%82%E4%BA%AE%E5%9B%BE%E8%A1%A8/&via=https://qk6665.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEf0lEQVR42u3aS1LcQBAFQO5/aRzhncMwvFclbLVIrYhBo27lLLp+b2/x9f77+uyT95fX6yfk9/z932T1ZJXLLkyYMGHCdEum/NHJRtu1kjvbT15ztD8wJkyYMGF6BlP+uFnQkN9/LUcSyiR7w4QJEyZMP4GpTY83x/wsD91wY8KECRMmTPnxPEwvLyo6b0rPmDBhwoTpqUz54/K/Xyefs/vzBLsNES6rhWPChAkTppsxtQfwk/6++MKECRMmTDdjei+vtm2ZH+Ttgb1pXtZvjQkTJkyYjmVKtjg7Mfd35ntrm5ptwxUTJkyYMJ3ONCu85qHAJmi4arQof35REceECRMmTLdnyhPa9gDejP583/BQUrn9YHVMmDBhwvQIpn0q24LO8so2Rd8M4mDChAkTpmcw7R+0b0buX3IW0AxfEhMmTJgwHcLUbvF1Atm+6ua7ebjQhiZ1QxcTJkyYMN2YqS3XtsfqLMWdhSDfuB9MmDBhwnQ4U5JAJnfuD+xrv5vT1O1MTJgwYcJ0FFPbGswP5uTF2hGcWZE3T4M/+C8mTJgwYTqWqd1oWyqdJaXtkZ+HBbNABBMmTJgwPYMpb/vlIy+zVmjSwszDlzwo+SLIwIQJEyZMxzLNgIqjdFEyzik340HDaSZMmDBhwnQIU46SJ8BF8XR9/1VMUSiACRMmTJgOZJo1/PJNzEKEWXE2f6/kkyhEwIQJEyZMt2cq/MpUOWmXzo7nfQDRroIJEyZMmE5natuB+TL7aGUz1tPuChMmTJgwPZtp37zMy8FtgXiTDF9QjMaECRMmTAcyJdtNirDJlEteCJ4lz8nzhwEBJkyYMGE6lun7irxJ4XUzQLPq1s5Wx4QJEyZMBzLtD+mrDuyEeDa0mpehP/0cEyZMmDAdztQuPDuGNwFBO7jTFqyHsQ8mTJgwYbo9U44yG6zZHPCzNmRbaM7btJgwYcKE6VymzajN7JMcdPNDXjwehAkTJkyYDmSaFV7zfDAf7rl2xGf2zC/6vZgwYcKE6UCm2eZmR/js+e3PMHtCPd+ECRMmTJgOYUqO+RyoTX33P1L+2lEN4DNcTJgwYcJ0LNM+Ad4M1szQZ4nuBck5JkyYMGE6linZdD5Sk3PPEuxNiTlfFxMmTJgwPYMpP3rzl8zDiLwUu0meN+1MTJgwYcL0DKZk63nzcvZ5njxvirztPjFhwoQJ0/OYZunuJlBo242zUnJ+PyZMmDBheipTXuqdvd4s4MjDkVkQUBR5MWHChAnTgUz/ckAnT1M3L9A2MmetXEyYMGHCdArT7ADOU9z2leqDuWxb5mv98TkmTJgwYTqWKb/akZo8qd6P8syao+2wESZMmDBhOpcpDwLaYmubQufr7n/OuuyLCRMmTJgOZ9qM6cxeY5PQtoHCLOgZZvCYMGHChOlYprYkOhu1mbUwZ6XbPGTBhAkTJkw/jSlPlTfos4CgXT0KGjBhwoQJ0+FMsyLvVUlymzC33511dy+rhWPChAkTpv/K1BZAc8pNKTlJrfNBonytt82FCRMmTJjuxfQLFUYkpQIXCp8AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

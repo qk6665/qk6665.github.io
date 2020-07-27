@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>玩转canvas | 繁华落尽  如梦无痕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="使用手册,前端,动画">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qk6665</h5>
+          <a href="mailto:478649098@qq.com" title="478649098@qq.com" class="mail">
+            
+              <span>4</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>4</span>
+            
+              <span>9</span>
+            
+              <span>0</span>
+            
+              <span>9</span>
+            
+              <span>8</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/qk6665" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章统计
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>玩转canvas</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner2.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">玩转canvas</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-06-09T06:02:53.000Z" itemprop="datePublished" class="page-time">
+  2020-06-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8A%A8%E7%94%BB/">动画</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-玩转canvas"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">玩转canvas</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-06-09 14:02:53" datetime="2020-06-09T06:02:53.000Z"  itemprop="datePublished">2020-06-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8A%A8%E7%94%BB/">动画</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="lt-canvas-gt-标签"><a href="#lt-canvas-gt-标签" class="headerlink" title="&lt;canvas&gt;标签"></a><code>&lt;canvas&gt;</code>标签</h2><p><code>&lt;canvas&gt;</code> 是 HTML5 新增的元素，可用于通过使用 JavaScript 中的脚本来绘制图形。使用<code>&lt;canvas&gt;</code>标签时，建议要成对出现，不要使用闭合的形式。</p>
+<p>IE9 之前的浏览器不支持 canvas，可以在<code>&lt;canvas&gt;</code>标签中提供替换内容。支持 canvas 的浏览器将会忽略在容器中包含的内容，并正常渲染 canvas。不支持 canvas 的浏览器会显示代替内容。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"test"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>您的浏览器不支持画布元素<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="canvas-自身属性"><a href="#canvas-自身属性" class="headerlink" title="canvas 自身属性"></a>canvas 自身属性</h2><p><code>&lt;canvas&gt;</code>标签只有两个可选属性：width 和 height。所设置的宽高为画布在对应方向的 CSS 像素个数。当没有设置宽高的时候，会初始化宽度为 300 像素、高度为 150 像素。不支持在 CSS 中设置 canvas 标签的宽高，会产生其他效果。</p>
+<p><code>&lt;canvas&gt;</code>元素有一个叫做 <code>getContext()</code> 的方法，这个方法只有一个参数，上下文的格式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'tutorial'</span>)</span><br><span class="line"><span class="keyword">if</span> (canvas.getContext) &#123;</span><br><span class="line">  <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="矩形绘制"><a href="#矩形绘制" class="headerlink" title="矩形绘制"></a>矩形绘制</h2><p>canvas 中，矩形是唯一不需要绘制路径的图形。有三种方法绘制矩形：</p>
+<ol>
+<li>绘制一个填充的矩形（填充色默认为黑色）：<code>fillRect(x, y, width, height)</code></li>
+<li>绘制一个矩形的边框（默认边框为:一像素实心黑色）：<code>strokeRect(x, y, width, height)</code></li>
+<li>清除指定矩形区域，让清除部分完全透明：<code>clearRect(x, y, width, height)</code></li>
+</ol>
+<p>x 与 y 指定了画布上所绘制矩形左上角相对于画布左上角的坐标。width 和 height 设置矩形的尺寸。存在边框的话，边框会在 width 和 height 上占据一个边框的宽度，边框宽度在偏移量上下各渲染一半，一旦出现小数边框会向上取整。</p>
+<p>需要注意的是，这些方法是作为元素的方法使用的，函数中的数值不加单位。</p>
+<h2 id="图形样式"><a href="#图形样式" class="headerlink" title="图形样式"></a>图形样式</h2><p>canvas 中有一些设置图形颜色的属性：</p>
+<ul>
+<li>fillStyle 设置图形的填充颜色，也可以是背景或渐变。</li>
+<li>strokeStyle 设置图形轮廓的颜色。</li>
+</ul>
+<p>默认情况下，线条和填充颜色都是黑色。</p>
+<p>lineWidth 用来设置当前绘线的粗细。属性值为正数。描述线段宽度的数字是 0、负数、Infinity 和 NaN 会被忽略。默认值是 1.0。</p>
+<p>lineJoin 用来设定线条与线条间接合处的样式（默认是 miter）</p>
+<ul>
+<li>round：圆角</li>
+<li>bevel：斜角</li>
+<li>miter：直角</li>
+</ul>
+<p>需要注意的是，canvas 中必须应用图形样式（设置画笔），在进行绘图。</p>
+<h2 id="绘制一般路径"><a href="#绘制一般路径" class="headerlink" title="绘制一般路径"></a>绘制一般路径</h2><p>路径是通过不同颜色和宽度的线段或曲线相连形成的不同形状的点的集合。</p>
+<p>canvas 路径绘制步骤：</p>
+<ol>
+<li>首先，你需要创建路径起始点。</li>
+<li>然后你使用画图命令去画出路径</li>
+<li>之后你把路径封闭。</li>
+<li>一旦路径生成，你就能通过描边或填充路径区域来渲染图形。</li>
+</ol>
+<p>相关方法：</p>
+<ul>
+<li><code>moveTo(x, y)</code>：将笔触移动到指定的坐标 x 以及 y 上，通常用来设置起点。</li>
+<li><code>lineTo(x, y)</code>：将笔触移动到指定的坐标 x 以及 y 上，绘制一条从当前位置到指定 x 以及 y 位置的直线。</li>
+<li><code>stroke()</code>：通过线条来绘制图形轮廓。</li>
+<li><code>fill()</code>：通过填充路径的内容区域生成实心的图形。</li>
+<li><code>closePath()</code>：通过绘制一条从当前点到开始点的直线来闭合图形。不是必需的。这个方法会之后图重新指向到上下文中。<code>fill()</code>自动调用<code>closePath()</code>。</li>
+<li><code>beginPath()</code>：新建一条路径，图形绘制命令被指向到路径上准备生成路径。路径是由很多子路径构成，这些子路径都是在一个列表中。每次这个方法调用之后，列表清空重置，就可以重新绘制新的图形。</li>
+</ul>
+<p>绘制矩形：<code>rect(x, y, width, height)</code>。<br>绘制一个左上角坐标为（x,y），宽高为 width 以及 height 的矩形。当该方法执行的时候，moveTo()方法自动设置坐标参数（0,0）。</p>
+<p><code>lineCap</code> 是 Canvas 2D API 指定如何绘制每一条线段末端的属性。有 3 个可能的值：</p>
+<ul>
+<li>butt：线段末端以方形结束。</li>
+<li>round：线段末端以圆形结束。</li>
+<li>square：线段末端以方形结束，但是增加了一个宽度和线段相同，高度是线段厚度一半的矩形区域<br>默认值是 butt。</li>
+</ul>
+<p><code>save()</code> 可以将当前状态(样式相关和变换相关)放入栈中，保存 canvas 全部状态。保存到栈中的绘制状态有下面部分组成：</p>
+<ul>
+<li>当前的变换矩阵。</li>
+<li>当前的剪切区域。</li>
+<li>当前的虚线列表。</li>
+<li>以下属性当前的值：strokeStyle,fillStyle,lineWidth,lineCap,lineJoin…</li>
+</ul>
+<p><code>restore()</code> 将绘图状态栈中顶端的状态弹出到样式容器，将 canvas 恢复到最近的保存状态的方法。如果没有保存状态，此方法不做任何改变。图像的渲染依赖于样式容器。</p>
+<p><code>save()</code>和<code>restore()</code>常成对出现，分隔同一画布不同的图形。绘制路径的基本模板如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">'#test'</span>)</span><br><span class="line"><span class="keyword">if</span> (canvas.getContext) &#123;</span><br><span class="line">  <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line"></span><br><span class="line">  ctx.save()</span><br><span class="line">  <span class="comment">//关于样式的设置</span></span><br><span class="line">  <span class="comment">//save  restore成对出现</span></span><br><span class="line">  ctx.beginPath()</span><br><span class="line">  <span class="comment">//关于路径</span></span><br><span class="line">  ctx.restore()</span><br><span class="line"></span><br><span class="line">  ctx.save()</span><br><span class="line">  <span class="comment">//关于样式的设置</span></span><br><span class="line">  ctx.beginPath()</span><br><span class="line">  <span class="comment">//关于路径</span></span><br><span class="line"></span><br><span class="line">  ctx.fill()</span><br><span class="line">  ctx.restore()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>路径容器、样式容器和样式栈：</p>
+<ol>
+<li>路径容器：<br>每次调用路径 api 时,都会往路径容器里做登记；<br>调用 beginPath 时,清空整个路径容器。</li>
+<li>样式容器：<br>每次调用样式 api 时,都会往样式容器里做登记；<br>调用 save 时候,将样式容器里的状态压入样式栈；<br>调用 restor 时候,将样式栈的栈顶状态弹出到样式样式容器里,进行覆盖。</li>
+<li>样式栈：<br>调用 save 时候,将样式容器里的状态压入样式栈；<br>调用 restor 时候,将样式栈的栈顶状态弹出到样式样式容器里,进行覆盖。</li>
+</ol>
+<h2 id="绘制曲线"><a href="#绘制曲线" class="headerlink" title="绘制曲线"></a>绘制曲线</h2><p>角度与弧度的 js 表达式:<code>radians=(Math.PI/180)*degrees</code>。</p>
+<p><code>arc(x, y, radius, startAngle, endAngle, anticlockwise)</code>可以画一个以（x,y）为圆心以 radius 为半径的圆弧（圆），从 startAngle 开始到 endAngle 结束，按 anticlockwise 给定方向（默认为顺时针，ture 为逆时针，false 为顺时针）生成。</p>
+<p><code>arcTo(x1, y1, x2, y2, radius)</code>根据给定的控制点和半径画一段圆弧。会从当前位置出发，在(x2 y2)结束。(x1 y1)是控制点，用来控制方向但不一定经过。</p>
+<p><code>quadraticCurveTo(cp1x, cp1y, x, y)</code>绘制二次贝塞尔曲线，cp1x,cp1y 为一个控制点，x,y 为结束点。</p>
+<p><code>bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)</code>绘制三次贝塞尔曲线，cp1x,cp1y 为控制点一，cp2x,cp2y 为控制点二，x,y 为结束点。</p>
+<h2 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h2><p><code>translate(x, y)</code>用来移动 canvas 的<strong>原点</strong>到一个不同的位置。x 是左右偏移量，y 是上下偏移量。在 canvas 中 translate 是累加的。</p>
+<p><code>rotate(angle)</code>可以以顺时针偏转一定的角度，以弧度为单位。旋转的中心点始终是 canvas 的原点，如果要改变原点需要用到 translate 方法。在 canvas 中 rotate 是累加的。</p>
+<p><code>scale(x, y)</code>用来缩放图画，x,y 分别是横轴和纵轴的缩放因子，必须是正值。值比 1.0 小表示缩小，比 1.0 大则表示放大，值为 1.0 时什么效果都没有。一般用它来增减图形在 canvas 中的像素数目，对形状、位图进行缩小或者放大，图像的像素不发生变化。在 canvas 中 scale 是累加的。</p>
+<h2 id="插入图片和图片背景"><a href="#插入图片和图片背景" class="headerlink" title="插入图片和图片背景"></a>插入图片和图片背景</h2><ol>
+<li>canvas 操作图片时，必须要等图片加载完才能操作；</li>
+<li><code>drawImage(image, x, y, width, height)</code><br>其中 image 是 image 或者 canvas 对象，x 和 y 是其在目标 canvas 里的起始坐标，width 和 height 用来控制当图片插入时应该缩放的大小。</li>
+</ol>
+<p>使用<code>Image</code>类创建图片，在图片加载完成后添加到画布中：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image()</span><br><span class="line">img.src = <span class="string">'1.png'</span></span><br><span class="line">img.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  draw()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, img.width, img.height)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>图片也可作为背景插入到画布中：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image()</span><br><span class="line">img.src = <span class="string">'1.png'</span></span><br><span class="line">img.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  draw()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> pattern = ctx.createPattern(img, <span class="string">'no-repeat'</span>)</span><br><span class="line">  ctx.fillStyle = pattern</span><br><span class="line">  ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">300</span>, <span class="number">300</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>createPattern(image, repetition)</code><br>用来设置背景图片，第一个参数 image：图像源。第二个参数 repetition：”repeat”、”repeat-x”、”repeat-y”、”no-repeat”。<br>一般情况下，将 createPattern 返回的对象作为 fillstyle 的值，并在 fillRect 中设置背景大小。</p>
+<h2 id="渐变背景"><a href="#渐变背景" class="headerlink" title="渐变背景"></a>渐变背景</h2><p>与 CSS3 的渐变类似，分为线性渐变和径向渐变。</p>
+<p>线性渐变使用<code>createLinearGradient(x1, y1, x2, y2)</code>，(x1,y1)、(x2,y2)<br>表示渐变的起点与终点。<br><code>gradient.addColorStop(position, color)</code>用来设置渐变的颜色和位置，gradient 是 createLinearGradient 的返回值：</p>
+<ul>
+<li>position 参数必须是一个 0.0 与 1.0 之间的数值，表示渐变中颜色所在的相对位置；</li>
+<li>color 参数是一个有效的 CSS 颜色值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gradient = ctx.createLinearGradient(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">200</span>)</span><br><span class="line">gradient.addColorStop(<span class="number">0</span>, <span class="string">'red'</span>)</span><br><span class="line">gradient.addColorStop(<span class="number">0.5</span>, <span class="string">'yellow'</span>)</span><br><span class="line">gradient.addColorStop(<span class="number">1</span>, <span class="string">'green'</span>)</span><br><span class="line">ctx.fillStyle = gradient</span><br><span class="line">ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">300</span>, <span class="number">300</span>)</span><br></pre></td></tr></table></figure>
+
+<p>与线性渐变类似，径向渐变更换了函数<code>createRadialGradient(x1, y1, r1, x2, y2, r2)</code>。其中前三个参数则定义另一个以(x1,y1) 为原点，半径为 r1 的圆，后三个参数则定义另一个以 (x2,y2) 为原点，半径为 r2 的圆。</p>
+<h2 id="像素操作"><a href="#像素操作" class="headerlink" title="像素操作"></a>像素操作</h2><p><code>getImageData(sx, sy, sw, sh)</code>获得一个包含画布场景像素数据的 <code>ImageData</code> 对象,它代表了画布区域的对象数据。sx 和 sy 表示将要被提取的图像数据矩形区域的左上角 x 和 y 坐标。sw 和 sh 表示将要被提取的图像数据矩形区域的宽度和高度。</p>
+<p><code>ImageData</code> 对象中存储着 canvas 对象真实的像素数据，它包含以下几个只读属性：</p>
+<ul>
+<li>width：图片宽度，单位是像素</li>
+<li>height：图片高度，单位是像素</li>
+<li>data：Uint8ClampedArray 类型的一维数组，包含着 RGBA 格式的整型数据，范围在 0 至 255 之间。</li>
+</ul>
+<p><code>putImageData(myImageData, dx, dy)</code>方法去对场景进行像素数据的写入。dx 和 dy 参数表示在场景内绘制区域的左上角坐标。</p>
+<p><code>createImageData(width, height)</code>用来创建<code>ImageData</code> 对象。</p>
+<h2 id="图片的覆盖合成"><a href="#图片的覆盖合成" class="headerlink" title="图片的覆盖合成"></a>图片的覆盖合成</h2><p>全局透明度通过<code>globalAlpha = value</code>设置，影响到 canvas 里所有图形的透明度，值为 0 到 1，默认为 1。</p>
+<p>定义下面两个概念：</p>
+<ul>
+<li>source:新的图像(源)；</li>
+<li>destination:已经绘制过的图形(目标)。</li>
+</ul>
+<p>通过<code>globalCompositeOperation</code>设置合成图像的显示，有如下取值：</p>
+<ul>
+<li>“source-over”(默认值):源在上面,新的图像层级比较高</li>
+<li>“source-in”:只留下源与目标的重叠部分(源的那一部分)</li>
+<li>“source-out”:只留下源超过目标的部分</li>
+<li>“source-atop”:砍掉源溢出的部分</li>
+<li>“destination-over”:目标在上面,旧的图像层级比较高</li>
+<li>“destination-in”:只留下源与目标的重叠部分(目标的那一部分)</li>
+<li>“destination-out”:只留下目标超过源的部分</li>
+<li>“destination-atop”:砍掉目标溢出的部分</li>
+</ul>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>canvas 中有一个事件可以在选到画布中某些位置时触发：<code>isPointInPath(x, y)</code>。这个方法用于判断在当前路径中是否包含检测点，x 和 y 是检测点的 XY 坐标。此方法只作用于最新画出的 canvas 图像，即最后一个 beginPath()后的路径。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-07-27T07:15:43.048Z" itemprop="dateUpdated">2020-07-27 15:15:43</time>
+</span><br>
+
+
+        
+        转载请注明出处
+        
+    </div>
+    <footer>
+        <a href="https://qk6665.github.io">
+            <img src="/img/avatar.jpg" alt="qk6665">
+            qk6665
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" rel="tag">使用手册</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E7%94%BB/" rel="tag">动画</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qk6665.github.io/2020/06/09/%E7%8E%A9%E8%BD%ACcanvas/&title=《玩转canvas》 — 繁华落尽  如梦无痕&pic=https://qk6665.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/06/09/%E7%8E%A9%E8%BD%ACcanvas/&title=《玩转canvas》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qk6665.github.io/2020/06/09/%E7%8E%A9%E8%BD%ACcanvas/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《玩转canvas》 — 繁华落尽  如梦无痕&url=https://qk6665.github.io/2020/06/09/%E7%8E%A9%E8%BD%ACcanvas/&via=https://qk6665.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/07/10/%E4%B8%80%E6%96%87%E5%AD%A6%E4%BC%9AABB%E6%9C%BA%E6%A2%B0%E8%87%82%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">一文学会基于C#的ABB机械臂二次开发</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/06/06/%E5%8E%9F%E7%94%9Fjs%E5%87%BD%E6%95%B0%E7%9A%84%E7%90%86%E8%A7%A3/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">原生js函数的理解</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#lt-canvas-gt-标签"><span class="post-toc-text">&lt;canvas&gt;标签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#canvas-自身属性"><span class="post-toc-text">canvas 自身属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#矩形绘制"><span class="post-toc-text">矩形绘制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#图形样式"><span class="post-toc-text">图形样式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#绘制一般路径"><span class="post-toc-text">绘制一般路径</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#绘制曲线"><span class="post-toc-text">绘制曲线</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变换"><span class="post-toc-text">变换</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#插入图片和图片背景"><span class="post-toc-text">插入图片和图片背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#渐变背景"><span class="post-toc-text">渐变背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#像素操作"><span class="post-toc-text">像素操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#图片的覆盖合成"><span class="post-toc-text">图片的覆盖合成</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#事件"><span class="post-toc-text">事件</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://qk6665.github.io/" target="_blank">HOME</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/qk6665" target="_blank">GITHUB</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                qk6665 &copy; 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qk6665.github.io/2020/06/09/%E7%8E%A9%E8%BD%ACcanvas/&title=《玩转canvas》 — 繁华落尽  如梦无痕&pic=https://qk6665.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/06/09/%E7%8E%A9%E8%BD%ACcanvas/&title=《玩转canvas》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qk6665.github.io/2020/06/09/%E7%8E%A9%E8%BD%ACcanvas/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《玩转canvas》 — 繁华落尽  如梦无痕&url=https://qk6665.github.io/2020/06/09/%E7%8E%A9%E8%BD%ACcanvas/&via=https://qk6665.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3ay46DMAwF0P7/T3e2IzEw1zatRHKyqkopOSys+PF6xet9WMfvz375++rZXcerr08sDAyMxzLel+v6wcmGcvaRkewNAwNjH8Z14KtuJQnTOTsKyhgYGBjBg/NjYrIwMDAw7mIkh7nrZ11/g4GBgVFNYiflsDzd/XgujoGB8UBGvonvf/5IfwMDA+NRjF5imR/peklpeVcYGBhLM/IAl49HVAtzvWMfBgbGbozJYMR18E221SvJFXwYGBgLMXqJa7V8X/1lPvCBgYGxKqM3TpqH6eqxrxlqMTAwtmTMz115k3I+roGBgbE2464UtBdYq02If14xBgbG0oy7CluTYJoARsEXAwPjsYxq6zEPncnVfKP/sDEwMDZgzFuVkxZpNZ0+nRbBwMBYlJEf4JLH5CWz6otonm0xMDAWZfQOgpMRinyj0cwIBgbGoox58tkbvJg3RAuTIxgYGI9l5ENgUcxu/cNkNO2PchsGBsZyjLxAlgfWpFjWa4vmiTEGBsZ6jElxLb+r1+wsJMkYGBgbMPIjYJ7Q5uF4kkhjYGDsw+gNUuTJbXLcrI5rRJcxMDAezngX1133Jq+vQMXAwFia0St75UW0XmFu3pzAwMBYj9ErnN1V0E/S1+i1YmBgbMDoDWlVhzDmndXTuzAwMDBapbcqu9eWwMDAwEi2mDyyWrZL/mcUcDEwMB7IyMe28mNfNSn9UrkNAwPjgYw8dcxL+fPEOHkRGBgYGzB+ALVp+ggQ22jUAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

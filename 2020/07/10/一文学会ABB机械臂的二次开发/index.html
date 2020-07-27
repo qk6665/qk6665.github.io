@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>一文学会基于C#的ABB机械臂二次开发 | 繁华落尽  如梦无痕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="SDK二次开发,机械臂">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qk6665</h5>
+          <a href="mailto:478649098@qq.com" title="478649098@qq.com" class="mail">
+            
+              <span>4</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>4</span>
+            
+              <span>9</span>
+            
+              <span>0</span>
+            
+              <span>9</span>
+            
+              <span>8</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/qk6665" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章统计
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>一文学会基于C#的ABB机械臂二次开发</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner2.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">一文学会基于C#的ABB机械臂二次开发</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-07-10T11:22:33.000Z" itemprop="datePublished" class="page-time">
+  2020-07-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SDK%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/">SDK二次开发</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-一文学会ABB机械臂的二次开发"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">一文学会基于C#的ABB机械臂二次开发</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-07-10 19:22:33" datetime="2020-07-10T11:22:33.000Z"  itemprop="datePublished">2020-07-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SDK%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/">SDK二次开发</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>不经意间研二已经结束了，研究生生涯已过大半。研究生阶段主要在研究机械臂相关的内容。本文将就基于 C#的 ABB 机械臂二次开发相关内容做一个介绍，主要包括与机械臂控制器的连接和断开、机械臂 RAPID 程序变量的读写、机械臂输入信号的监听和输出信号的控制、机械臂当前位姿的读取。</p>
+<h1 id="ABB-SDK"><a href="#ABB-SDK" class="headerlink" title="ABB SDK"></a>ABB SDK</h1><p>经过两年多对机械臂的接触，真心觉得 ABB 机械臂好用。不仅仅是因为精度较高，更重要的是比较开放，支持 C#的二次开发，甚至也支持网络服务器开发，通过 RESTful API 实现控制。个人认为是机械臂行业的龙头老大。</p>
+<p><a href="https://developercenter.robotstudio.com/pc-sdk" target="_blank" rel="noopener">https://developercenter.robotstudio.com/pc-sdk</a></p>
+<p>这个网址是 ABB 机械臂 PC SDK 的开发者中心，提供了 C#、VB 两种语言的二次开发 API 文档和一些简单案例。但目前似乎只支持 Windows 系统。我采用的是 C#语言进行开发。</p>
+<p>在这个网址找到 SDK 安装包并安装到本地，在目录中找到三个 dll 文件(<code>ABB.Robotics.Controllers.PC.dll</code>、<code>RobotStudio.Services.RobApi.dll</code>、<code>RobotStudio.Services.RobApi.Desktop.dll</code>)，在 C#程序中对其进行引用。</p>
+<figure class="image-box">
+                <a rel=一文学会基于C#的ABB机械臂二次开发 href="/2020/07/10/%E4%B8%80%E6%96%87%E5%AD%A6%E4%BC%9AABB%E6%9C%BA%E6%A2%B0%E8%87%82%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/1.png" title="ABB SDK结构" data-fancybox="images"><img src="/2020/07/10/%E4%B8%80%E6%96%87%E5%AD%A6%E4%BC%9AABB%E6%9C%BA%E6%A2%B0%E8%87%82%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/1.png" alt="ABB SDK结构" title class></a>
+                <p>ABB SDK结构</p>
+            </figure>
+
+<p>上图是 SDK 源程序的结构图，在项目开头引入对应命名空间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">using ABB.Robotics.Controllers;</span><br><span class="line">using ABB.Robotics.Controllers.Discovery;</span><br><span class="line">using ABB.Robotics.Controllers.MotionDomain;</span><br><span class="line">using ABB.Robotics.Controllers.RapidDomain;</span><br><span class="line">using ABB.Robotics.Controllers.IOSystemDomain;</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以敲代码实现一些功能了。</p>
+<h1 id="机械臂控制器的连接和断开"><a href="#机械臂控制器的连接和断开" class="headerlink" title="机械臂控制器的连接和断开"></a>机械臂控制器的连接和断开</h1><p>先上代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">private NetworkScanner scanner &#x3D; null;</span><br><span class="line">public Controller robot &#x3D; null;</span><br><span class="line"></span><br><span class="line">private void Form1_Load(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;机器人通信模块</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">        scanner &#x3D; new NetworkScanner();</span><br><span class="line">    &#125;</span><br><span class="line">    catch (Exception)</span><br><span class="line">    &#123;</span><br><span class="line">        MessageBox.Show(&quot;ABBSDK初始化错误&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void btn_ConnectRob_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;扫描网络中的控制器</span><br><span class="line">        scanner.Scan();</span><br><span class="line">        &#x2F;&#x2F;获取扫描到的控制器信息</span><br><span class="line">        ControllerInfoCollection controllers &#x3D; scanner.Controllers;</span><br><span class="line">        &#x2F;&#x2F;遍历信息</span><br><span class="line">        foreach (ControllerInfo controllerInfo in controllers)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;判断控制器是否可用，是否是需要连接的</span><br><span class="line">            if (controllerInfo.Availability &#x3D;&#x3D; Availability.Available &amp;&amp; (controllerInfo.SystemName &#x3D;&#x3D; textB_RobID.Text || controllerInfo.Id &#x3D;&#x3D; textB_RobID.Text))</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;创建控制器对象</span><br><span class="line">                robot &#x3D; ControllerFactory.CreateFrom(controllerInfo);</span><br><span class="line">                &#x2F;&#x2F;登录</span><br><span class="line">                robot.Logon(UserInfo.DefaultUser);</span><br><span class="line">                MessageBox.Show(&quot;robot登录成功&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        if (robot &#x3D;&#x3D; null)</span><br><span class="line">        &#123;</span><br><span class="line">            MessageBox.Show(&quot;robot登录失败，未找到对应机械臂&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    catch (Exception exception)</span><br><span class="line">    &#123;</span><br><span class="line">        MessageBox.Show(exception.Message, Name, MessageBoxButtons.OK, MessageBoxIcon.Error);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void btn_CloseRob_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;判断是否已连接</span><br><span class="line">        if (RobControl.IsConnected(robot))</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;控制器登出</span><br><span class="line">            robot.Logoff();</span><br><span class="line">            MessageBox.Show(&quot;robot已断开连接&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    catch (Exception exception)</span><br><span class="line">    &#123;</span><br><span class="line">        MessageBox.Show(exception.Message, Name, MessageBoxButtons.OK, MessageBoxIcon.Error);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;判断是否连接</span><br><span class="line">public bool IsConnected(Controller controller)</span><br><span class="line">&#123;</span><br><span class="line">    if (controller &#x3D;&#x3D; null || controller.CurrentUser &#x3D;&#x3D; null) return false;</span><br><span class="line">    return controller.Connected;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>控件设计如下：<br>两个按钮分别控制控制器的连接和断开，连接控制器时连接名称为 TextBox 文本字符串的控制器。</p>
+<figure class="image-box">
+                <a rel=一文学会基于C#的ABB机械臂二次开发 href="/2020/07/10/%E4%B8%80%E6%96%87%E5%AD%A6%E4%BC%9AABB%E6%9C%BA%E6%A2%B0%E8%87%82%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/2.png" title="连接断开控制器" data-fancybox="images"><img src="/2020/07/10/%E4%B8%80%E6%96%87%E5%AD%A6%E4%BC%9AABB%E6%9C%BA%E6%A2%B0%E8%87%82%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/2.png" alt="连接断开控制器" title class></a>
+                <p>连接断开控制器</p>
+            </figure>
+
+<p>连接控制器的基本流程是：</p>
+<ol>
+<li>先创建一个扫描器，使用<code>Scan()</code>对当前局域网中的所有机械臂控制器进行扫描；</li>
+<li>通过扫描器的<code>Controllers</code>属性将所有信息存入集合中，每个控制器信息以<code>ControllerInfo</code>的形式储存，包含的控制器的名称、ID、IP、是否虚拟、是否可用等信息。</li>
+<li>创建一个<code>Controller</code>对象，调用<code>ControllerFactory.CreateFrom()</code>方法创建控制器，方法传入扫描到的<code>ControllerInfo</code>。</li>
+<li>使用控制器的<code>Logon()</code>方法实现登录。</li>
+</ol>
+<p>断开控制器就比较简单了，对已登录的控制器执行<code>Logoff()</code>方法登出。</p>
+<h1 id="机械臂-RAPID-程序变量的读写"><a href="#机械臂-RAPID-程序变量的读写" class="headerlink" title="机械臂 RAPID 程序变量的读写"></a>机械臂 RAPID 程序变量的读写</h1><p>首先是变量读取：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RapidData rapiddata &#x3D; robot1.Rapid.GetTask(cTasks1.Text.ToString()).GetModule(cBmodules1.Text.ToString()).GetRapidData(cvalue1.Text.ToString());</span><br><span class="line">value1.Text &#x3D; rapiddata.StringValue.ToString();</span><br><span class="line">textBox1.Text &#x3D; rapiddata.RapidType.ToString();</span><br></pre></td></tr></table></figure>
+
+<p>依次通过 <code>Task</code>、<code>Module</code>、变量名获取对应的<code>RapidData</code>，然后可以通过<code>RapidData</code>的<code>StringValue</code>属性获取值、通过<code>RapidType</code>变量类型。</p>
+<p>对于变量写入，必须要将机械臂控制器置于自动模式，而且要事先知道要修改变量的类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">RapidData data &#x3D; robot1.Rapid.GetTask(cTasks1.Text.ToString()).GetModule(cBmodules1.Text.ToString()).GetRapidData(cvalue1.Text.ToString());</span><br><span class="line">if (data.RapidType.ToString() &#x3D;&#x3D; &quot;robtarget&quot;)</span><br><span class="line">&#123;</span><br><span class="line">    RobTarget tempdata &#x3D; (RobTarget)data.Value;</span><br><span class="line">    tempdata.FillFromString2(value1.Text.ToString());</span><br><span class="line">    &#x2F;&#x2F;请求权限并写入控制器</span><br><span class="line">    using (Mastership m &#x3D; Mastership.Request(robot1.Rapid))</span><br><span class="line">    &#123;</span><br><span class="line">        data.Value &#x3D; tempdata;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先读出要写入的变量，获取<code>RapidData</code>类型数据，将其值强制转换为其类型，通过<code>FillFromString2()</code>方法传入新值的内容，然后请求权限将这个值重新赋给<code>RapidData</code>数据的值即可。</p>
+<h1 id="机械臂输入信号的监听和输出信号的控制"><a href="#机械臂输入信号的监听和输出信号的控制" class="headerlink" title="机械臂输入信号的监听和输出信号的控制"></a>机械臂输入信号的监听和输出信号的控制</h1><p>机械臂的 IO 操作需要调用开发包的<code>IOSystem</code>模块。下面针对数字信号，实现信号读取、信号值改变、输入信号监听三个方面。</p>
+<h3 id="信号获取"><a href="#信号获取" class="headerlink" title="信号获取"></a>信号获取</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Signal sig &#x3D; robot.IOSystem.GetSignal(IOName.Text);</span><br><span class="line">DigitalSignal digitalSig &#x3D; (DigitalSignal)sig;</span><br><span class="line">int val &#x3D; digitalSig.Get();</span><br></pre></td></tr></table></figure>
+
+<p>获取的<code>val</code>即为名为<code>IOName.Text</code>的数字信号的值，为 0 或 1。</p>
+<h3 id="信号写入"><a href="#信号写入" class="headerlink" title="信号写入"></a>信号写入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Signal sig &#x3D; robot1.IOSystem.GetSignal(IOName.Text);</span><br><span class="line">DigitalSignal digitalSig &#x3D; (DigitalSignal)sig;</span><br><span class="line">if (IOValue.Text &#x3D;&#x3D; &quot;1&quot;)</span><br><span class="line">&#123;</span><br><span class="line">    digitalSig.Set();</span><br><span class="line">&#125;</span><br><span class="line">else if (IOValue.Text &#x3D;&#x3D; &quot;0&quot;)</span><br><span class="line">&#123;</span><br><span class="line">    digitalSig.Reset();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>digitalSig.Set()</code>表示将数字信号置 1，<code>digitalSig.Reset()</code>表示将数字信号置 0。</p>
+<h3 id="信号监听"><a href="#信号监听" class="headerlink" title="信号监听"></a>信号监听</h3><p>可以向信号的<code>Changed</code>事件添加预订，该预订在信号状态反转时触发。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Signal sig &#x3D; robot1.IOSystem.GetSignal(IOName.Text);</span><br><span class="line">DigitalSignal digitalSig &#x3D; (DigitalSignal)sig;</span><br><span class="line">sig.Changed +&#x3D; new EventHandler&lt;SignalChangedEventArgs&gt;(sig_Changed);</span><br><span class="line"></span><br><span class="line">private void sig_Changed(object sender, SignalChangedEventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;通过e获取监听到的信号状态</span><br><span class="line">    SignalState state &#x3D; e.NewSignalState;</span><br><span class="line">    float val &#x3D; state.Value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过<code>val</code>可以获取监听变量的值，如果值变为期望的状态则可以在后续代码添加相应的动作。</p>
+<h1 id="机械臂当前位姿的读取"><a href="#机械臂当前位姿的读取" class="headerlink" title="机械臂当前位姿的读取"></a>机械臂当前位姿的读取</h1><p>获取当前位姿的功能在开发包的<code>MotionSystem</code>中。获取当前位姿有两种形式：</p>
+<ol>
+<li>一种是获取当前机械臂末端位姿，包含 xyz 坐标和四元数构成的姿态；</li>
+<li>另一种是六个关节的偏移角。</li>
+</ol>
+<p>首先看第一种，获取末端位姿：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">RobTarget robtarget &#x3D; robot1.MotionSystem.ActiveMechanicalUnit.GetPosition(CoordinateSystemType.WorkObject);</span><br><span class="line">xvalue.Text &#x3D; robtarget.Trans.X.ToString();</span><br><span class="line">yvalue.Text &#x3D; robtarget.Trans.Y.ToString();</span><br><span class="line">zvalue.Text &#x3D; robtarget.Trans.Z.ToString();</span><br><span class="line">q1value.Text &#x3D; robtarget.Rot.Q1.ToString();</span><br><span class="line">q2value.Text &#x3D; robtarget.Rot.Q2.ToString();</span><br><span class="line">q3value.Text &#x3D; robtarget.Rot.Q3.ToString();</span><br><span class="line">q4value.Text &#x3D; robtarget.Rot.Q4.ToString();</span><br></pre></td></tr></table></figure>
+
+<p>然后是第二种，获取六关节偏移角：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">JointTarget jointtarget &#x3D; robot1.MotionSystem.ActiveMechanicalUnit.GetPosition();</span><br><span class="line">value1.Text &#x3D; a.RobAx.Rax_1.ToString();</span><br><span class="line">value2.Text &#x3D; a.RobAx.Rax_2.ToString();</span><br><span class="line">value3.Text &#x3D; a.RobAx.Rax_3.ToString();</span><br><span class="line">value4.Text &#x3D; a.RobAx.Rax_4.ToString();</span><br><span class="line">value5.Text &#x3D; a.RobAx.Rax_5.ToString();</span><br><span class="line">value6.Text &#x3D; a.RobAx.Rax_6.ToString();</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-07-27T07:15:42.939Z" itemprop="dateUpdated">2020-07-27 15:15:42</time>
+</span><br>
+
+
+        
+        转载请注明出处
+        
+    </div>
+    <footer>
+        <a href="https://qk6665.github.io">
+            <img src="/img/avatar.jpg" alt="qk6665">
+            qk6665
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SDK%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/" rel="tag">SDK二次开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E6%A2%B0%E8%87%82/" rel="tag">机械臂</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qk6665.github.io/2020/07/10/%E4%B8%80%E6%96%87%E5%AD%A6%E4%BC%9AABB%E6%9C%BA%E6%A2%B0%E8%87%82%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/&title=《一文学会基于C#的ABB机械臂二次开发》 — 繁华落尽  如梦无痕&pic=https://qk6665.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/07/10/%E4%B8%80%E6%96%87%E5%AD%A6%E4%BC%9AABB%E6%9C%BA%E6%A2%B0%E8%87%82%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/&title=《一文学会基于C#的ABB机械臂二次开发》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qk6665.github.io/2020/07/10/%E4%B8%80%E6%96%87%E5%AD%A6%E4%BC%9AABB%E6%9C%BA%E6%A2%B0%E8%87%82%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一文学会基于C#的ABB机械臂二次开发》 — 繁华落尽  如梦无痕&url=https://qk6665.github.io/2020/07/10/%E4%B8%80%E6%96%87%E5%AD%A6%E4%BC%9AABB%E6%9C%BA%E6%A2%B0%E8%87%82%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/&via=https://qk6665.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/07/11/%E5%AD%A6%E4%BC%9AH5%E9%9F%B3%E8%A7%86%E9%A2%91%E6%A0%87%E7%AD%BE%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">学会H5音视频标签基本用法</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/06/09/%E7%8E%A9%E8%BD%ACcanvas/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">玩转canvas</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ABB-SDK"><span class="post-toc-text">ABB SDK</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#机械臂控制器的连接和断开"><span class="post-toc-text">机械臂控制器的连接和断开</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#机械臂-RAPID-程序变量的读写"><span class="post-toc-text">机械臂 RAPID 程序变量的读写</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#机械臂输入信号的监听和输出信号的控制"><span class="post-toc-text">机械臂输入信号的监听和输出信号的控制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#信号获取"><span class="post-toc-text">信号获取</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#信号写入"><span class="post-toc-text">信号写入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#信号监听"><span class="post-toc-text">信号监听</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#机械臂当前位姿的读取"><span class="post-toc-text">机械臂当前位姿的读取</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://qk6665.github.io/" target="_blank">HOME</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/qk6665" target="_blank">GITHUB</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                qk6665 &copy; 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qk6665.github.io/2020/07/10/%E4%B8%80%E6%96%87%E5%AD%A6%E4%BC%9AABB%E6%9C%BA%E6%A2%B0%E8%87%82%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/&title=《一文学会基于C#的ABB机械臂二次开发》 — 繁华落尽  如梦无痕&pic=https://qk6665.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/07/10/%E4%B8%80%E6%96%87%E5%AD%A6%E4%BC%9AABB%E6%9C%BA%E6%A2%B0%E8%87%82%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/&title=《一文学会基于C#的ABB机械臂二次开发》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qk6665.github.io/2020/07/10/%E4%B8%80%E6%96%87%E5%AD%A6%E4%BC%9AABB%E6%9C%BA%E6%A2%B0%E8%87%82%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一文学会基于C#的ABB机械臂二次开发》 — 繁华落尽  如梦无痕&url=https://qk6665.github.io/2020/07/10/%E4%B8%80%E6%96%87%E5%AD%A6%E4%BC%9AABB%E6%9C%BA%E6%A2%B0%E8%87%82%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/&via=https://qk6665.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEhUlEQVR42u3aS27bQBAFQN//0so6iEW/100FGrm4MmSZ5NQY6OnP11d8Pf65/v3ts5+vf/vsKc/e4au8rt/h5gsTJkyYML0l0+Pyur719V8li7/ehuTz/E2uN/KHv8WECRMmTIcz5bfLw20b2pPtaX/b3uHp55gwYcKE6dcw5Y9vw/YsGW6TbUyYMGHChCkp3SYF01kwfnV5GhMmTJgw/U6m5HavCNhtMXd/n5fXwjFhwoQJ05sx5WH1835+yekDEyZMmDC9DdNjfbVBOvmkLdFuDhPRGjFhwoQJ07FMbRBtW4NtaTU/iLRpdvv5N0/EhAkTJkwHMuUPThaWf/+uxbQb3G78V7s/mDBhwoTpzZg2wT4fjmnrqLPjxSxFv27EYsKECROmT2JqxzpnzcK8jNtyt6uok21MmDBhwnQgUxKAk6XuUfZDQvtkOzoKYMKECROmj2C6qxF4V8szOXAkm9qO9WDChAkTpk9iagug+Wu1L5eXaNtjxAwOEyZMmDCdyzQbptmUepNUc1bebQ8E7YowYcKECdOJTJvkdp+gtgM0mwS43dq/vokJEyZMmI5lavO7fRi+q/g7S56TIaF8CAkTJkyYMJ3CtAmuM5S2aJt/P/9fyJ+ICRMmTJhOZ7qr5Poor1lJN782b/LDW2HChAkTpkOYIrlFybUdo9kXc9v/juhYgAkTJkyYDmeaDcTkYXiWBueg7T3zo8lfBwJMmDBhwnQ40yYFnTUjZ0eQzWjRKofGhAkTJkzHMt21pM2W5EeBu+BWRV5MmDBhwnQIUx5KZ4tsl7QP4Xnxt34uJkyYMGE6kGmz+LYxOSvXPhbXbWk5JkyYMGH6CKY8GOfhPGe6K9hvnoUJEyZMmD6V6bYyaMB0V4I9a6nmW/u0Fo4JEyZMmI5iasd3Zq/epsqvgM6Lv8NSLyZMmDBhemOmfWBODgebpuOmRDsb98GECRMmTJ/HNCvLtuG5LebO2qizA8Ft80GYMGHChOnNmDahNG8ozlLoZBvyBDs/cHzzHUyYMGHCdCxT/si2jLtpK86OFLPWbF3kxYQJEyZMhzAlr3hXAG4T7FkgT7ahXREmTJgwYTqX6a6F5eeOWdl338h8SdKLCRMmTJiOZWqT1f1L56lpUuotMv7gAIQJEyZMmM5lykdh8jLuXeXdNiHPm535ZhTLw4QJEyZMBzK17cY8MW5Lw/ni94kuJkyYMGH6PKbZi84Gd/YF3Blxm8Z/UxvAhAkTJkyHM7VDMO0ozCzRnSXDsztHBwJMmDBhwnQU0x5ohp43GjeDRBumH76PCRMmTJgOYXqU177smwT1TZKcj+MUrU1MmDBhwnQsU37lxdakD5g3F19xFFhBYMKECROmA5naUc72wfkns3bjXZ9HTU1MmDBhwnQsUx6kkwdsEuP/+f3iDpgwYcKE6RcwtalvW96dHT72o6vRGjFhwoQJ0y9gmqWySYKdtxXzAaD2QHP9/pgwYcKE6XSmTZE3b0MmoK8o785GkTBhwoQJ02cwtaXPWeuxLRPfPHm0aL5iwoQJE6Zjmf4ATU0Q8egm7ngAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
