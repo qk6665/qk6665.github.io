@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>快速配置Hadoop分布式运行模式 | 繁华落尽  如梦无痕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="大数据分布式,Hadoop">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	true,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">qk6665</h5>
+          <a href="mailto:478649098@qq.com" title="478649098@qq.com" class="mail">
+            
+              <span>4</span>
+            
+              <span>7</span>
+            
+              <span>8</span>
+            
+              <span>6</span>
+            
+              <span>4</span>
+            
+              <span>9</span>
+            
+              <span>0</span>
+            
+              <span>9</span>
+            
+              <span>8</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/qk6665" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                首页
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章分类
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                文章统计
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>快速配置Hadoop分布式运行模式</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner2.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">快速配置Hadoop分布式运行模式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-08-16T09:12:41.000Z" itemprop="datePublished" class="page-time">
+  2020-08-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83%E5%BC%8F/">大数据分布式</a></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-快速配置Hadoop分布式运行模式"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">快速配置Hadoop分布式运行模式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-08-16 17:12:41" datetime="2020-08-16T09:12:41.000Z"  itemprop="datePublished">2020-08-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83%E5%BC%8F/">大数据分布式</a></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h1 id="准备条件"><a href="#准备条件" class="headerlink" title="准备条件"></a>准备条件</h1><ol>
+<li>linux 系统，可以是实体 linux 系统也可以是虚拟机也可以是云服务器。虽说 docker 可以实现在一个 linux 系统中安装多个独立 Hadoop，但听说有 bug，而且企业里一般不会用 docker 实现 Hadoop。</li>
+<li>确保 linux 系统防火墙关闭，IP 地址为同一网关下的固定地址。</li>
+<li>已安装好 Java8，并配置好环境。</li>
+<li>已安装好 Hadoop，本文使用的版本是 2.7.2。</li>
+<li>Hadoop 官方文档写的很详细，本文也基本按这个教程来，英语好的可以直接看教程。(<a href="http://hadoop.apache.org/docs/r2.7.2/" target="_blank" rel="noopener">http://hadoop.apache.org/docs/r2.7.2/</a>)</li>
+<li>(可选)需要频繁在三个 linux 之间来回登录授权，不胜其烦。最好在三个 linux 之间配置一下 ssh 免密登录。</li>
+</ol>
+<h1 id="单机模式"><a href="#单机模式" class="headerlink" title="单机模式"></a>单机模式</h1><p>单机模式是伪分布式，也就是只有一个节点的分布式系统。下面从 hadoop 介绍开始说起。</p>
+<p>参考文档：(<a href="http://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-common/SingleCluster.html" target="_blank" rel="noopener">http://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-common/SingleCluster.html</a>)</p>
+<h3 id="hadoop-目录结构"><a href="#hadoop-目录结构" class="headerlink" title="hadoop 目录结构"></a>hadoop 目录结构</h3><ol>
+<li>bin 目录：存放对 Hadoop 相关服务（HDFS,YARN）进行操作的脚本；</li>
+<li>etc 目录：Hadoop 的配置文件目录，存放 Hadoop 的配置文件；</li>
+<li>lib 目录：存放 Hadoop 的本地库（对数据进行压缩解压缩功能）；</li>
+<li>sbin 目录：存放启动或停止 Hadoop 相关服务的脚本；</li>
+<li>share 目录：存放 Hadoop 的依赖 jar 包、文档、和官方案例。</li>
+</ol>
+<h3 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> HADOOP_HOME=/usr/lib/hadoop-2.7.2</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HADOOP_HOME</span>/bin</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HADOOP_HOME</span>/sbin</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>/usr/lib/hadoop-2.7.2</code>应替换为 hadoop 实际安装路径。</p>
+<p>测试安装是否成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop version</span><br></pre></td></tr></table></figure>
+
+<h3 id="hadoop-配置文件"><a href="#hadoop-配置文件" class="headerlink" title="hadoop 配置文件"></a>hadoop 配置文件</h3><p>hadoop 配置文件都在 hadoop 安装目录下的 etc/hadoop 下，本文用到的四个文件是<code>core-site.xml</code>、<code>hdfs-site.xml</code>、<code>yarn-site.xml</code>、<code>mapred-site.xml</code>。在配置文件目录下，有的文件已经存在，直接在里面修改配置；有的文件加了后缀.template，将后缀去掉并修改配置；有的文件可能不存在，需要新建文件并编辑。</p>
+<p>除了配置文件，还有几个命令可能需要修改<code>JAVA_HOME</code>路径：<code>hadoop-env.sh</code>、<code>yarn-env.sh</code>、<code>mapred-env.sh</code>。</p>
+<p><code>core-site.xml</code>配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 指定HDFS中NameNode的地址 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://192.168.189.128:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- 指定Hadoop运行时产生文件的存储目录 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/data/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>hdfs-site.xml</code>配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 指定HDFS副本的数量 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>yarn-site.xml</code>配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Reducer获取数据的方式 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- 指定YARN的ResourceManager的地址 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>192.168.189.128<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>mapred-site.xml</code>配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 指定MR运行在YARN上 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>每次配置完，都要先将四个模块都停下来(将启动命令的 start 替换为 stop)，然后清除 data 目录(<code>core-site.xml</code>中配置的目录)，再然后格式化 namenode：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop namenode -format</span><br></pre></td></tr></table></figure>
+
+<p>然后先后执行以下命令以启动<code>NameNode</code>、<code>DataNode</code>、<code>ResourceManager</code>、<code>NodeManager</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sbin/hadoop-daemon.sh start namenode</span><br><span class="line">sbin/hadoop-daemon.sh start datanode</span><br><span class="line">sbin/yarn-daemon.sh start resourcemanager</span><br><span class="line">sbin/yarn-daemon.sh start nodemanager</span><br></pre></td></tr></table></figure>
+
+<p>执行<code>jsp</code>命令以观察是否有<code>NameNode</code>、<code>DataNode</code>、<code>ResourceManager</code>、<code>NodeManager</code>，如果不全则没有正常启动，应检查 hadoop 和 java 是否正确安装，配置文件是否正确配置，网络和防火墙是否正确设置。</p>
+<p>访问<code>localhost:50070</code>可以观察 hadoop 的运行状态。访问<code>192.168.189.128:8088</code>可以观察 yarn 的运行状态，网站要用本机 ip 而不是 localhost。</p>
+<h3 id="执行任务"><a href="#执行任务" class="headerlink" title="执行任务"></a>执行任务</h3><p>下面执行一个单词个数统计任务。在 hadoop 安装目录下新建一个 wcinput 文件夹，在里面新建一个 wc.input 文件，并追加如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop yarn</span><br><span class="line">hadoop mapreduce</span><br><span class="line">qk6665</span><br><span class="line">qk6665</span><br></pre></td></tr></table></figure>
+
+<p>将 wcinput 文件夹放入 hdfs 根目录下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put wcinput &#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>执行 MapReduce 程序(此时文件系统为 hdfs)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;hadoop jar share&#x2F;hadoop&#x2F;mapreduce&#x2F;hadoop-mapreduce-examples-2.7.2.jar wordcount &#x2F;wcinput &#x2F;wcoutput</span><br></pre></td></tr></table></figure>
+
+<p>运行完毕后，查看运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -cat &#x2F;wcoutput&#x2F;*</span><br></pre></td></tr></table></figure>
+
+<h3 id="调试出错需要重启时"><a href="#调试出错需要重启时" class="headerlink" title="调试出错需要重启时"></a>调试出错需要重启时</h3><p>调试出错需要重启时，先将四个模块都停下来(将启动命令的 start 替换为 stop)，然后清除 data 目录(<code>core-site.xml</code>中配置的目录)，再然后才可以重新启动，启动时仍要初始化 namenode。</p>
+<h1 id="多机模式"><a href="#多机模式" class="headerlink" title="多机模式"></a>多机模式</h1><p>多机模式就是真正的集群了，多个主机分别搭载不同的模块。本文采用最简单的 3 个 linux 组成的架构：一个搭载 NameNode，一个搭载 ResourCemamager，一个搭载 SecondaryNameNode，DataNode 和 NodeManager 每个都有。</p>
+<h3 id="制造多-linux"><a href="#制造多-linux" class="headerlink" title="制造多 linux"></a>制造多 linux</h3><p>本文使用 vm 虚拟机实现多 linux 架构，vm 虚拟机可以在单机模式配置完毕之后创建系统快照，通过直接复制快照的方式对源 linux 系统实现复制，这种方法内存占用少，复制效率高，直接改个别参数就可以实现多 linux 架构。如果是云服务器可能只能一个一个按照单机模式来配置啦。</p>
+<p>对于复制快照的形式，要注意这几个 linux 系统的网卡物理地址不能一样，且网络参数需要重新配置一下(设备名、物理地址、IP 可能都要换)。</p>
+<h3 id="文件配置"><a href="#文件配置" class="headerlink" title="文件配置"></a>文件配置</h3><p>在单机模式提到的四个配置文件中，有几个地方要改：</p>
+<ol>
+<li>core-site.xml 中，NameNode 的地址改为搭载 NameNode 的主机地址；</li>
+<li>hdfs-site.xml 中，个数改为 3，同时增加辅助名称节点配置：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定Hadoop辅助名称节点主机配置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.secondary.http-address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop104:50090<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>yarn-site.xml 中，YARN 的 ResourceManager 的地址改为搭载 ResourceManager 的主机地址。</li>
+</ol>
+<p>这三点改动需要同时应用在三个 linux 中。</p>
+<p>除了配置文件的改动，还需要配置 etc 下的 hosts 文件，加入三个 linux 的主机地址和主机名的映射关系。主机名设为不同。这是由于 hadoop 的某些程序只认主机名。</p>
+<h3 id="手动启动-NameNode-和-DataNode"><a href="#手动启动-NameNode-和-DataNode" class="headerlink" title="手动启动 NameNode 和 DataNode"></a>手动启动 NameNode 和 DataNode</h3><p>启动前一定要确保 data 目录已清除，各主机可以通过主机名 ping 通。</p>
+<p>将搭载 NameNode 的主机按启动流程启动，通过 jps 命令查看所有节点是否均正常启动。如正常，然后将剩余两台主机的 DataNode 启动。访问搭载 NameNode 的主机的 50070 端口观察 hadoop 集群的运行状态。在 Datanodes 栏观察是否成功出现 3 个 DataNode。</p>
+<figure class="image-box">
+                <a rel=快速配置Hadoop分布式运行模式 href="/2020/08/16/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEHadoop%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F/1.png" title="Datanodes栏" data-fancybox="images"><img src="/2020/08/16/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEHadoop%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F/1.png" alt="Datanodes栏" title class></a>
+                <p>Datanodes栏</p>
+            </figure>
+
+<p>如果没有正确出现多个 DataNode，可以通过 jps 命令或查看日志的方式看看是什么地方有错。</p>
+<p>如果出现了 3 个，那么恭喜你，成功就在眼前！！</p>
+<h3 id="自动启动"><a href="#自动启动" class="headerlink" title="自动启动"></a>自动启动</h3><p>首先在三个 linux 的 hadoop 目录下的 etc/hadoop 配置文件目录下编辑 slaves 文件。这个文件存放从属主机名，将原先的 localhost 改为三个主机的主机名，一行显示一个。需要注意的是，不许有空格或空行。</p>
+<p>接下来启动 hdfs，在搭载 NameNode 的主机 hadoop 目录下执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbin&#x2F;start-dfs.sh</span><br></pre></td></tr></table></figure>
+
+<p>接下来启动 yarn，在搭载 ResourceManager 的主机 hadoop 目录下执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbin&#x2F;start-yarn.sh</span><br></pre></td></tr></table></figure>
+
+<p>可以在搭载 ResourceManager 的主机的 8088 端口看看是否有页面，如果有，在页面的 nodes 栏看看是否有三个正在运行的节点，如果有，则说明 ResourceManager 自动配置成功。</p>
+<p>可以在搭载 SecondaryNameNode 的主机的 50090 端口看看是否有页面，如果有，则说明 SecondaryNameNode 自动配置成功。</p>
+<p>接下来可以看看单机模式下的统计单词数量任务是否可以在多机模式下完成，如果可以，那你就通关啦！！</p>
+<h3 id="集群停止方法"><a href="#集群停止方法" class="headerlink" title="集群停止方法"></a>集群停止方法</h3><p>整体停止 HDFS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stop-dfs.sh</span><br></pre></td></tr></table></figure>
+
+<p>整体停止 YARN</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stop-yarn.sh</span><br></pre></td></tr></table></figure>
+
+<h1 id="日志配置"><a href="#日志配置" class="headerlink" title="日志配置"></a>日志配置</h1><p>为了查看程序的历史运行情况，需要配置历史服务器。在历史服务器，可以看到各任务的具体实施情况。内有日志聚合功能，应用运行完成以后，将程序运行日志信息上传到 HDFS 系统上。可以方便的查看到程序运行详情，方便开发调试。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p><code>mapred-site.xml</code>文件中，追加如下内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 历史服务器端地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.jobhistory.address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop101:10020<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 历史服务器web端地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.jobhistory.webapp.address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop101:19888<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>yarn-site.xml</code>文件中，追加如下内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 日志聚集功能使能 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log-aggregation-enable<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 日志保留时间设置7天 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log-aggregation.retain-seconds<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">value</span>&gt;</span>604800<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>需要同时在三个 linux 上追加。追加历史服务器相关配置不需要格式化 NameNode。将当前模块都停止，然后再启动。启动后在搭载 NameNode 的主机 hadoop 目录下执行如下命令以启动历史服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbin&#x2F;mr-jobhistory-daemon.sh start historyserver</span><br></pre></td></tr></table></figure>
+
+<p>再次执行统计单词数量任务，然后在搭载 NameNode 的主机的 19888 端口可以看到历史任务，单击 JobID 上的链接到具体任务，再单击 logs 就可以看到聚合日志。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-08-17T09:01:15.411Z" itemprop="dateUpdated">2020-08-17 17:01:15</time>
+</span><br>
+
+
+        
+        转载请注明出处
+        
+    </div>
+    <footer>
+        <a href="https://qk6665.github.io">
+            <img src="/img/avatar.jpg" alt="qk6665">
+            qk6665
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">大数据分布式</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qk6665.github.io/2020/08/16/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEHadoop%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F/&title=《快速配置Hadoop分布式运行模式》 — 繁华落尽  如梦无痕&pic=https://qk6665.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/08/16/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEHadoop%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F/&title=《快速配置Hadoop分布式运行模式》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qk6665.github.io/2020/08/16/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEHadoop%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《快速配置Hadoop分布式运行模式》 — 繁华落尽  如梦无痕&url=https://qk6665.github.io/2020/08/16/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEHadoop%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F/&via=https://qk6665.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2020/08/17/%E7%94%A8Java%E6%93%8D%E4%BD%9Chdfs/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">用Java操作hdfs</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2020/07/24/%E4%B8%80%E7%A7%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A8%E9%80%81%E6%8A%80%E6%9C%AF-WebSocket/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">一种服务器推送技术-WebSocket</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#准备条件"><span class="post-toc-text">准备条件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#单机模式"><span class="post-toc-text">单机模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hadoop-目录结构"><span class="post-toc-text">hadoop 目录结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#环境变量配置"><span class="post-toc-text">环境变量配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hadoop-配置文件"><span class="post-toc-text">hadoop 配置文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动"><span class="post-toc-text">启动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#执行任务"><span class="post-toc-text">执行任务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#调试出错需要重启时"><span class="post-toc-text">调试出错需要重启时</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#多机模式"><span class="post-toc-text">多机模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#制造多-linux"><span class="post-toc-text">制造多 linux</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件配置"><span class="post-toc-text">文件配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#手动启动-NameNode-和-DataNode"><span class="post-toc-text">手动启动 NameNode 和 DataNode</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自动启动"><span class="post-toc-text">自动启动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#集群停止方法"><span class="post-toc-text">集群停止方法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#日志配置"><span class="post-toc-text">日志配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置"><span class="post-toc-text">配置</span></a></li></ol></li></ol></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        我们一起来让这个世界有趣一点
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://qk6665.github.io/" target="_blank">HOME</a>
+    </span>
+    
+    <span class="blogroll-item">
+        <a href="https://github.com/qk6665" target="_blank">GITHUB</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                qk6665 &copy; 2020
+            </span>
+        		
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://qk6665.github.io/2020/08/16/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEHadoop%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F/&title=《快速配置Hadoop分布式运行模式》 — 繁华落尽  如梦无痕&pic=https://qk6665.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://qk6665.github.io/2020/08/16/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEHadoop%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F/&title=《快速配置Hadoop分布式运行模式》 — 繁华落尽  如梦无痕&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://qk6665.github.io/2020/08/16/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEHadoop%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《快速配置Hadoop分布式运行模式》 — 繁华落尽  如梦无痕&url=https://qk6665.github.io/2020/08/16/%E5%BF%AB%E9%80%9F%E9%85%8D%E7%BD%AEHadoop%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F/&via=https://qk6665.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEiUlEQVR42u3aS47bMBAFQN//0g6QXTCQ/LqbTkSmuDJmJJksGWB/+HrF4/17/Px8deXP8WqNq+fkn+/vXTwwYcKECdMjmd634xtMV89PnnzPcXX9/XOiV4sJEyZMmDZnqgYB9wu7X0aOkrywZJ7V4AYTJkyYMP2fTL0tubfZV3F7YQcmTJgwYcKUp7t5Yjkv8ubX5Ck9JkyYMGE6myl5XD7pvDm6NnSoUn6lFo4JEyZMmB7GNDm4s/vnxQMTJkyYMD2M6d0af2drz2eeF5p7q8aECRMmTPsy5cdoqqlstX24NkzJ25+FuWHChAkTpm2Z8g2+mg/mzc5Je7Vabu4djcWECRMmTDsyJWlhNXRYu5jqDHsN2g98mDBhwoRpW6ZJeTRnTaY1/2/vdRZeHiZMmDBhOo6pmjf3CqbVZHuy7BwXEyZMmDCdwVTdwntF2EnrNE/Fq1fmApgwYcKEaV+mxb3QLzQXk5dRLeDmuK/qdDFhwoQJ0yOZJl9w/8V5mzMfVaBew/VDKIAJEyZMmDZhSqbSOxAzSZJ7bdEeTfS9mDBhwoRpW6a8wFo9uFPd2pNku3pAp1fYLQ9MmDBhwrQ5U7U9Wb0yPwzUCxHmz8eECRMmTCcx5Ylo7zDNZHmTACVZSzndxYQJEyZMj2eqPjR/9Jx7kpz3DhVdzgQTJkyYMB3BlB+pqSaK86bm9743ChQwYcKECdMRTNWNOU8jR83CuKSbzyoJLwpHVDFhwoQJ0+OZyrcVsXql4TwsqL6qfF1/BASYMGHChGlbpmRa+aabTzRJdCcJcC/lxoQJEyZMZzNVN+nkrlHaOWigJslz9DoxYcKECdPmTHli2WsiTg7oTJ42KS5fFnkxYcKECdNWTPkN1bCgV3jNN/t3MHqzGnVcMWHChAnTI5nyVuKqcu0kCJjf1fsLJkyYMGHanam6efe2+cmobuoJU9KIxYQJEyZM+zLlN+SpbI7YCxrylmevJF34HWHChAkTpscz9Yq81RAhT02rW/XaV9IrFmPChAkTpt2ZJmXZXon2fqJ5sj0JLBb0gTFhwoQJ0wOY8vZkkiImG+qcr5e+9taFCRMmTJh2Z5oXOnvNzipWr/zaS2Uvr8GECRMmTBsyTZLSPE2tllMnoKsK0JgwYcKE6QymXoE1/8retKpHTqurS0IHTJgwYcJ0NlNvA06Oh1axerjVsCZKlTFhwoQJ04ZMeShQnVw1JV7bWO094UORFxMmTJgwbc7UawROCrW9a6rJee+nUDiygwkTJkyYHsy0dtnJdFeFHfkcXsURzQ0TJkyYMG3C1Nt6q9fMD+tMkuG8KVv47WDChAkTpk2YesdfqqlytaTba3l+75gRJkyYMGHanSnf4FcVaufN1Pxp88NGmDBhwoTpDKb7v/famXlAMCnFrqIfnVHChAkTJkwHMVUX3GuCVtuZ+RPucT+kvpgwYcKE6WimPCyoBge9XbhawO29TkyYMGHCdAbTpGjbSzJ7R4WqyXPvcM+oFo4JEyZMmB7GVK1w5kB5eplAzw/f5K9zwfkmTJgwYcL075l+AQzF8JLV5kPrAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+    
+</body>
+</html>
